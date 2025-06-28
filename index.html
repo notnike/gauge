@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Gauge</title>
   <style>
+    /* 🌑 Page background and layout */
     html, body {
       margin: 0;
       height: 100%;
@@ -11,23 +12,34 @@
       overflow: hidden;
     }
 
+    /* 📦 Container for text — controls window margin */
     .container {
       position: absolute;
-      top: 5%;
-      bottom: 5%;
-      left: 5%;
-      right: 5%;
+
+      /* 🛠️ CHANGE THESE TO CONTROL MARGINS */
+      top: 2%;    
+      bottom: 2%;
+      left: 2%;
+      right: 2%;
+
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
+    /* 🔤 The word “Gauge” — this is where you style it */
     #stretch-text {
       color: white;
       font-family: sans-serif;
       font-weight: bold;
       margin: 0;
+
+      /* 🚀 Starting size before scaling */
       font-size: 100px;
+
+      /* 📏 Controls spacing between letters — change this! */
+      letter-spacing: 10px;
+
       transform-origin: center;
       white-space: nowrap;
     }
@@ -35,7 +47,8 @@
 </head>
 <body>
   <div class="container">
-    <h1 id="stretch-text">Gauge</h1>
+    <h1 id="stretch-text">G A U G E</h1>
+    <!-- You can also write: G&nbsp;A&nbsp;U&nbsp;G&nbsp;E for fine control -->
   </div>
 
   <script>
@@ -43,18 +56,21 @@
       const container = document.querySelector('.container');
       const text = document.getElementById('stretch-text');
 
-      // These values define the "default" dimensions
-      const baseWidth = 500;
-      const baseHeight = 100;
+      // 🎯 These are your "base" sizes — adjust if needed
+      const baseWidth = 1000;   // wider base = more natural stretch
+      const baseHeight = 150;   // taller base = less vertical squish
 
-      const currentWidth = container.offsetWidth;
-      const currentHeight = container.offsetHeight;
+      const containerWidth = container.offsetWidth;
+      const containerHeight = container.offsetHeight;
 
-      const scaleX = currentWidth / baseWidth;
-      const scaleY = currentHeight / baseHeight;
+      const scaleX = containerWidth / baseWidth;
+      const scaleY = containerHeight / baseHeight;
 
-      // Apply distortion
       text.style.transform = `scale(${scaleX}, ${scaleY})`;
     }
 
-    window.addEventListener('resiz
+    window.addEventListener('resize', updateStretch);
+    window.addEventListener('load', updateStretch);
+  </script>
+</body>
+</html>
