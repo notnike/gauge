@@ -27,9 +27,10 @@
     }
 
     .marquee {
-      display: inline-block;
-      white-space: nowrap;
-      animation: scrollLeft 20s linear infinite;
+  display: inline-block;
+  white-space: nowrap;
+  animation: scrollLeft 20s linear infinite;
+  animation-delay: -10s; /* ✅ Start mid-way */
     }
 
     .marquee span {
