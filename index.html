@@ -26,17 +26,30 @@
     }
 
     .letter {
-      color: black;
-      font-family: 'big-caslon-fb', serif;
-      font-style: italic;
-      font-weight: 500;
-      font-size: 100px;
-      white-space: pre;
-      display: inline-block;
-      transform-origin: center;
-      text-transform: none;
-      font-variant: normal;
-    }
+  color: black;
+  font-family: 'big-caslon-fb', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 100px;
+  white-space: pre;
+  display: inline-block;
+  transform-origin: center;
+  text-transform: none;
+  font-variant: normal;
+
+  /* 👇 Fade-in animation */
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
   </style>
 </head>
 
