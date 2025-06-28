@@ -8,6 +8,7 @@
       margin: 0;
       height: 100%;
       background: black;
+      overflow: hidden;
     }
 
     .container {
@@ -25,17 +26,36 @@
       color: white;
       font-family: sans-serif;
       font-weight: bold;
-      font-size: 10vw;
       margin: 0;
-      width: 100%;
-      text-align: center;
-      white-space: nowrap;
+      font-size: 100px;
+      transform-origin: center;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Gauge</h1>
+    <h1 id="stretch-text">Gauge</h1>
   </div>
+
+  <script>
+    function updateStretch() {
+      const container = document.querySelector('.container');
+      const text = document.getElementById('stretch-text');
+
+      const containerWidth = container.clientWidth;
+      const containerHeight = container.clientHeight;
+
+      const baseWidth = 500;
+      const baseHeight = 100;
+
+      const scaleX = containerWidth / baseWidth;
+      const scaleY = containerHeight / baseHeight;
+
+      text.style.transform = `scale(${scaleX}, ${scaleY})`;
+    }
+
+    window.addEventListener('resize', updateStretch);
+    window.addEventListener('load', updateStretch);
+  </script>
 </body>
 </html>
