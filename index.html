@@ -17,10 +17,7 @@
 
     .container {
       position: absolute;
-      top: 40px;
-      bottom: 40px;
-      left: 40px;
-      right: 40px;
+      inset: 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -31,7 +28,7 @@
       justify-content: center;
       align-items: center;
       transform-origin: center;
-      translate: -18% -41%;
+      /* We’ll update translate dynamically in JS */
     }
 
     .letter {
@@ -65,12 +62,12 @@
     function updateStretch() {
       const word = document.getElementById('stretch-word');
 
-      // Define the margins we want to preserve
-      const horizontalMargin = 80; // 40px left + 40px right
-      const verticalMargin = 80;   // 40px top + 40px bottom
+      // Desired fixed margin on all sides
+      const marginX = 40;
+      const marginY = 40;
 
-      const availableWidth = window.innerWidth - horizontalMargin;
-      const availableHeight = window.innerHeight - verticalMargin;
+      const availableWidth = window.innerWidth - marginX * 2;
+      const availableHeight = window.innerHeight - marginY * 2;
 
       const baseWidth = 210;
       const baseHeight = 110;
@@ -78,7 +75,7 @@
       const scaleX = availableWidth / baseWidth;
       const scaleY = availableHeight / baseHeight;
 
-      word.style.transform = `scale(${scaleX}, ${scaleY})`;
+      word.style.transform = `translate(${marginX}px, ${marginY}px) scale(${scaleX}, ${scaleY})`;
     }
 
     window.addEventListener('resize', updateStretch);
