@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>Gauge</title>
+
   <!-- ✅ Load Cormorant Garamond from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+
   <style>
     html, body {
       margin: 0;
@@ -15,10 +17,13 @@
 
     .container {
       position: absolute;
+
+      /* 🛠️ You can control margins here */
       top: 2%;
       bottom: 2%;
       left: 2%;
       right: 2%;
+
       display: flex;
       justify-content: center;
       align-items: center;
@@ -27,18 +32,22 @@
     #stretch-text {
       color: white;
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
+      font-weight: 500;
       margin: 0;
       font-size: 100px;
+
+      /* 🛠️ Control spacing between letters */
       letter-spacing: 10px;
+
       transform-origin: center;
       white-space: nowrap;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
-    <h1 id="stretch-text">Gauge</h1>
+    <h1 id="stretch-text">GAUGE</h1>
   </div>
 
   <script>
@@ -46,21 +55,8 @@
       const container = document.querySelector('.container');
       const text = document.getElementById('stretch-text');
 
-      // 🎯 BASE dimensions for scaling
-      const baseWidth = 500;   // baseline width
-      const baseHeight = 100;  // baseline height
+      const baseWidth = 500;
+      const baseHeight = 100;
 
       const containerWidth = container.offsetWidth;
-      const containerHeight = container.offsetHeight;
-
-      const scaleX = containerWidth / baseWidth;
-      const scaleY = containerHeight / baseHeight;
-
-      text.style.transform = `scale(${scaleX}, ${scaleY})`;
-    }
-
-    window.addEventListener('resize', updateStretch);
-    window.addEventListener('load', updateStretch);
-  </script>
-</body>
-</html>
+      const containerHeight = container.
