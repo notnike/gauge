@@ -15,15 +15,17 @@
       overflow: hidden;
     }
 
-    .container {
+    /* ✅ Sentence Container at Top */
+    .sentence-container {
       position: absolute;
       top: 2%;
-      bottom: 2%;
       left: 2%;
       right: 2%;
+      height: 10%;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+      z-index: 10;
     }
 
     .sentence {
@@ -36,34 +38,89 @@
       transform-origin: center;
       text-transform: none;
     }
+
+    /* ✅ Original Gauge word */
+    .container {
+      position: absolute;
+      top: 2%;
+      bottom: 2%;
+      left: 2%;
+      right: 2%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .word {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform-origin: center;
+      translate: -18% -41%;
+    }
+
+    .letter {
+      color: black;
+      font-family: 'big-caslon-fb', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 100px;
+      white-space: pre;
+      display: inline-block;
+      transform-origin: center;
+      text-transform: none;
+      font-variant: normal;
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- ✅ STRETCHED SENTENCE -->
-  <div class="container">
+  <!-- ✅ STRETCHED TOP SENTENCE -->
+  <div class="sentence-container">
     <div class="sentence" id="stretch-sentence">
       Gauge is a measure of the moment.
     </div>
   </div>
 
-  <!-- ✅ JS TO STRETCH THE SENTENCE -->
+  <!-- ✅ STRETCHED WORD -->
+  <div class="container">
+    <div class="word" id="stretch-word">
+      <span class="letter" style="margin: 0 0px;">G</span>
+      <span class="letter" style="margin: 0 -2px;">a</span>
+      <span class="letter" style="margin: 0 -5.5px;">u</span>
+      <span class="letter" style="margin: 0 0.5px;">g</span>
+      <span class="letter" style="margin: 0 -4px;">e</span>
+    </div>
+  </div>
+
+  <!-- ✅ JS: STRETCH BOTH ELEMENTS -->
   <script>
     function updateStretch() {
-      const container = document.querySelector('.container');
+      const sentenceContainer = document.querySelector('.sentence-container');
       const sentence = document.getElementById('stretch-sentence');
+      const gauge = document.getElementById('stretch-word');
+      const gaugeContainer = document.querySelector('.container');
 
-      const baseWidth = 1200;  // Adjust if the sentence is longer/shorter
-      const baseHeight = 110;
+      // Base sizes — adjust to tune proportions
+      const sentenceBaseWidth = 1200;
+      const sentenceBaseHeight = 110;
 
-      const containerWidth = container.offsetWidth;
-      const containerHeight = container.offsetHeight;
+      const gaugeBaseWidth = 210;
+      const gaugeBaseHeight = 110;
 
-      const scaleX = containerWidth / baseWidth;
-      const scaleY = containerHeight / baseHeight;
+      const sentenceW = sentenceContainer.offsetWidth;
+      const sentenceH = sentenceContainer.offsetHeight;
+      const gaugeW = gaugeContainer.offsetWidth;
+      const gaugeH = gaugeContainer.offsetHeight;
 
-      sentence.style.transform = `scale(${scaleX}, ${scaleY})`;
+      const sentenceScaleX = sentenceW / sentenceBaseWidth;
+      const sentenceScaleY = sentenceH / sentenceBaseHeight;
+      const gaugeScaleX = gaugeW / gaugeBaseWidth;
+      const gaugeScaleY = gaugeH / gaugeBaseHeight;
+
+      sentence.style.transform = `scale(${sentenceScaleX}, ${sentenceScaleY})`;
+      gauge.style.transform = `scale(${gaugeScaleX}, ${gaugeScaleY})`;
     }
 
     window.addEventListener('resize', updateStretch);
