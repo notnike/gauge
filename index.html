@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <title>Gauge</title>
 
-  <!-- ✅ Load Cormorant Garamond Italic from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet">
+  <!-- ✅ Load Big Caslon Medium from Adobe Fonts -->
+  <link rel="stylesheet" href="https://use.typekit.net/rsu7qml.css">
 
   <style>
     html, body {
@@ -15,10 +15,11 @@
       overflow: hidden;
     }
 
+    /* 🧱 Container with controllable margins */
     .container {
       position: absolute;
 
-      /* 🛠️ Control margins here */
+      /* 🛠️ Adjust margins from screen edge here */
       top: 2%;
       bottom: 2%;
       left: 2%;
@@ -29,6 +30,7 @@
       align-items: center;
     }
 
+    /* 🌐 This gets stretched based on window size */
     .word {
       display: flex;
       justify-content: center;
@@ -36,15 +38,20 @@
       transform-origin: center;
     }
 
+    /* 🔤 Individual letters with control over spacing and scale */
     .letter {
       color: white;
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-style: italic;
+      font-family: 'big-caslon', serif;
+      font-style: normal;
+      font-weight: 500;
       font-size: 100px;
+
+      /* 🛠️ Adjust space between letters here */
+      margin: 0 10px;
+
+      /* 🛠️ Set individual scale on each letter */
+      display: inline-block;
       transform-origin: center;
-      white-space: pre;
-      margin: 0 10px; /* 🛠️ Adjust spacing between letters */
     }
   </style>
 </head>
@@ -52,12 +59,12 @@
 <body>
   <div class="container">
     <div class="word" id="stretch-word">
-      <!-- 🛠️ Wrap each letter in a span to control its scale individually -->
-      <span class="letter" style="transform: scale(1.0);">G</span>
-      <span class="letter" style="transform: scale(0.9);">A</span>
-      <span class="letter" style="transform: scale(1.1);">U</span>
-      <span class="letter" style="transform: scale(1.0);">G</span>
-      <span class="letter" style="transform: scale(0.95);">E</span>
+      <!-- 🛠️ Adjust each letter’s transform scale here -->
+      <span class="letter" style="transform: scaleX(1.0);">G</span>
+      <span class="letter" style="transform: scaleX(0.95);">a</span>
+      <span class="letter" style="transform: scaleX(1.1);">u</span>
+      <span class="letter" style="transform: scaleX(0.98);">g</span>
+      <span class="letter" style="transform: scaleX(1.05);">e</span>
     </div>
   </div>
 
@@ -66,6 +73,7 @@
       const container = document.querySelector('.container');
       const word = document.getElementById('stretch-word');
 
+      // 🎯 Set your desired "normal" word width/height
       const baseWidth = 500;
       const baseHeight = 100;
 
@@ -75,6 +83,7 @@
       const scaleX = containerWidth / baseWidth;
       const scaleY = containerHeight / baseHeight;
 
+      // Apply distortion to the full word
       word.style.transform = `scale(${scaleX}, ${scaleY})`;
     }
 
