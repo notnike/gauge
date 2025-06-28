@@ -15,6 +15,41 @@
       overflow: hidden;
     }
 
+    /* ✅ SCROLLING SENTENCE STYLES */
+    .marquee-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      background: white;
+      z-index: 1000;
+    }
+
+    .marquee {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scrollLeft 20s linear infinite;
+    }
+
+    .marquee span {
+  font-family: "Arial", sans-serif;
+  font-weight: 300;           /* Light weight */
+  font-size: 16px;            /* ✅ Adjust this to control size */
+  color: black;
+  padding: 10px 0;
+  letter-spacing: 0.5px;      /* Optional for spacing */
+    }
+
+    @keyframes scrollLeft {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
     .container {
       position: absolute;
       top: 2%;
@@ -31,8 +66,6 @@
       justify-content: center;
       align-items: center;
       transform-origin: center;
-
-      /* ✅ This nudges the whole word upward */
       translate: -18% -41%;
     }
 
@@ -52,6 +85,15 @@
 </head>
 
 <body>
+
+  <!-- ✅ SCROLLING SENTENCE -->
+  <div class="marquee-container">
+    <div class="marquee">
+      <span>Gauge: a measure of the moment. Gauge: a measure of the moment. Gauge: a measure of the moment. </span>
+    </div>
+  </div>
+
+  <!-- ✅ STRETCHED WORD -->
   <div class="container">
     <div class="word" id="stretch-word">
       <span class="letter" style="margin: 0 0px;">G</span>
@@ -67,7 +109,7 @@
       const container = document.querySelector('.container');
       const word = document.getElementById('stretch-word');
 
-      const baseWidth = 210;   // Adjust if needed
+      const baseWidth = 210;
       const baseHeight = 110;
 
       const containerWidth = container.offsetWidth;
