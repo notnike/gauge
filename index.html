@@ -15,20 +15,14 @@
       overflow: hidden;
     }
 
-    .container {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
     .word {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: center;
       display: flex;
       justify-content: center;
       align-items: center;
-      transform-origin: center;
-      /* We’ll update translate dynamically in JS */
     }
 
     .letter {
@@ -48,21 +42,19 @@
 
 <body>
 
-  <div class="container">
-    <div class="word" id="stretch-word">
-      <span class="letter" style="margin: 0 0px;">G</span>
-      <span class="letter" style="margin: 0 -2px;">a</span>
-      <span class="letter" style="margin: 0 -5.5px;">u</span>
-      <span class="letter" style="margin: 0 0.5px;">g</span>
-      <span class="letter" style="margin: 0 -4px;">e</span>
-    </div>
+  <!-- Only the word, no container needed now -->
+  <div class="word" id="stretch-word">
+    <span class="letter" style="margin: 0 0px;">G</span>
+    <span class="letter" style="margin: 0 -2px;">a</span>
+    <span class="letter" style="margin: 0 -5.5px;">u</span>
+    <span class="letter" style="margin: 0 0.5px;">g</span>
+    <span class="letter" style="margin: 0 -4px;">e</span>
   </div>
 
   <script>
     function updateStretch() {
       const word = document.getElementById('stretch-word');
 
-      // Desired fixed margin on all sides
       const marginX = 40;
       const marginY = 40;
 
@@ -75,7 +67,8 @@
       const scaleX = availableWidth / baseWidth;
       const scaleY = availableHeight / baseHeight;
 
-      word.style.transform = `translate(${marginX}px, ${marginY}px) scale(${scaleX}, ${scaleY})`;
+      // Center the word and apply scale only
+      word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
     }
 
     window.addEventListener('resize', updateStretch);
