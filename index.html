@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <title>Gauge</title>
+  <!-- ✅ Load Cormorant Garamond from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
   <style>
-    /* 🌑 Page layout and background */
     html, body {
       margin: 0;
       height: 100%;
@@ -12,34 +13,24 @@
       overflow: hidden;
     }
 
-    /* 📦 Container with adjustable margins */
     .container {
       position: absolute;
-
-      /* 🛠️ CHANGE THESE TO SET MARGINS */
       top: 2%;
       bottom: 2%;
       left: 2%;
       right: 2%;
-
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    /* 🔤 The distorted word */
     #stretch-text {
       color: white;
-      font-family: sans-serif;
-      font-weight: bold;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
       margin: 0;
-
-      /* Starting font size before transform */
       font-size: 100px;
-
-      /* 🛠️ CHANGE THIS FOR LETTER SPACING */
       letter-spacing: 10px;
-
       transform-origin: center;
       white-space: nowrap;
     }
@@ -47,7 +38,7 @@
 </head>
 <body>
   <div class="container">
-    <h1 id="stretch-text">GAUGE</h1>
+    <h1 id="stretch-text">Gauge</h1>
   </div>
 
   <script>
