@@ -4,21 +4,21 @@
   <meta charset="UTF-8" />
   <title>Gauge</title>
 
-  <!-- ✅ Load Big Caslon Medium from Adobe Fonts -->
+  <!-- ✅ Big Caslon Medium from Adobe Fonts -->
   <link rel="stylesheet" href="https://use.typekit.net/rsu7qml.css">
 
   <style>
     html, body {
+      margin: 0;
       height: 100%;
       background: black;
       overflow: hidden;
     }
 
-    /* 🧱 Container with controllable margins */
     .container {
       position: absolute;
 
-      /* 🛠️ Adjust margins from screen edge here */
+      /* 🛠️ Adjust margins around the text here */
       top: 2%;
       bottom: 2%;
       left: 2%;
@@ -29,7 +29,6 @@
       align-items: center;
     }
 
-    /* 🌐 This gets stretched based on window size */
     .word {
       display: flex;
       justify-content: center;
@@ -37,29 +36,32 @@
       transform-origin: center;
     }
 
-    /* 🔤 Individual letters with control over spacing and scale */
     .letter {
-    color: white;
-    font-family: 'big-caslon', serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 100px;
-    white-space: pre;
-    margin: 0 10px;
-    display: inline-block;
-    transform-origin: center;
+      color: white;
+      font-family: 'big-caslon', serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 100px;
+      white-space: pre;
+      display: inline-block;
+      transform-origin: center;
+
+      /* ✅ These ensure lowercase works correctly */
+      text-transform: none;
+      font-variant: normal;
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
     <div class="word" id="stretch-word">
-      <!-- 🛠️ Adjust each letter’s transform scale here -->
-      <span class="letter" style="transform: scaleX(1);">G</span>
-      <span class="letter" style="transform: scaleX(1);">a</span>
-      <span class="letter" style="transform: scaleX(1);">u</span>
-      <span class="letter" style="transform: scaleX(1);">g</span>
-      <span class="letter" style="transform: scaleX(1);">e</span>
+      <!-- ✅ Adjust individual letter spacing with margin below -->
+      <span class="letter" style="margin: 0 1px;">G</span>
+      <span class="letter" style="margin: 0 1px;">a</span>
+      <span class="letter" style="margin: 0 1px;">u</span>
+      <span class="letter" style="margin: 0 1px;">g</span>
+      <span class="letter" style="margin: 0 1px;">e</span>
     </div>
   </div>
 
@@ -68,9 +70,8 @@
       const container = document.querySelector('.container');
       const word = document.getElementById('stretch-word');
 
-      // 🎯 Set your desired "normal" word width/height
-      const baseWidth = 500;
-      const baseHeight = 100;
+      const baseWidth = 500;   // width reference
+      const baseHeight = 100;  // height reference
 
       const containerWidth = container.offsetWidth;
       const containerHeight = container.offsetHeight;
@@ -78,7 +79,6 @@
       const scaleX = containerWidth / baseWidth;
       const scaleY = containerHeight / baseHeight;
 
-      // Apply distortion to the full word
       word.style.transform = `scale(${scaleX}, ${scaleY})`;
     }
 
