@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <title>Gauge</title>
 
-  <!-- ✅ Load Cormorant Garamond from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+  <!-- ✅ Load Cormorant Garamond Italic from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet">
 
   <style>
     html, body {
@@ -18,7 +18,7 @@
     .container {
       position: absolute;
 
-      /* 🛠️ You can control margins here */
+      /* 🛠️ Control margins here */
       top: 2%;
       bottom: 2%;
       left: 2%;
@@ -29,34 +29,57 @@
       align-items: center;
     }
 
-    #stretch-text {
+    .word {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform-origin: center;
+    }
+
+    .letter {
       color: white;
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 500;
-      margin: 0;
+      font-weight: 400;
+      font-style: italic;
       font-size: 100px;
-
-      /* 🛠️ Control spacing between letters */
-      letter-spacing: 10px;
-
       transform-origin: center;
-      white-space: nowrap;
+      white-space: pre;
+      margin: 0 10px; /* 🛠️ Adjust spacing between letters */
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <h1 id="stretch-text">GAUGE</h1>
+    <div class="word" id="stretch-word">
+      <!-- 🛠️ Wrap each letter in a span to control its scale individually -->
+      <span class="letter" style="transform: scale(1.0);">G</span>
+      <span class="letter" style="transform: scale(0.9);">A</span>
+      <span class="letter" style="transform: scale(1.1);">U</span>
+      <span class="letter" style="transform: scale(1.0);">G</span>
+      <span class="letter" style="transform: scale(0.95);">E</span>
+    </div>
   </div>
 
   <script>
     function updateStretch() {
       const container = document.querySelector('.container');
-      const text = document.getElementById('stretch-text');
+      const word = document.getElementById('stretch-word');
 
       const baseWidth = 500;
       const baseHeight = 100;
 
       const containerWidth = container.offsetWidth;
-      const containerHeight = container.
+      const containerHeight = container.offsetHeight;
+
+      const scaleX = containerWidth / baseWidth;
+      const scaleY = containerHeight / baseHeight;
+
+      word.style.transform = `scale(${scaleX}, ${scaleY})`;
+    }
+
+    window.addEventListener('resize', updateStretch);
+    window.addEventListener('load', updateStretch);
+  </script>
+</body>
+</html>
