@@ -15,42 +15,6 @@
       overflow: hidden;
     }
 
-    /* ✅ MODULAR WORD MARQUEE */
-    .modular-marquee {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      overflow: hidden;
-      background: white;
-      z-index: 1000;
-      border-bottom: 1px solid #eee;
-    }
-
-    .marquee-track {
-      display: flex;
-      gap: 40px;
-      animation: scrollWords 20s linear infinite;
-      white-space: nowrap;
-    }
-
-    .marquee-track span {
-      font-family: "Arial", sans-serif;
-      font-weight: 300;
-      font-size: 16px;
-      color: black;
-      padding: 10px 0;
-    }
-
-    @keyframes scrollWords {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
     .container {
       position: absolute;
       top: 2%;
@@ -62,67 +26,35 @@
       align-items: center;
     }
 
-    .word {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transform-origin: center;
-      translate: -18% -41%;
-    }
-
-    .letter {
-      color: black;
+    .sentence {
       font-family: 'big-caslon-fb', serif;
       font-style: italic;
       font-weight: 500;
       font-size: 100px;
-      white-space: pre;
-      display: inline-block;
+      color: black;
+      white-space: nowrap;
       transform-origin: center;
       text-transform: none;
-      font-variant: normal;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ✅ MODULAR WORD MARQUEE -->
-  <div class="modular-marquee">
-    <div class="marquee-track">
-      <span>Gauge</span>
-      <span>a</span>
-      <span>measure</span>
-      <span>of</span>
-      <span>the</span>
-      <span>moment</span>
-      <span>Gauge</span>
-      <span>a</span>
-      <span>measure</span>
-      <span>of</span>
-      <span>the</span>
-      <span>moment</span>
-    </div>
-  </div>
-
-  <!-- ✅ STRETCHED GAUGE -->
+  <!-- ✅ STRETCHED SENTENCE -->
   <div class="container">
-    <div class="word" id="stretch-word">
-      <span class="letter" style="margin: 0 0px;">G</span>
-      <span class="letter" style="margin: 0 -2px;">a</span>
-      <span class="letter" style="margin: 0 -5.5px;">u</span>
-      <span class="letter" style="margin: 0 0.5px;">g</span>
-      <span class="letter" style="margin: 0 -4px;">e</span>
+    <div class="sentence" id="stretch-sentence">
+      Gauge is a measure of the moment.
     </div>
   </div>
 
-  <!-- ✅ STRETCH SCRIPT -->
+  <!-- ✅ JS TO STRETCH THE SENTENCE -->
   <script>
     function updateStretch() {
       const container = document.querySelector('.container');
-      const word = document.getElementById('stretch-word');
+      const sentence = document.getElementById('stretch-sentence');
 
-      const baseWidth = 210;
+      const baseWidth = 1200;  // Adjust if the sentence is longer/shorter
       const baseHeight = 110;
 
       const containerWidth = container.offsetWidth;
@@ -131,7 +63,7 @@
       const scaleX = containerWidth / baseWidth;
       const scaleY = containerHeight / baseHeight;
 
-      word.style.transform = `scale(${scaleX}, ${scaleY})`;
+      sentence.style.transform = `scale(${scaleX}, ${scaleY})`;
     }
 
     window.addEventListener('resize', updateStretch);
