@@ -30,10 +30,15 @@
     }
 
     .word {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transform-origin: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: center;
+
+  /* 👇 This line shifts the word upward */
+  transform: translateY(-3%);
+}
+
     }
 
     .letter {
@@ -70,7 +75,7 @@
       const container = document.querySelector('.container');
       const word = document.getElementById('stretch-word');
 
-      const baseWidth = 200;   // width reference
+      const baseWidth = 150;   // width reference
       const baseHeight = 100;  // height reference
 
       const containerWidth = container.offsetWidth;
