@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Gauge</title>
 
-  <!-- ✅ Adobe Font: Big Caslon Medium -->
+  <!-- Adobe Font: Big Caslon Medium -->
   <link rel="stylesheet" href="https://use.typekit.net/rsu7qml.css">
 
   <style>
@@ -17,8 +17,10 @@
 
     .container {
       position: absolute;
-      inset: 0; /* shorthand for top: 0; right: 0; bottom: 0; left: 0 */
-      padding: 40px; /* consistent fixed margin from all sides */
+      top: 40px;
+      bottom: 40px;
+      left: 40px;
+      right: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -29,7 +31,7 @@
       justify-content: center;
       align-items: center;
       transform-origin: center;
-      translate: -18% -41%; /* keeps visual alignment */
+      translate: -18% -41%;
     }
 
     .letter {
@@ -49,7 +51,6 @@
 
 <body>
 
-  <!-- ✅ STRETCHED GAUGE -->
   <div class="container">
     <div class="word" id="stretch-word">
       <span class="letter" style="margin: 0 0px;">G</span>
@@ -60,20 +61,22 @@
     </div>
   </div>
 
-  <!-- ✅ JS TO STRETCH THE WORD -->
   <script>
     function updateStretch() {
-      const container = document.querySelector('.container');
       const word = document.getElementById('stretch-word');
+
+      // Define the margins we want to preserve
+      const horizontalMargin = 80; // 40px left + 40px right
+      const verticalMargin = 80;   // 40px top + 40px bottom
+
+      const availableWidth = window.innerWidth - horizontalMargin;
+      const availableHeight = window.innerHeight - verticalMargin;
 
       const baseWidth = 210;
       const baseHeight = 110;
 
-      const containerWidth = container.offsetWidth;
-      const containerHeight = container.offsetHeight;
-
-      const scaleX = containerWidth / baseWidth;
-      const scaleY = containerHeight / baseHeight;
+      const scaleX = availableWidth / baseWidth;
+      const scaleY = availableHeight / baseHeight;
 
       word.style.transform = `scale(${scaleX}, ${scaleY})`;
     }
