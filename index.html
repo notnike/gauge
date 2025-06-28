@@ -31,8 +31,6 @@
       justify-content: center;
       align-items: center;
       transform-origin: center;
-
-      /* ✅ This nudges the whole word upward */
       translate: -18% -41%;
     }
 
@@ -52,6 +50,8 @@
 </head>
 
 <body>
+
+  <!-- ✅ STRETCHED GAUGE -->
   <div class="container">
     <div class="word" id="stretch-word">
       <span class="letter" style="margin: 0 0px;">G</span>
@@ -62,12 +62,13 @@
     </div>
   </div>
 
+  <!-- ✅ JS TO STRETCH THE WORD -->
   <script>
     function updateStretch() {
       const container = document.querySelector('.container');
       const word = document.getElementById('stretch-word');
 
-      const baseWidth = 210;   // Adjust if needed
+      const baseWidth = 210;
       const baseHeight = 110;
 
       const containerWidth = container.offsetWidth;
@@ -76,11 +77,12 @@
       const scaleX = containerWidth / baseWidth;
       const scaleY = containerHeight / baseHeight;
 
-      word.style.transform = scale(${scaleX}, ${scaleY});
+      word.style.transform = `scale(${scaleX}, ${scaleY})`;
     }
 
     window.addEventListener('resize', updateStretch);
     window.addEventListener('load', updateStretch);
   </script>
+
 </body>
 </html>
