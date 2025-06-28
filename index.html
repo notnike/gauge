@@ -17,10 +17,8 @@
 
     .container {
       position: absolute;
-      top: 2%;
-      bottom: 2%;
-      left: 2%;
-      right: 2%;
+      inset: 0; /* shorthand for top: 0; right: 0; bottom: 0; left: 0 */
+      padding: 40px; /* consistent fixed margin from all sides */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -31,7 +29,7 @@
       justify-content: center;
       align-items: center;
       transform-origin: center;
-      translate: -17% -41%;
+      translate: -18% -41%; /* keeps visual alignment */
     }
 
     .letter {
@@ -69,7 +67,7 @@
       const word = document.getElementById('stretch-word');
 
       const baseWidth = 210;
-      const baseHeight = 102;
+      const baseHeight = 110;
 
       const containerWidth = container.offsetWidth;
       const containerHeight = container.offsetHeight;
