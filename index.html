@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Gauge</title>
 
-  <!-- ✅ Big Caslon Medium from Adobe Fonts -->
+  <!-- ✅ Adobe Font: Big Caslon Medium -->
   <link rel="stylesheet" href="https://use.typekit.net/rsu7qml.css">
 
   <style>
@@ -17,41 +17,34 @@
 
     .container {
       position: absolute;
-
-      /* 🛠️ Adjust margins around the text here */
       top: 2%;
       bottom: 2%;
       left: 2%;
       right: 2%;
-
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     .word {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform-origin: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform-origin: center;
 
-  /* 👇 This line shifts the word upward */
-  transform: translateY(-3%);
-}
-
+      /* ✅ This nudges the whole word upward */
+      translate: 0 -3%;
     }
 
     .letter {
       color: white;
-      font-family: 'Big-Caslon-CC-Regular', serif;
+      font-family: 'big-caslon', serif;
       font-style: normal;
       font-weight: 500;
       font-size: 100px;
       white-space: pre;
       display: inline-block;
       transform-origin: center;
-
-      /* ✅ These ensure lowercase works correctly */
       text-transform: none;
       font-variant: normal;
     }
@@ -61,12 +54,11 @@
 <body>
   <div class="container">
     <div class="word" id="stretch-word">
-      <!-- ✅ Adjust individual letter spacing with margin below -->
-      <span class="letter" style="margin: 0 -10px;">G</span>
-      <span class="letter" style="margin: 0 -10px;">a</span>
-      <span class="letter" style="margin: 0 -10px;">u</span>
-      <span class="letter" style="margin: 0 -10px;">g</span>
-      <span class="letter" style="margin: 0 -10px;">e</span>
+      <span class="letter" style="margin: 0 -5px;">G</span>
+      <span class="letter" style="margin: 0 -5px;">a</span>
+      <span class="letter" style="margin: 0 -5px;">u</span>
+      <span class="letter" style="margin: 0 -5px;">g</span>
+      <span class="letter" style="margin: 0 -5px;">e</span>
     </div>
   </div>
 
@@ -75,8 +67,8 @@
       const container = document.querySelector('.container');
       const word = document.getElementById('stretch-word');
 
-      const baseWidth = 150;   // width reference
-      const baseHeight = 100;  // height reference
+      const baseWidth = 700;   // Adjust if needed
+      const baseHeight = 100;
 
       const containerWidth = container.offsetWidth;
       const containerHeight = container.offsetHeight;
