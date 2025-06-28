@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Gauge</title>
   <style>
-    /* 🌑 Page background and layout */
+    /* 🌑 Page layout and background */
     html, body {
       margin: 0;
       height: 100%;
@@ -12,12 +12,12 @@
       overflow: hidden;
     }
 
-    /* 📦 Container for text — controls window margin */
+    /* 📦 Container with adjustable margins */
     .container {
       position: absolute;
 
-      /* 🛠️ CHANGE THESE TO CONTROL MARGINS */
-      top: 2%;    
+      /* 🛠️ CHANGE THESE TO SET MARGINS */
+      top: 2%;
       bottom: 2%;
       left: 2%;
       right: 2%;
@@ -27,17 +27,17 @@
       align-items: center;
     }
 
-    /* 🔤 The word “Gauge” — this is where you style it */
+    /* 🔤 The distorted word */
     #stretch-text {
       color: white;
       font-family: sans-serif;
       font-weight: bold;
       margin: 0;
 
-      /* 🚀 Starting size before scaling */
+      /* Starting font size before transform */
       font-size: 100px;
 
-      /* 📏 Controls spacing between letters — change this! */
+      /* 🛠️ CHANGE THIS FOR LETTER SPACING */
       letter-spacing: 10px;
 
       transform-origin: center;
@@ -47,8 +47,7 @@
 </head>
 <body>
   <div class="container">
-    <h1 id="stretch-text">G A U G E</h1>
-    <!-- You can also write: G&nbsp;A&nbsp;U&nbsp;G&nbsp;E for fine control -->
+    <h1 id="stretch-text">GAUGE</h1>
   </div>
 
   <script>
@@ -56,9 +55,9 @@
       const container = document.querySelector('.container');
       const text = document.getElementById('stretch-text');
 
-      // 🎯 These are your "base" sizes — adjust if needed
-      const baseWidth = 1000;   // wider base = more natural stretch
-      const baseHeight = 150;   // taller base = less vertical squish
+      // 🎯 BASE dimensions for scaling
+      const baseWidth = 500;   // baseline width
+      const baseHeight = 100;  // baseline height
 
       const containerWidth = container.offsetWidth;
       const containerHeight = container.offsetHeight;
