@@ -5,9 +5,6 @@
   <title>Gauge</title>
   <link rel="icon" href="logo.png" type="image/png" />
   
-  <!-- Adobe Font: Big Caslon Medium -->
-  <link rel="stylesheet" href="https://use.typekit.net/rsu7qml.css">
-
   <style>
     html, body {
       margin: 0;
@@ -39,11 +36,6 @@
       transform-origin: center;
       text-transform: none;
       font-variant: normal;
-
-      /* ✨ Slow fade-in */
-      opacity: 0;
-      animation: fadeInOnly 5s ease forwards;
-      animation-delay: 0.3s;
     }
 
     @keyframes fadeInOnly {
@@ -55,12 +47,12 @@
     /* Button Box Styling */
     .button-box {
       position: absolute;
-      top: 89%;  /* Adjust the vertical position of the button */
-      left: 50%;  /* Position the box horizontally in the center */
-      transform: translateX(-50%); /* Center horizontally */
-      width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
+      top: 89%;  
+      left: 50%;  
+      transform: translateX(-50%); 
+      width: calc(100% - 2 * var(--margin-control));  
       background-color: transparent;
-      border: 1px solid black; /* 1px black outline */
+      border: 1px solid black; 
       display: flex;
       justify-content: center;
       align-items: center;
@@ -80,19 +72,19 @@
       border: none;
       padding: 10px 20px;
       cursor: pointer;
-      font-size: 14px; /* Set font size to a fixed value */
-      white-space: nowrap; /* Prevent text from wrapping */
+      font-size: 14px; 
+      white-space: nowrap; 
     }
 
     /* Add this container to manage clickable text placement */
     .bottom-text-container {
       position: absolute;
-      bottom: 0%;  /* Keep it near the bottom */
-      width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
-      display: flex;  /* Flexbox layout */
-      justify-content: space-between;  /* Distribute items (left, center, right) evenly */
-      align-items: center;  /* Vertically center */
-      padding: 0 var(--margin-control);  /* Apply margin control for spacing */
+      bottom: 0%;  
+      width: calc(100% - 2 * var(--margin-control));  
+      display: flex;  
+      justify-content: space-between;  
+      align-items: center;  
+      padding: 0 var(--margin-control);  
     }
 
     /* Styling for clickable words */
@@ -105,7 +97,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 40px; /* Fixed height for all three text links */
+      height: 40px;
     }
 
     /* Left-aligned text */
@@ -116,13 +108,43 @@
     /* Center-aligned text */
     .bottom-center {
       text-align: center;
-      flex-grow: 1;  /* Make the center text flexible */
+      flex-grow: 1;
     }
 
     /* Right-aligned text */
     .bottom-right {
       text-align: right;
     }
+
+    /* Invisible Container (on the left, 50% width) */
+    .invisible-container {
+      position: absolute;
+      top: 70%;  
+      left: 0%;  
+      width: 50%;  
+      background-color: transparent;
+      visibility: visible;  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 var(--margin-control);  
+    }
+
+    /* Stretchable Text Inside Invisible Container */
+    .invisible-container .stretch-text {
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-style: italic;
+      font-size: 16px;
+      color: black;
+      text-align: center;
+      white-space: pre-wrap;  
+      letter-spacing: 2px;    
+      transform-origin: center;
+      opacity: 1;  
+      transform: scaleX(1) translateY(0);  /* No movement, positioned correctly */
+    }
+
   </style>
 </head>
 
@@ -135,6 +157,13 @@
     <span class="letter" style="margin: 0 -5.5px;">u</span>
     <span class="letter" style="margin: 0 0.5px;">g</span>
     <span class="letter" style="margin: 0 -4px;">e</span>
+  </div>
+
+  <!-- Invisible Container with Stretchable Text -->
+  <div class="invisible-container">
+    <div class="stretch-text">
+      The art market isn’t<br/>crashing—it’s speaking.
+    </div>
   </div>
 
   <!-- Button Box -->
