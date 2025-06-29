@@ -220,9 +220,8 @@
   </div>
 
   <!-- Button Box -->
-  <div class="button-box" id="button-box" onclick="enableInput()">
-    <button id="recommend-button" disabled>Recommend</button>
-    <input type="text" id="email-input" placeholder="Click here to type their email address" disabled>
+  <div class="button-box" id="button-box">
+    <button>Recommend Contributor</button>
   </div>
 
   <!-- Content Display -->
@@ -230,23 +229,46 @@
     <span class="bold-italic">The market isn't crashing—It's speaking.</span> <span class="gauge">Gauge</span> is a new publishing platform dedicated to examining the art market through the eyes of those who sustain it. Through anonymous contributions, interviews, and essays, <span class="gauge">Gauge</span> creates a forum where collectors can interrogate the pressure systems of the art world that aim at influencing their choices. <span class="gauge">Gauge</span> exists to help people find their way back to art by exposing, discussing, and look back at the consequences that have quietly convinced them to stay away.
   </div>
 
+  <!-- Clickable Words Container -->
+  <div class="bottom-text-container">
+    <div class="bottom-text bottom-left">
+      <a href="#">About</a>
+    </div>
+    <div class="bottom-text bottom-center">
+      <a href="#">Contact</a>
+    </div>
+    <div class="bottom-text bottom-right">
+      <a href="#">Advertise</a>
+    </div>
+  </div>
+
   <script>
-    function enableInput() {
-      // Enable the email input field and "Recommend" button
-      const emailInput = document.getElementById('email-input');
-      const recommendButton = document.getElementById('recommend-button');
-      emailInput.disabled = false;
-      recommendButton.disabled = false;
-      emailInput.focus();
-      emailInput.placeholder = 'Type their email address';
+    function updateStretch() {
+      const word = document.getElementById('stretch-word');
+      const buttonBox = document.getElementById('button-box');
+
+      const marginX = 40;
+      const marginY = 40;
+
+      const availableWidth = window.innerWidth - marginX * 2;
+      const availableHeight = window.innerHeight - marginY * 2;
+
+      const baseWidth = 202;
+      const baseHeight = 233;
+
+      const scaleX = availableWidth / baseWidth;
+      const scaleY = availableHeight / baseHeight;
+
+      // Center the word and apply scale only (preserve original logo scaling)
+      word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
+
+      // Adjust the margin control value dynamically
+      const marginControl = Math.max(5, availableWidth * 0.02);  // Minimum margin of 10px, or 2% of the screen width
+      document.documentElement.style.setProperty('--margin-control', `${marginControl}px`);
     }
 
-    function sendEmail() {
-      const email = document.getElementById('email-input').value;
-      window.location.href = `mailto:youremail@example.com?subject=Recommendation&body=Email: ${email}`;
-    }
-
-    document.getElementById('recommend-button').addEventListener('click', sendEmail);
+    window.addEventListener('resize', updateStretch);
+    window.addEventListener('load', updateStretch);
   </script>
 
 </body>
