@@ -19,8 +19,8 @@
     /* Original logo position preserved */
     .word {
       position: absolute;
-      top: 17%;  /* Preserving the original top position */
-      left: 47.5%;  /* Preserving the original left position */
+      top: 17%;  /* Preserved original top position */
+      left: 47.5%;  /* Preserved original left position */
       transform-origin: center;
       display: flex;
       justify-content: center;
@@ -87,33 +87,27 @@
     /* Add this container to manage clickable text placement */
     .bottom-text-container {
       position: absolute;
-      bottom: 0.5%;  /* Keep it near the bottom */
+      bottom: 10%;  /* Keep it near the bottom */
       width: 100%;  /* Take up the full width of the screen */
       display: flex;  /* Flexbox layout */
-      justify-content: space-between;  /* Distribute items (left, center, right) */
+      justify-content: space-between;  /* Distribute items (left, center, right) evenly */
       align-items: center;  /* Vertically center */
-      padding: 0 20px;  /* Optional padding to prevent items touching the edges */
+      padding: 0 5%;  /* Equal padding on both sides */
     }
 
     /* Styling for clickable words */
-   .bottom-text {
-     font-family: Arial, sans-serif;
-     font-size: 14px;
-     cursor: pointer;
-     color: black;
-     text-decoration: none;  /* Remove underlines */
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     height: 40px; /* Fixed height for all three text links */
+    .bottom-text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      color: black;
+      text-decoration: none;  /* Remove underlines */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px; /* Fixed height for all three text links */
     }
 
-   /* Remove blue and underline from the links */
-   .bottom-text a {
-    text-decoration: none;  /* Remove underline */
-    color: black;           /* Make text color black */
-    }
-    
     /* Left-aligned text */
     .bottom-left {
       text-align: left;
@@ -127,11 +121,7 @@
 
     /* Right-aligned text */
     .bottom-right {
-      right: 4%;  /* Keep it aligned to the right */
       text-align: right;
-      margin-left: -10px;  /* Move the "ADVERTISE" link to the left */
-  }
-
     }
   </style>
 </head>
