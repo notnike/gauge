@@ -5,9 +5,6 @@
   <title>Gauge</title>
   <link rel="icon" href="logo.png" type="image/png" />
   
-  <!-- Adobe Font: Big Caslon Medium -->
-  <link rel="stylesheet" href="https://use.typekit.net/rsu7qml.css">
-
   <style>
     html, body {
       margin: 0;
@@ -138,7 +135,7 @@
       left: 0%;  
       width: 50%;  
       background-color: transparent;
-      visibility: hidden;  
+      visibility: visible;  /* Ensure visibility */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -156,9 +153,7 @@
       white-space: pre-wrap;  
       letter-spacing: 2px;    
       transform-origin: center;
-      opacity: 0;
-      animation: fadeInOnly 5s ease forwards;
-      animation-delay: 0.3s;
+      opacity: 1;  /* Ensure text is visible */
       transform: scaleX(1) translateY(-20px);  /* Move text up/down */
     }
 
