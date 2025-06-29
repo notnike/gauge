@@ -18,7 +18,7 @@
 
     .word {
       position: absolute;
-      top: 17%;
+      top: 72.5%;
       left: 47.5%;
       transform-origin: center;
       display: flex;
@@ -52,7 +52,7 @@
 
     /* Button Box Styling */
     .button-box {
-      position: relative;
+      position: absolute;
       top: 89%; /* Adjust the vertical position of the button */
       left: 50%; /* Position the box horizontally in the center */
       transform: translateX(-50%); /* Center horizontally */
@@ -82,41 +82,45 @@
       white-space: nowrap; /* Prevent text from wrapping */
     }
 
-    /* Styling for clickable words at the bottom */
+    /* Add this container to manage clickable text placement */
     .bottom-text-container {
-  position: absolute;
-  bottom: 10%;  /* Keep it near the bottom */
-  width: 100%;  /* Take up the full width of the screen */
-  display: flex;  /* Flexbox layout */
-  justify-content: space-between;  /* Distribute items (left, center, right) */
-  align-items: center;  /* Vertically center */
-  padding: 0 20px;  /* Optional padding to prevent items touching the edges */
-}
+      position: absolute;
+      bottom: 10%;  /* Keep it near the bottom */
+      width: 100%;  /* Take up the full width of the screen */
+      display: flex;  /* Flexbox layout */
+      justify-content: space-between;  /* Distribute items (left, center, right) */
+      align-items: center;  /* Vertically center */
+      padding: 0 20px;  /* Optional padding to prevent items touching the edges */
+    }
 
-/* Remove font-size duplication; It will inherit the existing size from .bottom-text */
-.bottom-text {
-  cursor: pointer;
-  color: black;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px; /* Fixed height for all three text links */
-}
+    /* Styling for clickable words */
+    .bottom-text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      color: black;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px; /* Fixed height for all three text links */
+    }
 
-/* Adjust alignment */
-.bottom-left {
-  text-align: left;
-}
+    /* Left-aligned text */
+    .bottom-left {
+      text-align: left;
+    }
 
-.bottom-center {
-  text-align: center;
-  flex-grow: 1;  /* Make the center text flexible */
-}
+    /* Center-aligned text */
+    .bottom-center {
+      text-align: center;
+      flex-grow: 1;  /* Make the center text flexible */
+    }
 
-.bottom-right {
-  text-align: right;
-}
+    /* Right-aligned text */
+    .bottom-right {
+      text-align: right;
+    }
   </style>
 </head>
 
@@ -136,18 +140,18 @@
     <button>NOMINATE AN INTERVIEWEE</button>
   </div>
 
-  <!-- Clickable Words -->
-<div class="bottom-text-container">
-  <div class="bottom-text bottom-left">
-    <a href="#">ABOUT</a>
+  <!-- Clickable Words Container -->
+  <div class="bottom-text-container">
+    <div class="bottom-text bottom-left">
+      <a href="#">ABOUT</a>
+    </div>
+    <div class="bottom-text bottom-center">
+      <a href="#">CONTACT</a>
+    </div>
+    <div class="bottom-text bottom-right">
+      <a href="#">ADVERTISE</a>
+    </div>
   </div>
-  <div class="bottom-text bottom-center">
-    <a href="#">CONTACT</a>
-  </div>
-  <div class="bottom-text bottom-right">
-    <a href="#">ADVERTISE</a>
-  </div>
-</div>
 
   <script>
     function updateStretch() {
@@ -160,8 +164,8 @@
       const availableWidth = window.innerWidth - marginX * 2;
       const availableHeight = window.innerHeight - marginY * 2;
 
-      const baseWidth = 199;
-      const baseHeight = 233;
+      const baseWidth = 200;
+      const baseHeight = 215;
 
       const scaleX = availableWidth / baseWidth;
       const scaleY = availableHeight / baseHeight;
@@ -170,7 +174,7 @@
       word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
 
       // Adjust the button box width based on available width
-      buttonBox.style.width = `${availableWidth * 1.04}px`;  // Set the width to 60% of the available width
+      buttonBox.style.width = `${availableWidth * 0.6}px`;  // Set the width to 60% of the available width
     }
 
     window.addEventListener('resize', updateStretch);
