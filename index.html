@@ -33,6 +33,7 @@
       justify-content: center;
       align-items: center;
       font-family: 'Arial Light', Arial, sans-serif;
+      text-align: center;
     }
 
     /* Text styling with letter-spacing control */
@@ -49,7 +50,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 0;  /* Remove space between input and button */
+      gap: 10px;  /* Space between the input box and the button */
     }
 
     /* Box Styling */
@@ -60,6 +61,7 @@
       border: 1px solid black;
       width: 300px;
       text-align: center;
+      height: 50px;  /* Same height as the button */
     }
 
     /* Button inside box */
@@ -72,11 +74,14 @@
       cursor: pointer;
       font-size: 24px; /* Set font size to a fixed value */
       white-space: nowrap; /* Prevent text from wrapping */
+      height: 50px;  /* Same height as the input box */
     }
 
-    /* Button and input box inside the same container */
-    .email-box, .recommend-button {
-      height: 50px;  /* Same height for both */
+    /* Box and button will align horizontally */
+    .button-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
   </style>
