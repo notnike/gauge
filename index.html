@@ -55,11 +55,12 @@
       top: 55%; /* Adjust this to position the button box under the word */
       left: 0;
       right: 0;
-      background-color: black;
+      background-color: transparent; /* No fill */
+      border: 1px solid black; /* Black outline */
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
+      color: black;
       font-family: Arial, sans-serif; /* Changed to Arial Regular */
       font-style: normal; /* Removed italic */
       font-weight: normal; /* Normal weight */
@@ -69,11 +70,12 @@
     }
 
     .button-box button {
-      background-color: white;
+      background-color: transparent; /* No fill */
       color: black;
       border: none;
       padding: 10px 20px;
       cursor: pointer;
+      font-size: 18px;
     }
   </style>
 </head>
@@ -115,14 +117,14 @@
       // Center the word and apply scale only
       word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
 
-      // Stretch the button box width based on scaleX
+      // Stretch the button box width based on scaleX (no font scaling)
       buttonBox.style.transform = `scaleX(${scaleX})`;
 
       // Calculate the font size for the button based on the height of the button box
       const boxHeight = buttonBox.offsetHeight;
-      const fontSize = boxHeight * 0.3;  // Adjust the multiplier (0.3) to fine-tune the font size
+      const fontSize = boxHeight * 0.2;  // Adjust the multiplier (0.2) to fine-tune the font size
 
-      // Set the font size dynamically
+      // Set the font size dynamically for the button text
       button.style.fontSize = `${fontSize}px`;
     }
 
