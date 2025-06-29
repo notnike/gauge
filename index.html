@@ -18,13 +18,13 @@
 
     .word {
       position: absolute;
-      top: 72.5%;
-      left: 50%; /* Position in the center */
+      top: 50%; /* Vertically center the word */
+      left: 50%; /* Horizontally center the word */
       transform-origin: center;
       display: flex;
       justify-content: center;
       align-items: center;
-      transform: translateX(-50%); /* Center horizontally */
+      transform: translateX(-50%) translateY(-50%); /* Center the word */
     }
 
     .letter {
@@ -57,7 +57,7 @@
       top: 89%; /* Adjust the vertical position of the button */
       left: 50%; /* Position the box horizontally in the center */
       transform: translateX(-50%); /* Center horizontally */
-      width: 90%; /* Set width to % of the screen width (you can adjust this) */
+      width: 60%; /* Set width to 60% of the screen width (you can adjust this) */
       background-color: transparent;
       border: 1px solid black; /* 1px black outline */
       display: flex;
@@ -138,13 +138,13 @@
 
   <!-- Clickable Words -->
   <div class="bottom-text bottom-left">
-    <a href="#" class="bottom-text">ABOUT</a>
+    <a href="#" class="bottom-text">LEFT ALIGNED TEXT</a>
   </div>
   <div class="bottom-text bottom-center">
-    <a href="#" class="bottom-text">CONTACT</a>
+    <a href="#" class="bottom-text">CENTER ALIGNED TEXT</a>
   </div>
   <div class="bottom-text bottom-right">
-    <a href="#" class="bottom-text">ADVERTISE</a>
+    <a href="#" class="bottom-text">RIGHT ALIGNED TEXT</a>
   </div>
 
   <script>
@@ -164,8 +164,8 @@
       const scaleX = availableWidth / baseWidth;
       const scaleY = availableHeight / baseHeight;
 
-      // The word should remain the same size (no scaling of the logo)
-      word.style.transform = `translate(-50%, -50%)`;
+      // Preserve the logo size (do not scale the logo anymore)
+      word.style.transform = `translate(-50%, -50%)`;  // No scaling for the logo, only centering
 
       // Adjust the button box width based on available width
       buttonBox.style.width = `${availableWidth * 0.6}px`;  // Set the width to 60% of the available width
