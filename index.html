@@ -58,7 +58,7 @@
       top: 89%;  /* Adjust the vertical position of the button */
       left: 50%;  /* Position the box horizontally in the center */
       transform: translateX(-50%); /* Center horizontally */
-      width: 90%; /* Set width to 90% of the screen width (adjustable margin) */
+      width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
       background-color: transparent;
       border: 1px solid black; /* 1px black outline */
       display: flex;
@@ -88,11 +88,11 @@
     .bottom-text-container {
       position: absolute;
       bottom: 10%;  /* Keep it near the bottom */
-      width: 90%;  /* Set width to 90% of the screen width (adjustable margin) */
+      width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
       display: flex;  /* Flexbox layout */
       justify-content: space-between;  /* Distribute items (left, center, right) evenly */
       align-items: center;  /* Vertically center */
-      padding: 0 5%;  /* Equal padding on both sides */
+      padding: 0 var(--margin-control);  /* Apply margin control for spacing */
     }
 
     /* Styling for clickable words */
@@ -175,8 +175,9 @@
       // Center the word and apply scale only (preserve original logo scaling)
       word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
 
-      // Adjust the button box width based on available width
-      buttonBox.style.width = `${availableWidth * 0.9}px`;  // Set the width to 90% of the available width
+      // Adjust the margin control value dynamically
+      const marginControl = Math.max(30, availableWidth * 0.05);  // Minimum margin of 30px, or 5% of the screen width
+      document.documentElement.style.setProperty('--margin-control', `${marginControl}px`);
     }
 
     window.addEventListener('resize', updateStretch);
