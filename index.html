@@ -16,16 +16,14 @@
       overflow: hidden;
     }
 
-    /* Logo styling */
     .word {
       position: absolute;
       top: 72.5%;
-      left: 50%;
+      left: 47.5%;
       transform-origin: center;
       display: flex;
       justify-content: center;
       align-items: center;
-      transform: translateX(-50%) translateY(-50%); /* Fix logo position */
     }
 
     .letter {
@@ -33,7 +31,7 @@
       font-family: 'big-caslon-fb', serif;
       font-style: italic;
       font-weight: 500;
-      font-size: 100px; /* Fixed logo font size */
+      font-size: 100px;
       white-space: pre;
       display: inline-block;
       transform-origin: center;
@@ -58,7 +56,7 @@
       top: 89%; /* Adjust the vertical position of the button */
       left: 50%; /* Position the box horizontally in the center */
       transform: translateX(-50%); /* Center horizontally */
-      width: 60%; /* Button width can be changed here */
+      width: 60%; /* Set width to 60% of the screen width (you can adjust this) */
       background-color: transparent;
       border: 1px solid black; /* 1px black outline */
       display: flex;
@@ -82,7 +80,6 @@
       cursor: pointer;
       font-size: 14px; /* Set font size to a fixed value */
       white-space: nowrap; /* Prevent text from wrapping */
-      width: 100%; /* Button takes up the full width of the box */
     }
 
     /* Styling for clickable words at the bottom */
@@ -123,7 +120,7 @@
 
 <body>
 
-  <!-- Logo -->
+  <!-- Logo (same behavior as before) -->
   <div class="word" id="stretch-word">
     <span class="letter" style="margin: 0 0px;">G</span>
     <span class="letter" style="margin: 0 -2px;">a</span>
@@ -165,8 +162,8 @@
       const scaleX = availableWidth / baseWidth;
       const scaleY = availableHeight / baseHeight;
 
-      // Fix logo size (no scaling anymore)
-      word.style.transform = `translate(-50%, -50%)`;  // Only center the logo without scaling
+      // Center the word and apply scale only (preserve original logo scaling)
+      word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
 
       // Adjust the button box width based on available width
       buttonBox.style.width = `${availableWidth * 0.6}px`;  // Set the width to 60% of the available width
