@@ -14,7 +14,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Arial Light', Arial, sans-serif;
+      font-family: Arial, sans-serif;
       position: relative;
       overflow: hidden;
     }
@@ -35,6 +35,26 @@
       letter-spacing: 1px;
       overflow: hidden;
       width: 100%;
+    }
+
+    /* Text styling for the question */
+    .question {
+      position: absolute;
+      font-size: 30px;
+      color: #000;
+      transform: rotate(-15deg);
+      left: 5%;
+      top: 10%;
+      z-index: 2;
+      white-space: pre-line;  /* Allow line breaks for splitting text */
+      letter-spacing: 3px;  /* Adjust letter-spacing as desired */
+      line-height: 1.5;  /* Control line height for splitting */
+    }
+
+    /* Distort the text vertically and allow vertical movement */
+    .distort {
+      transform: rotate(-15deg) scaleY(var(--vertical-distortion, 1)); /* Vertical distortion control */
+      top: var(--vertical-position, 10%); /* Vertical position control */
     }
 
     /* Box Styling - Center the box */
@@ -77,10 +97,26 @@
 
 <body>
 
+  <!-- The Question, now split into two lines and distorted -->
+  <div class="question distort">
+    Where can we reach
+    your recommended
+    contributor?
+  </div>
+
   <!-- Email Input and Button Box -->
   <div class="button-box">
     <input type="text" id="emailInput" class="email-box" value="renemagritte@gmail.com" onclick="clearInput()" readonly />
     <button class="recommend-button" id="recommendButton" onclick="recommendEmail()">Recommend</button>
+  </div>
+
+  <!-- Controls to distort and move the text -->
+  <div style="position: absolute; top: 80%; left: 5%; z-index: 2;">
+    <label for="vertical-distortion">Vertical Distortion:</label>
+    <input type="range" id="vertical-distortion" min="0.5" max="2" step="0.1" value="1" onchange="updateDistortion()" />
+    <br />
+    <label for="vertical-position">Vertical Position:</label>
+    <input type="range" id="vertical-position" min="0" max="50" step="1" value="10" onchange="updatePosition()" />
   </div>
 
   <script>
@@ -98,6 +134,18 @@
       const email = document.getElementById('emailInput').value;
       // Here you can handle sending the email, for now, we'll simulate it with a mailto link
       window.location.href = `mailto:youremail@example.com?subject=Recommended Contributor&body=Email: ${email}`;
+    }
+
+    // Update vertical distortion based on range input
+    function updateDistortion() {
+      const distortionValue = document.getElementById('vertical-distortion').value;
+      document.documentElement.style.setProperty('--vertical-distortion', distortionValue);
+    }
+
+    // Update vertical position based on range input
+    function updatePosition() {
+      const positionValue = document.getElementById('vertical-position').value;
+      document.documentElement.style.setProperty('--vertical-position', `${positionValue}%`);
     }
   </script>
 
