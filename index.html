@@ -2,184 +2,90 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gauge</title>
+  <link rel="icon" href="logo.png" type="image/png" />
+  
+  <!-- Adobe Font: Big Caslon Medium -->
+  <link rel="stylesheet" href="https://use.typekit.net/rsu7qml.css">
+
   <style>
     html, body {
       margin: 0;
-      padding: 0;
-      height: 100vh;
-      width: 100vw;
+      height: 100%;
+      background: white;
       overflow: hidden;
-      font-family: Arial, sans-serif;
     }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-
-    .section {
-      width: 100%;
-      position: relative;
-    }
-
-    .logo-section {
-      height: 20%;
-    }
-
-    .description-section {
-      height: 20%;
-    }
-
-    .date-section {
-      height: 40%;
-    }
-
-    .button-section {
-      height: 10%;
-    }
-
-    .footer-section {
-      height: 10%;
-    }
-
-    /* === LOGO === */
-    .logo-inner {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      padding: 0 2vw;
-      font-style: italic;
-      font-family: serif;
-    }
-
-    .logo-inner span.logo {
-      font-size: 18vh;
-      line-height: 1;
-      flex-grow: 1;
-    }
-
-    .logo-inner span.issue-number {
+    .word {
       position: absolute;
-      right: 2vw;
-      bottom: 1vh;
-      font-size: 1.5vh;
-    }
-
-    /* === DESCRIPTION === */
-    .description-inner {
-      height: 100%;
-      width: 100%;
+      top: 42.5%;
+      left: 47.5%;
+      transform-origin: center;
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 0 12vw;
-      box-sizing: border-box;
     }
 
-    .description-inner p {
-      font-size: 1.8vh;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    /* === DATE === */
-    .date-inner {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: sans-serif;
-      transform: scaleY(1.3); /* vertical distortion */
-    }
-
-    .date-inner div {
-      font-size: 10vh;
-      line-height: 1;
-    }
-
-    /* === BUTTON === */
-    .button-inner {
-      height: 100%;
-      width: 100%;
-      border: 1px solid black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-style: italic;
-      font-size: 2vh;
-      box-sizing: border-box;
-    }
-
-    /* === FOOTER === */
-    .footer-inner {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 2vw;
-      font-style: italic;
-      font-size: 1.8vh;
-      box-sizing: border-box;
-    }
-
-    .footer-inner a {
-      text-decoration: none;
+    .letter {
       color: black;
+      font-family: 'big-caslon-fb', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 100px;
+      white-space: pre;
+      display: inline-block;
+      transform-origin: center;
+      text-transform: none;
+      font-variant: normal;
+
+      /* ✨ Slow fade-in */
+      opacity: 0;
+      animation: fadeInOnly 5s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes fadeInOnly {
+      to {
+        opacity: 1;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
 
-    <!-- 20% LOGO -->
-    <div class="section logo-section">
-      <div class="logo-inner">
-        <span class="logo">Gauge</span>
-        <span class="issue-number">1</span>
-      </div>
-    </div>
-
-    <!-- 20% DESCRIPTION -->
-    <div class="section description-section">
-      <div class="description-inner">
-        <p>
-          Gauge is a new publishing platform dedicated to examining the mechanisms that shape the art market—through the eyes of those who sustain it. Through anonymous contributions, critical essays, and structured provocations, Gauge creates a forum where collectors can interrogate the pressure systems of the art world that influence their choices. Gauge exists to help people find their way back to art—by exposing the forces that have quietly convinced them to stay away.
-        </p>
-      </div>
-    </div>
-
-    <!-- 40% DATE -->
-    <div class="section date-section">
-      <div class="date-inner">
-        <div>ISSUE 1</div>
-        <div>NOV. 1ST</div>
-        <div>2025</div>
-      </div>
-    </div>
-
-    <!-- 10% BUTTON -->
-    <div class="section button-section">
-      <div class="button-inner">NOMINATE AN INTERVIEWEE</div>
-    </div>
-
-    <!-- 10% FOOTER -->
-    <div class="section footer-section">
-      <div class="footer-inner">
-        <a href="#">ADVERTISE</a>
-        <a href="#">CONTACT</a>
-        <a href="#">LEGAL</a>
-      </div>
-    </div>
-
+  <!-- "GAUGE" letters, spaced manually -->
+  <div class="word" id="stretch-word">
+    <span class="letter" style="margin: 0 0px;">G</span>
+    <span class="letter" style="margin: 0 -2px;">a</span>
+    <span class="letter" style="margin: 0 -5.5px;">u</span>
+    <span class="letter" style="margin: 0 0.5px;">g</span>
+    <span class="letter" style="margin: 0 -4px;">e</span>
   </div>
+
+  <script>
+    function updateStretch() {
+      const word = document.getElementById('stretch-word');
+
+      const marginX = 40;
+      const marginY = 40;
+
+      const availableWidth = window.innerWidth - marginX * 2;
+      const availableHeight = window.innerHeight - marginY * 2;
+
+      const baseWidth = 212;
+      const baseHeight = 95;
+
+      const scaleX = availableWidth / baseWidth;
+      const scaleY = availableHeight / baseHeight;
+
+      // Center the word and apply scale only
+      word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
+    }
+
+    window.addEventListener('resize', updateStretch);
+    window.addEventListener('load', updateStretch);
+  </script>
+
 </body>
 </html>
