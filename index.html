@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gauge</title>
   <link rel="icon" href="logo.png" type="image/png" />
   
@@ -9,83 +10,164 @@
   <link rel="stylesheet" href="https://use.typekit.net/rsu7qml.css">
 
   <style>
+    /* Base settings */
     html, body {
       margin: 0;
+      padding: 0;
       height: 100%;
-      background: white;
-      overflow: hidden;
+      width: 100%;
+      background-color: white;
+      font-family: Arial, sans-serif;
     }
 
-    .word {
-      position: absolute;
-      top: 42.5%;
-      left: 47.5%;
-      transform-origin: center;
+    /* Full height container */
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Left 50%: Logo section */
+    .left {
+      width: 50%;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 0 5%;
     }
 
-    .letter {
-      color: black;
+    .logo {
       font-family: 'big-caslon-fb', serif;
       font-style: italic;
       font-weight: 500;
-      font-size: 100px;
-      white-space: pre;
-      display: inline-block;
+      font-size: 10vw; /* Stretched to fill container */
       transform-origin: center;
-      text-transform: none;
-      font-variant: normal;
-
-      /* ✨ Slow fade-in */
-      opacity: 0;
-      animation: fadeInOnly 5s ease forwards;
-      animation-delay: 0.3s;
+      white-space: nowrap;
+      display: inline-block;
+      opacity: 1;
+      transform: scale(1);
     }
 
-    @keyframes fadeInOnly {
-      to {
-        opacity: 1;
+    /* Right 50%: Text sections */
+    .right {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Top 45%: Headline text */
+    .headline {
+      font-family: Helvetica, sans-serif;
+      font-size: 4vw;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20%;
+      transform: scale(1.2);
+      letter-spacing: 0.5vw;
+    }
+
+    /* Bottom 45%: Description text */
+    .description {
+      font-size: 1.5vw;
+      text-align: left;
+      margin: 2vh 10%;
+      line-height: 1.6;
+    }
+
+    /* Bottom 10%: Buttons */
+    .bottom {
+      width: 100%;
+      height: 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .button {
+      width: 100%;
+      height: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid black;
+      font-style: italic;
+      font-size: 2vw;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      width: 100%;
+      height: 50%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.5vw;
+      padding: 0 5%;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: black;
+    }
+
+    /* Make everything responsive */
+    @media screen and (max-width: 768px) {
+      .logo {
+        font-size: 20vw;
+      }
+      .headline {
+        font-size: 5vw;
+      }
+      .description {
+        font-size: 3vw;
+      }
+      .footer {
+        font-size: 3vw;
       }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- "GAUGE" letters, spaced manually -->
-  <div class="word" id="stretch-word">
-    <span class="letter" style="margin: 0 0px;">G</span>
-    <span class="letter" style="margin: 0 -2px;">a</span>
-    <span class="letter" style="margin: 0 -5.5px;">u</span>
-    <span class="letter" style="margin: 0 0.5px;">g</span>
-    <span class="letter" style="margin: 0 -4px;">e</span>
+  <!-- Full page container -->
+  <div class="container">
+
+    <!-- LEFT 50%: Logo -->
+    <div class="left">
+      <div class="logo">Gauge</div>
+    </div>
+
+    <!-- RIGHT 50%: Text sections -->
+    <div class="right">
+
+      <!-- Top 45%: Headline -->
+      <div class="headline">
+        The art market isn’t crashing — it’s speaking.
+      </div>
+
+      <!-- Bottom 45%: Description -->
+      <div class="description">
+        Gauge is a new publishing platform dedicated to examining the mechanisms that shape the art market—through the eyes of those who sustain it. Through anonymous contributions, critical essays, and structured provocations, Gauge creates a forum where collectors can interrogate the pressure systems of the art world that influence their choices. Gauge exists to help people find their way back to art—by exposing the forces that have quietly convinced them to stay away.
+      </div>
+
+      <!-- Bottom 10%: Buttons and footer links -->
+      <div class="bottom">
+        <!-- Nominate Button -->
+        <div class="button">NOMINATE AN INTERVIEWEE</div>
+
+        <!-- Footer links -->
+        <div class="footer">
+          <a href="#">ADVERTISE</a>
+          <a href="#">CONTACT</a>
+          <a href="#">LEGAL</a>
+        </div>
+      </div>
+
+    </div>
+
   </div>
-
-  <script>
-    function updateStretch() {
-      const word = document.getElementById('stretch-word');
-
-      const marginX = 40;
-      const marginY = 40;
-
-      const availableWidth = window.innerWidth - marginX * 2;
-      const availableHeight = window.innerHeight - marginY * 2;
-
-      const baseWidth = 220;
-      const baseHeight = 175;
-
-      const scaleX = availableWidth / baseWidth;
-      const scaleY = availableHeight / baseHeight;
-
-      // Center the word and apply scale only
-      word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
-    }
-
-    window.addEventListener('resize', updateStretch);
-    window.addEventListener('load', updateStretch);
-  </script>
 
 </body>
 </html>
