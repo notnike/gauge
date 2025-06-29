@@ -36,11 +36,6 @@
       transform-origin: center;
       text-transform: none;
       font-variant: normal;
-
-      /* ✨ Slow fade-in */
-      opacity: 0;
-      animation: fadeInOnly 5s ease forwards;
-      animation-delay: 0.3s;
     }
 
     @keyframes fadeInOnly {
@@ -214,7 +209,7 @@
       const scaleX = availableWidth / baseWidth;
       const scaleY = availableHeight / baseHeight;
 
-      word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
+      word.style.transform = `translate(-50%, -50%) scale(1, 1)`;  /* No scaling for the logo */
 
       const marginControl = Math.max(5, availableWidth * 0.02);  
       document.documentElement.style.setProperty('--margin-control', `${marginControl}px`);
