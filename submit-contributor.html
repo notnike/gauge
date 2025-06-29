@@ -44,7 +44,7 @@
       letter-spacing: 3px;  /* Adjust letter-spacing as desired */
     }
 
-    /* Button Box Styling - Align email box and button next to each other */
+    /* Email Box and Recommend Button Container */
     .button-box {
       display: flex;
       justify-content: space-between; /* Align elements horizontally */
@@ -101,4 +101,16 @@
       if (emailInput.value === "renemagritte@gmail.com") {
         emailInput.value = '';  // Clear the default value
       }
-      emailInput.readOnly = false;  //
+      emailInput.readOnly = false;  // Make it editable
+    }
+
+    // Handle email recommendation button click
+    function recommendEmail() {
+      const email = document.getElementById('emailInput').value;
+      // Here you can handle sending the email, for now, we'll simulate it with a mailto link
+      window.location.href = `mailto:youremail@example.com?subject=Recommended Contributor&body=Email: ${email}`;
+    }
+  </script>
+
+</body>
+</html>
