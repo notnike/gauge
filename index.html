@@ -15,107 +15,123 @@
     }
 
     .container {
-      height: 100vh;
-      width: 100vw;
       display: flex;
       flex-direction: column;
+      height: 100vh;
     }
 
-    /* Section Containers */
     .section {
       width: 100%;
-      display: flex;
       position: relative;
     }
 
     .logo-section {
-      height: 20vh;
-      justify-content: flex-start;
-      align-items: flex-end;
-      padding: 0 2vw;
-      font-family: serif;
-      font-style: italic;
-    }
-
-    .logo-section .logo {
-      font-size: 15vh;
-      line-height: 1;
-      transform: scaleY(1.2); /* Slight stretch */
-    }
-
-    .logo-section .issue-number {
-      position: absolute;
-      bottom: 0.5vh;
-      right: 2vw;
-      font-size: 1.5vh;
+      height: 20%;
     }
 
     .description-section {
-      height: 20vh;
+      height: 20%;
+    }
+
+    .date-section {
+      height: 40%;
+    }
+
+    .button-section {
+      height: 10%;
+    }
+
+    .footer-section {
+      height: 10%;
+    }
+
+    /* === LOGO === */
+    .logo-inner {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 0 2vw;
+      font-style: italic;
+      font-family: serif;
+    }
+
+    .logo-inner span.logo {
+      font-size: 18vh;
+      line-height: 1;
+      flex-grow: 1;
+    }
+
+    .logo-inner span.issue-number {
+      position: absolute;
+      right: 2vw;
+      bottom: 1vh;
+      font-size: 1.5vh;
+    }
+
+    /* === DESCRIPTION === */
+    .description-inner {
+      height: 100%;
+      width: 100%;
+      display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
       padding: 0 12vw;
+      box-sizing: border-box;
     }
 
-    .description-section p {
+    .description-inner p {
       font-size: 1.8vh;
       line-height: 1.6;
       margin: 0;
     }
 
-    .date-section {
-      height: 40vh;
+    /* === DATE === */
+    .date-inner {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      text-align: center;
       font-family: sans-serif;
-      transform: scaleY(1.2); /* Distortion effect */
+      transform: scaleY(1.3); /* vertical distortion */
     }
 
-    .date-section div {
+    .date-inner div {
       font-size: 10vh;
       line-height: 1;
     }
 
-    .button-section {
-      height: 10vh;
-      justify-content: center;
+    /* === BUTTON === */
+    .button-inner {
+      height: 100%;
+      width: 100%;
+      border: 1px solid black;
+      display: flex;
       align-items: center;
+      justify-content: center;
+      font-style: italic;
+      font-size: 2vh;
+      box-sizing: border-box;
     }
 
-.button-section {
-  height: 10vh;
-  justify-content: center;
-  align-items: center;
-  padding: 0 0;
-}
-
-.button-box {
-  width: 100vw;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  font-style: italic;
-  font-size: 2vh;
-  box-sizing: border-box;
-}
-
-    }
-
-    .footer-section {
-      height: 10vh;
+    /* === FOOTER === */
+    .footer-inner {
+      height: 100%;
+      width: 100%;
+      display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 2vw;
       font-style: italic;
       font-size: 1.8vh;
+      box-sizing: border-box;
     }
 
-    .footer-section a {
+    .footer-inner a {
       text-decoration: none;
       color: black;
     }
@@ -124,36 +140,44 @@
 <body>
   <div class="container">
 
-    <!-- LOGO + "1" -->
+    <!-- 20% LOGO -->
     <div class="section logo-section">
-      <div class="logo">Gauge</div>
-      <div class="issue-number">1</div>
+      <div class="logo-inner">
+        <span class="logo">Gauge</span>
+        <span class="issue-number">1</span>
+      </div>
     </div>
 
-    <!-- DESCRIPTION -->
+    <!-- 20% DESCRIPTION -->
     <div class="section description-section">
-      <p>
-        Gauge is a new publishing platform dedicated to examining the mechanisms that shape the art market—through the eyes of those who sustain it. Through anonymous contributions, critical essays, and structured provocations, Gauge creates a forum where collectors can interrogate the pressure systems of the art world that influence their choices. Gauge exists to help people find their way back to art—by exposing the forces that have quietly convinced them to stay away.
-      </p>
+      <div class="description-inner">
+        <p>
+          Gauge is a new publishing platform dedicated to examining the mechanisms that shape the art market—through the eyes of those who sustain it. Through anonymous contributions, critical essays, and structured provocations, Gauge creates a forum where collectors can interrogate the pressure systems of the art world that influence their choices. Gauge exists to help people find their way back to art—by exposing the forces that have quietly convinced them to stay away.
+        </p>
+      </div>
     </div>
 
-    <!-- BIG STRETCHY DATE -->
+    <!-- 40% DATE -->
     <div class="section date-section">
-      <div>ISSUE 1</div>
-      <div>NOV. 1ST</div>
-      <div>2025</div>
+      <div class="date-inner">
+        <div>ISSUE 1</div>
+        <div>NOV. 1ST</div>
+        <div>2025</div>
+      </div>
     </div>
 
-    <!-- BUTTON -->
+    <!-- 10% BUTTON -->
     <div class="section button-section">
-      <div class="button-box">NOMINATE AN INTERVIEWEE</div>
+      <div class="button-inner">NOMINATE AN INTERVIEWEE</div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- 10% FOOTER -->
     <div class="section footer-section">
-      <a href="#">ADVERTISE</a>
-      <a href="#">CONTACT</a>
-      <a href="#">LEGAL</a>
+      <div class="footer-inner">
+        <a href="#">ADVERTISE</a>
+        <a href="#">CONTACT</a>
+        <a href="#">LEGAL</a>
+      </div>
     </div>
 
   </div>
