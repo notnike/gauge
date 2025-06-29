@@ -56,7 +56,7 @@
       top: 89%; /* Adjust the vertical position of the button */
       left: 50%; /* Position the box horizontally in the center */
       transform: translateX(-50%); /* Center horizontally */
-      width: 95%; /* Set width to 60% of the screen width (you can adjust this) */
+      width: 60%; /* Set width to 60% of the screen width (you can adjust this) */
       background-color: transparent;
       border: 1px solid black; /* 1px black outline */
       display: flex;
@@ -76,10 +76,11 @@
       background-color: transparent;
       color: black;
       border: none;
-      padding: 10px 20px;
+      padding: 10px 20px; /* Adjust the padding to control button height */
       cursor: pointer;
       font-size: 14px; /* Set font size to a fixed value */
       white-space: nowrap; /* Prevent text from wrapping */
+      width: 80%; /* Adjust the width of the button */
     }
 
     /* Styling for clickable words at the bottom */
@@ -162,10 +163,10 @@
       const scaleX = availableWidth / baseWidth;
       const scaleY = availableHeight / baseHeight;
 
-      // The word should remain the same size (not scale with window)
-      word.style.transform = `translate(-50%, -50%)`;
+      // Preserve the logo scaling
+      word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
 
-      // Button box will scale with the window width, but font size of the text remains the same
+      // Adjust the button box width based on available width
       buttonBox.style.width = `${availableWidth * 0.6}px`;  // Set the width to 60% of the available width
     }
 
