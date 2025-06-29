@@ -16,8 +16,8 @@
     /* Logo (preserving the original position and letter spacing) */
     .word {
       position: absolute;
-      top: 17%;  
-      left: 47.5%;  
+      top: 17%;  /* Preserved original top position */
+      left: 47.5%;  /* Preserved original left position */
       transform-origin: center;
       display: flex;
       justify-content: center;
@@ -42,35 +42,6 @@
       to {
         opacity: 1;
       }
-    }
-
-    /* Invisible Container (on the left, 50% width) */
-    .invisible-container {
-      position: absolute;
-      top: 70%;  
-      left: 0%;  
-      width: 50%;  
-      background-color: transparent;
-      visibility: visible;  
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0 var(--margin-control);  
-    }
-
-    /* Stretchable Text Inside Invisible Container */
-    .invisible-container .stretch-text {
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      font-style: italic;
-      font-size: 16px;
-      color: black;
-      text-align: center;
-      white-space: pre-wrap;  
-      letter-spacing: 2px;    
-      transform-origin: center;
-      opacity: 1;  
-      transform: scaleX(1) translateY(0);  /* No movement, positioned correctly */
     }
 
     /* Button Box Styling */
@@ -166,13 +137,6 @@
     <span class="letter" style="margin: 0 -4px;">e</span>
   </div>
 
-  <!-- Invisible Container with Stretchable Text -->
-  <div class="invisible-container">
-    <div class="stretch-text">
-      The art market isn’t<br/>crashing—it’s speaking.
-    </div>
-  </div>
-
   <!-- Button Box -->
   <div class="button-box" id="button-box">
     <button>NOMINATE AN INTERVIEWEE</button>
@@ -195,7 +159,6 @@
     function updateStretch() {
       const word = document.getElementById('stretch-word');
       const buttonBox = document.getElementById('button-box');
-      const stretchText = document.querySelector('.stretch-text');
 
       const marginX = 40;
       const marginY = 40;
@@ -209,13 +172,11 @@
       const scaleX = availableWidth / baseWidth;
       const scaleY = availableHeight / baseHeight;
 
-      word.style.transform = `translate(-50%, -50%) scale(1, 1)`;  /* No scaling for the logo */
+      // No scaling applied to logo - keeping the original look
+      word.style.transform = `translate(-50%, -50%)`;  // No scaling, just position
 
       const marginControl = Math.max(5, availableWidth * 0.02);  
       document.documentElement.style.setProperty('--margin-control', `${marginControl}px`);
-
-      // Stretch the text just like the logo
-      stretchText.style.transform = `scaleX(${scaleX}) translateY(0)`;  /* No movement, positioned correctly */
     }
 
     window.addEventListener('resize', updateStretch);
