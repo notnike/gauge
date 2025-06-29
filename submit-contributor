@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Submit Contributor Email</title>
+  <link rel="icon" href="logo.png" type="image/png" />
+  
+  <!-- Adobe Font: Big Caslon Medium -->
+  <link rel="stylesheet" href="https://use.typekit.net/rsu7qml.css">
+
+  <style>
+    /* Define Arial Light */
+    @font-face {
+      font-family: 'Arial Light';
+      src: url('https://github.com/username/repository-name/raw/main/fonts/ArialLight.TTF') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* Define Arial Light Italic */
+    @font-face {
+      font-family: 'Arial Light Italic';
+      src: url('https://github.com/username/repository-name/raw/main/fonts/ArialLightItalic.TTF') format('truetype');
+      font-weight: normal;
+      font-style: italic;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial Light', Arial, sans-serif;
+    }
+
+    /* Text styling */
+    .text {
+      font-family: 'Arial Bold Italic', Arial, sans-serif; /* Apply Arial Bold Italic */
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Button Box Styling */
+    .button-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Box Styling */
+    .email-box {
+      font-family: 'Arial Light', Arial, sans-serif;
+      font-size: 24px;
+      padding: 10px;
+      border: 1px solid black;
+      width: 300px;
+      text-align: center;
+    }
+
+    /* Button inside box */
+    .button-box button {
+      background-color: transparent;
+      font-family: 'Arial Light', Arial, sans-serif;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 24px; /* Set font size to a fixed value */
+      white-space: nowrap; /* Prevent text from wrapping */
+    }
+
+    /* Button Box - Apply hover effect to the entire box */
+    .button-box:hover {
+      background-color: black;  /* Change the entire box to black on hover */
+    }
+
+    /* Button inside box - Change text color on hover */
+    .button-box:hover button {
+      color: white;  /* Change text color to white when box is hovered */
+    }
+
+    /* Box for email */
+    .email-box:focus {
+      outline: none; /* Remove default focus outline */
+      background-color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Text Prompt -->
+  <div class="text">
+    What's your recommended contributor's email address?
+  </div>
+
+  <!-- Email Input and Button Box -->
+  <div class="button-box">
+    <input type="text" id="emailInput" class="email-box" value="renemagritte@gmail.com" onclick="clearInput()" readonly />
+    <button id="recommendButton" onclick="recommendEmail()">Recommend</button>
+  </div>
+
+  <script>
+    // Clear input when clicked
+    function clearInput() {
+      const emailInput = document.getElementById('emailInput');
+      if (emailInput.value === "renemagritte@gmail.com") {
+        emailInput.value = '';  // Clear the default value
+      }
+      emailInput.readOnly = false;  // Make it editable
+    }
+
+    // Handle email recommendation button click
+    function recommendEmail() {
+      const email = document.getElementById('emailInput').value;
+      // Here you can handle sending the email, for now, we'll simulate it with a mailto link
+      window.location.href = `mailto:youremail@example.com?subject=Recommended Contributor&body=Email: ${email}`;
+    }
+  </script>
+
+</body>
+</html>
