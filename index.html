@@ -9,6 +9,22 @@
   <link rel="stylesheet" href="https://use.typekit.net/rsu7qml.css">
 
   <style>
+    /* Define Arial Light */
+    @font-face {
+      font-family: 'Arial Light';
+      src: url('https://github.com/username/repository-name/raw/main/fonts/ArialLight.TTF') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* Define Arial Light Italic */
+    @font-face {
+      font-family: 'Arial Light Italic';
+      src: url('https://github.com/username/repository-name/raw/main/fonts/ArialLightItalic.TTF') format('truetype');
+      font-weight: normal;
+      font-style: italic;
+    }
+
     html, body {
       margin: 0;
       height: 100%;
@@ -19,7 +35,7 @@
     /* Logo (preserving the original position) */
     .word {
       position: absolute;
-      top: 17%;  /* Preserved original top position */
+      top: 18%;  /* Preserved original top position */
       left: 47.5%;  /* Preserved original left position */
       transform-origin: center;
       display: flex;
@@ -55,7 +71,7 @@
     /* Button Box Styling */
     .button-box {
       position: absolute;
-      top: 89%;  /* Adjust the vertical position of the button */
+      top: 85%;  /* Adjust the vertical position of the button */
       left: 50%;  /* Position the box horizontally in the center */
       transform: translateX(-50%); /* Center horizontally */
       width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
@@ -65,7 +81,7 @@
       justify-content: center;
       align-items: center;
       color: black;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial Light', Arial, sans-serif;
       font-style: normal;
       font-weight: normal;
       opacity: 1;
@@ -76,18 +92,29 @@
     /* Button inside box */
     .button-box button {
       background-color: transparent;
+      font-family: 'Arial Light', Arial, sans-serif;
       color: black;
       border: none;
       padding: 10px 20px;
       cursor: pointer;
-      font-size: 14px; /* Set font size to a fixed value */
+      font-size: 24px; /* Set font size to a fixed value */
       white-space: nowrap; /* Prevent text from wrapping */
+    }
+
+    /* Button Box - Apply hover effect to the entire box */
+    .button-box:hover {
+      background-color: black;  /* Change the entire box to black on hover */
+    }
+
+    /* Button inside box - Change text color on hover */
+    .button-box:hover button {
+      color: white;  /* Change text color to white when box is hovered */
     }
 
     /* Add this container to manage clickable text placement */
     .bottom-text-container {
       position: absolute;
-      bottom: 0%;  /* Keep it near the bottom */
+      bottom: 1%;  /* Keep it near the bottom */
       width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
       display: flex;  /* Flexbox layout */
       justify-content: space-between;  /* Distribute items (left, center, right) evenly */
@@ -97,8 +124,8 @@
 
     /* Styling for clickable words */
     .bottom-text {
-      font-family: Arial, sans-serif;
-      font-size: 14px;
+      font-family: 'Arial Light', Arial, sans-serif;
+      font-size: 24px;
       cursor: pointer;
       color: black; /* Ensuring the text is black */
       text-decoration: none;  /* Remove underlines */
@@ -132,47 +159,51 @@
 
     /* Textbox Styling (removing border) */
     .textbox {
-      position: absolute;
-      top: 78%;  /* Adjust the vertical position of the textbox */
-      left: 50%;  /* Position the box horizontally in the center */
       transform: translateX(-50%); /* Center horizontally */
       width: calc(100% - 2 * var(--margin-control)); /* Same width as the button box */
       height: 100px;  /* Control height */
       background-color: transparent;
       border: none; /* Removed border */
-      font-family: Arial, sans-serif;
-      font-size: 16px;  /* Set font size */
-      color: black;
-      padding: 10px;
-      text-align: left;  /* Left-justified alignment */
       white-space: pre-wrap;  /* Preserve line breaks */
-      line-height: 1.5; /* Control line height */
-      letter-spacing: 0.5px;  /* Control character separation */
       resize: none;  /* Disable resizing */
       overflow-y: auto;  /* Enable vertical scrolling */
+      font-family: 'Arial Light', Arial, sans-serif;  /* Use Arial Light */
+      color: black;
+      padding: 10px;
+      text-align: center;  /* Center-align text */
+      line-height: 1.5; /* Control line height */
+      letter-spacing: -0.2px;  /* Control character separation */
     }
 
     /* Content display styling */
     .content {
       position: absolute;
-      top: 78%;
+      top: 42%;
       left: 50%;
       transform: translateX(-50%);
+      text-align: center;
       width: calc(100% - 2 * var(--margin-control)); 
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.5;
-      letter-spacing: 0.5px;
+      font-family: 'Arial Light', Arial, sans-serif;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: 0px;
       color: black;
     }
 
     .bold-italic {
+      font-family: 'Arial Bold Italic', Arial, sans-serif;  /* Apply Arial Bold Italic */
       font-weight: bold;
       font-style: italic;
     }
 
     .italic {
       font-style: italic;
+    }
+
+    /* For the word 'Gauge' in Arial Light Italic */
+    .gauge {
+      font-family: 'Arial Light Italic', Arial, sans-serif;  /* Apply Arial Light Italic */
+      font-style: italic;  /* Ensure it's italicized */
     }
   </style>
 </head>
@@ -195,19 +226,19 @@
 
   <!-- Content Display -->
   <div class="content">
-    <span class="bold-italic">The market isn't crashing—It's speaking.</span> <span class="italic">Gauge</span> is a new publishing platform dedicated to examining the mechanisms that shape the art market—through the eyes of those who sustain it. Through anonymous contributions, critical essays, and structured provocations, <span class="italic">Gauge</span> creates a forum where collectors can interrogate the pressure systems of the art world that influence their choices. <span class="italic">Gauge</span> exists to help people find their way back to art—by exposing the forces that have quietly convinced them to stay away.
+    <span class="bold-italic">The market isn't crashing—It's speaking.</span> <span class="gauge">Gauge</span> is a new publishing platform dedicated to examining the art market through the eyes of those who sustain it. Through anonymous contributions, interviews, and essays, <span class="gauge">Gauge</span> creates a forum where collectors can interrogate the pressure systems of the art world that aim at influencing their choices. <span class="gauge">Gauge</span> exists to help people find their way back to art by exposing, discussing, and look back at the consequences that have quietly convinced them to stay away.
   </div>
 
   <!-- Clickable Words Container -->
   <div class="bottom-text-container">
     <div class="bottom-text bottom-left">
-      <a href="#">ABOUT</a>
+      <a href="#">About</a>
     </div>
     <div class="bottom-text bottom-center">
-      <a href="#">CONTACT</a>
+      <a href="#">Contact</a>
     </div>
     <div class="bottom-text bottom-right">
-      <a href="#">ADVERTISE</a>
+      <a href="#">Advertise</a>
     </div>
   </div>
 
@@ -222,7 +253,7 @@
       const availableWidth = window.innerWidth - marginX * 2;
       const availableHeight = window.innerHeight - marginY * 2;
 
-      const baseWidth = 199;
+      const baseWidth = 202;
       const baseHeight = 233;
 
       const scaleX = availableWidth / baseWidth;
