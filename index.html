@@ -16,14 +16,16 @@
       overflow: hidden;
     }
 
+    /* Original logo position preserved */
     .word {
       position: absolute;
-      top: 72.5%;
-      left: 47.5%;
+      top: 17%;  /* Preserving the original top position */
+      left: 47.5%;  /* Preserving the original left position */
       transform-origin: center;
       display: flex;
       justify-content: center;
       align-items: center;
+      transform: translateX(-50%) translateY(-50%); /* Fixed position of the logo */
     }
 
     .letter {
@@ -99,7 +101,7 @@
       font-size: 14px;
       cursor: pointer;
       color: black;
-      text-decoration: none;
+      text-decoration: none;  /* Remove underlines */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -164,8 +166,8 @@
       const availableWidth = window.innerWidth - marginX * 2;
       const availableHeight = window.innerHeight - marginY * 2;
 
-      const baseWidth = 200;
-      const baseHeight = 215;
+      const baseWidth = 199;
+      const baseHeight = 233;
 
       const scaleX = availableWidth / baseWidth;
       const scaleY = availableHeight / baseHeight;
@@ -174,7 +176,7 @@
       word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
 
       // Adjust the button box width based on available width
-      buttonBox.style.width = `${availableWidth * 0.6}px`;  // Set the width to 60% of the available width
+      buttonBox.style.width = `${availableWidth * 1.04}px`;  // Set the width to 60% of the available width
     }
 
     window.addEventListener('resize', updateStretch);
