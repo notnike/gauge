@@ -2,90 +2,127 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gauge</title>
-  <link rel="icon" href="logo.png" type="image/png" />
-  
-  <!-- Adobe Font: Big Caslon Medium -->
-  <link rel="stylesheet" href="https://use.typekit.net/rsu7qml.css">
-
   <style>
     html, body {
       margin: 0;
-      height: 100%;
-      background: white;
-      overflow: hidden;
+      padding: 0;
+      height: 100vh;
+      font-family: Arial, sans-serif;
     }
 
-    .word {
-      position: absolute;
-      top: 42.5%;
-      left: 47.5%;
-      transform-origin: center;
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    /* 20%: LOGO and 1 (distorted text allowed) */
+    .logo {
+      height: 20vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-family: serif;
+      font-style: italic;
+      font-size: 12vh;
+      padding: 0 1rem;
+    }
+
+    .logo span:last-child {
+      font-size: 1.5vh;
+      align-self: flex-end;
+    }
+
+    /* 20%: DESCRIPTION (scalable text block) */
+    .description {
+      height: 20vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 10vw;
+      font-size: 1.8vh;
+      line-height: 1.6;
+    }
+
+    /* 40%: BIG DATE (stretchy/distorted) */
+    .big-date {
+      height: 40vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 12vh;
+      font-stretch: expanded;
+      line-height: 0.9;
+      font-family: sans-serif;
+    }
+
+    /* 10%: BUTTON */
+    .button {
+      height: 10vh;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .letter {
-  color: black;
-  font-family: 'big-caslon-fb', serif;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 100px;
-  white-space: pre;
-  display: inline-block;
-  transform-origin: center;
-  text-transform: none;
-  font-variant: normal;
-
-  /* ✨ Slow fade-in */
-  opacity: 0;
-  animation: fadeInOnly 5s ease forwards;
-  animation-delay: 0.3s;
-}
-
-@keyframes fadeInOnly {
-  to {
-    opacity: 1;
-  }
-}
-  </style>
-</head>
-
-<body>
-
-  <!-- Only the word, no container needed now -->
-  <div class="word" id="stretch-word">
-    <span class="letter" style="margin: 0 0px;">G</span>
-    <span class="letter" style="margin: 0 -2px;">a</span>
-    <span class="letter" style="margin: 0 -5.5px;">u</span>
-    <span class="letter" style="margin: 0 0.5px;">g</span>
-    <span class="letter" style="margin: 0 -4px;">e</span>
-  </div>
-
-  <script>
-    function updateStretch() {
-      const word = document.getElementById('stretch-word');
-
-      const marginX = 40;
-      const marginY = 40;
-
-      const availableWidth = window.innerWidth - marginX * 2;
-      const availableHeight = window.innerHeight - marginY * 2;
-
-      const baseWidth = 212;
-      const baseHeight = 95;
-
-      const scaleX = availableWidth / baseWidth;
-      const scaleY = availableHeight / baseHeight;
-
-      // Center the word and apply scale only
-      word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
+    .button-box {
+      padding: 1vh 2vw;
+      border: 1px solid black;
+      font-style: italic;
+      font-size: 2vh;
     }
 
-    window.addEventListener('resize', updateStretch);
-    window.addEventListener('load', updateStretch);
-  </script>
+    /* 10%: FOOTER NAV */
+    .footer {
+      height: 10vh;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-style: italic;
+      font-size: 1.8vh;
+    }
 
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    @media (max-width: 600px) {
+      .big-date {
+        font-size: 8vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <span>Gauge</span>
+      <span>1</span>
+    </div>
+
+    <div class="description">
+      Gauge is a new publishing platform dedicated to examining the mechanisms that shape the art market—through the eyes of those who sustain it. Through anonymous contributions, critical essays, and structured provocations, Gauge creates a forum where collectors can interrogate the pressure systems of the art world that influence their choices. Gauge exists to help people find their way back to art—by exposing the forces that have quietly convinced them to stay away.
+    </div>
+
+    <div class="big-date">
+      <div>ISSUE 1</div>
+      <div>NOV. 1ST</div>
+      <div>2025</div>
+    </div>
+
+    <div class="button">
+      <div class="button-box">NOMINATE AN INTERVIEWEE</div>
+    </div>
+
+    <div class="footer">
+      <a href="#">ADVERTISE</a>
+      <a href="#">CONTACT</a>
+      <a href="#">LEGAL</a>
+    </div>
+  </div>
 </body>
 </html>
