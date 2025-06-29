@@ -129,6 +129,28 @@
       color: black !important;  /* Ensure the color is black */
       text-decoration: none !important; /* Remove the underline */
     }
+
+    /* Textbox Styling */
+    .textbox {
+      position: absolute;
+      top: 78%;  /* Adjust the vertical position of the textbox */
+      left: 50%;  /* Position the box horizontally in the center */
+      transform: translateX(-50%); /* Center horizontally */
+      width: calc(100% - 2 * var(--margin-control)); /* Same width as the button box */
+      height: 100px;  /* Control height */
+      background-color: transparent;
+      border: 1px solid black; /* Border similar to button box */
+      font-family: Arial, sans-serif;
+      font-size: 16px;  /* Set font size */
+      color: black;
+      padding: 10px;
+      text-align: left;  /* Left-justified alignment */
+      white-space: pre-wrap;  /* Preserve line breaks */
+      line-height: 1.5; /* Control line height */
+      letter-spacing: 0.5px;  /* Control character separation */
+      resize: none;  /* Disable resizing */
+      overflow-y: auto;  /* Enable vertical scrolling */
+    }
   </style>
 </head>
 
@@ -147,6 +169,11 @@
   <div class="button-box" id="button-box">
     <button>NOMINATE AN INTERVIEWEE</button>
   </div>
+
+  <!-- Textbox for input -->
+  <textarea class="textbox" placeholder="Enter your text here...">
+    <strong><em>The market isn't crashing—It's speaking.</em></strong> <em>Gauge</em> is a new publishing platform dedicated to examining the mechanisms that shape the art market—through the eyes of those who sustain it. Through anonymous contributions, critical essays, and structured provocations, <em>Gauge</em> creates a forum where collectors can interrogate the pressure systems of the art world that influence their choices. <em>Gauge</em> exists to help people find their way back to art—by exposing the forces that have quietly convinced them to stay away.
+  </textarea>
 
   <!-- Clickable Words Container -->
   <div class="bottom-text-container">
