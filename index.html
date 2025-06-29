@@ -25,6 +25,14 @@
       font-style: italic;
     }
 
+    /* Define Arial Bold Italic */
+    @font-face {
+      font-family: 'Arial Bold Italic';
+      src: url('https://github.com/username/repository-name/raw/main/fonts/ArialBoldItalic.TTF') format('truetype');
+      font-weight: bold;
+      font-style: italic;
+    }
+
     html, body {
       margin: 0;
       height: 100%;
@@ -90,15 +98,18 @@
     }
 
     /* Button inside box */
-    .button-box button {
-      background-color: transparent;
-      color: black;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 14px; /* Set font size to a fixed value */
-      white-space: nowrap; /* Prevent text from wrapping */
-    }
+.button-box button {
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px; /* Set font size to a fixed value */
+  white-space: nowrap; /* Prevent text from wrapping */
+  font-family: 'Arial Bold Italic', Arial, sans-serif;  /* Apply Arial Bold Italic */
+  font-weight: bold;  /* Make the text bold */
+  font-style: italic;  /* Make the text italic */
+}
 
     /* Add this container to manage clickable text placement */
     .bottom-text-container {
@@ -182,8 +193,9 @@
 
     /* For bold text */
     .bold-text {
-      font-family: 'Arial Light', Arial, sans-serif;
+      font-family: 'Arial Bold Italic', Arial, sans-serif;
       font-weight: bold;
+      font-style: italic;
     }
 
     /* For the word 'Gauge' in Arial Light Italic */
