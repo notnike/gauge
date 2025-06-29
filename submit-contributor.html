@@ -20,57 +20,46 @@
       font-family: 'Arial Light', Arial, sans-serif;
     }
 
-    /* Text styling for the headline */
-    .text {
-      font-family: 'Arial Bold Italic', Arial, sans-serif;
-      font-size: 48px;
-      text-align: center;
-      margin-bottom: 30px; /* Space between headline and input box */
-      letter-spacing: 3px;  /* Adjust letter-spacing as needed */
-    }
-
-    /* Container for the input box and button */
+    /* Box Styling - Center the box */
     .button-box {
       display: flex;
-      width: 400px; /* Total width of the container */
-      height: 50px;  /* Same height for input and button */
-      background-color: black;  /* Black background for the entire box */
+      justify-content: space-between; /* Align input box and button horizontally */
+      align-items: center;
+      width: 400px;  /* Set the overall width */
+      height: 50px;  /* Set the height */
       border: 1px solid black;
+      background-color: black;  /* Set background to black for the entire container */
     }
 
-    /* Email Input Box - Takes up 3/4 of the container */
+    /* Email Box Styling (3/4 of the container) */
     .email-box {
       font-family: 'Arial Light', Arial, sans-serif;
       font-size: 24px;
       padding: 10px;
       width: 75%;  /* 3/4 of the container width */
       border: none;
-      color: black;
       text-align: center;
+      color: black; /* Black text for the input */
     }
 
-    /* Recommend Button - Takes up 1/4 of the container */
+    /* Recommend Button Styling (1/4 of the container) */
     .recommend-button {
       font-family: 'Arial Light', Arial, sans-serif;
-      font-size: 24px;
+      color: white;
+      border: none;
       padding: 10px;
       width: 25%;  /* 1/4 of the container width */
-      color: white;
-      background-color: black; /* Button has a black background */
-      border: none;
       cursor: pointer;
+      font-size: 24px;
+      background-color: black; /* Black background */
     }
+
   </style>
 </head>
 
 <body>
 
-  <!-- Headline: "What's your recommended contributor's email address?" -->
-  <div class="text">
-    What's your recommended contributor's email address?
-  </div>
-
-  <!-- Email Input and Recommend Button Box -->
+  <!-- Email Input and Button Box -->
   <div class="button-box">
     <input type="text" id="emailInput" class="email-box" value="renemagritte@gmail.com" onclick="clearInput()" readonly />
     <button class="recommend-button" id="recommendButton" onclick="recommendEmail()">Recommend</button>
