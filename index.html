@@ -19,11 +19,12 @@
     .word {
       position: absolute;
       top: 72.5%;
-      left: 47.5%;
+      left: 50%;
       transform-origin: center;
       display: flex;
       justify-content: center;
       align-items: center;
+      transform: translateX(-50%);
     }
 
     .letter {
@@ -54,8 +55,9 @@
     .button-box {
       position: absolute;
       top: 85%; /* Adjust the vertical position of the button */
-      left: 0;
-      right: 0;
+      left: 50%; /* Position the box horizontally in the center */
+      transform: translateX(-50%); /* Center horizontally */
+      width: 60%; /* Set width to 60% of the screen width (you can adjust this) */
       background-color: transparent;
       border: 1px solid black; /* 1px black outline */
       display: flex;
@@ -78,6 +80,7 @@
       padding: 10px 20px;
       cursor: pointer;
       font-size: 18px; /* Set font size to a fixed value */
+      white-space: nowrap; /* Prevent text from wrapping */
     }
   </style>
 </head>
@@ -118,8 +121,8 @@
       // Center the word and apply scale only
       word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
 
-      // Stretch the button box width based on scaleX (no font scaling)
-      buttonBox.style.transform = `scaleX(${scaleX})`;
+      // Adjust the button box width based on available width
+      buttonBox.style.width = `${availableWidth * 0.6}px`;  // Set the width to 60% of the available width
     }
 
     window.addEventListener('resize', updateStretch);
