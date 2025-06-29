@@ -18,9 +18,9 @@
 
     .word {
       position: absolute;
-      top: 50%; /* Vertically center the word */
-      left: 50%; /* Horizontally center the word */
-      transform: translate(-50%, -50%); /* Keep it centered */
+      top: 72.5%;
+      left: 47.5%;
+      transform-origin: center;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -117,10 +117,10 @@
       const scaleX = availableWidth / baseWidth;
       const scaleY = availableHeight / baseHeight;
 
-      // The word should remain the same size (not scale with window)
-      word.style.transform = `translate(-50%, -50%)`;
+      // Center the word and apply scale only
+      word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
 
-      // Button box will scale with the window width, but font size of the text remains the same
+      // Adjust the button box width based on available width
       buttonBox.style.width = `${availableWidth * 0.6}px`;  // Set the width to 60% of the available width
     }
 
