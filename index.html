@@ -16,7 +16,7 @@
       overflow: hidden;
     }
 
-    /* Original logo position preserved */
+    /* Logo (preserving the original position) */
     .word {
       position: absolute;
       top: 17%;  /* Preserved original top position */
@@ -55,10 +55,10 @@
     /* Button Box Styling */
     .button-box {
       position: absolute;
-      top: 89%; /* Adjust the vertical position of the button */
-      left: 50%; /* Position the box horizontally in the center */
+      top: 89%;  /* Adjust the vertical position of the button */
+      left: 50%;  /* Position the box horizontally in the center */
       transform: translateX(-50%); /* Center horizontally */
-      width: 60%; /* Set width to 60% of the screen width (you can adjust this) */
+      width: 90%; /* Set width to 90% of the screen width (adjustable margin) */
       background-color: transparent;
       border: 1px solid black; /* 1px black outline */
       display: flex;
@@ -88,7 +88,7 @@
     .bottom-text-container {
       position: absolute;
       bottom: 10%;  /* Keep it near the bottom */
-      width: 100%;  /* Take up the full width of the screen */
+      width: 90%;  /* Set width to 90% of the screen width (adjustable margin) */
       display: flex;  /* Flexbox layout */
       justify-content: space-between;  /* Distribute items (left, center, right) evenly */
       align-items: center;  /* Vertically center */
@@ -176,7 +176,7 @@
       word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
 
       // Adjust the button box width based on available width
-      buttonBox.style.width = `${availableWidth * 1.04}px`;  // Set the width to 60% of the available width
+      buttonBox.style.width = `${availableWidth * 0.9}px`;  // Set the width to 90% of the available width
     }
 
     window.addEventListener('resize', updateStretch);
