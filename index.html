@@ -87,7 +87,7 @@
     /* Add this container to manage clickable text placement */
     .bottom-text-container {
       position: absolute;
-      bottom: 10%;  /* Keep it near the bottom */
+      bottom: 0%;  /* Keep it near the bottom */
       width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
       display: flex;  /* Flexbox layout */
       justify-content: space-between;  /* Distribute items (left, center, right) evenly */
@@ -176,7 +176,7 @@
       word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
 
       // Adjust the margin control value dynamically
-      const marginControl = Math.max(30, availableWidth * 0.05);  // Minimum margin of 30px, or 5% of the screen width
+      const marginControl = Math.max(5, availableWidth * 0.02);  // Minimum margin of 10px, or 2% of the screen width
       document.documentElement.style.setProperty('--margin-control', `${marginControl}px`);
     }
 
