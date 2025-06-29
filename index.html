@@ -18,7 +18,7 @@
 
     .word {
       position: absolute;
-      top: 72.5%;
+      top: 42.5%;
       left: 47.5%;
       transform-origin: center;
       display: flex;
@@ -28,9 +28,9 @@
 
     .letter {
       color: black;
-      font-family: 'big-caslon-fb', serif;
-      font-style: italic;
-      font-weight: 500;
+      font-family: Arial, sans-serif; /* Changed to Arial Regular */
+      font-style: normal; /* Removed italic */
+      font-weight: normal; /* Normal weight */
       font-size: 100px;
       white-space: pre;
       display: inline-block;
@@ -49,12 +49,38 @@
         opacity: 1;
       }
     }
+
+    .button-box {
+      position: absolute;
+      top: 55%; /* Adjust this to position the button box under the word */
+      left: 0;
+      right: 0;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: Arial, sans-serif; /* Changed to Arial Regular */
+      font-style: normal; /* Removed italic */
+      font-weight: normal; /* Normal weight */
+      opacity: 0;
+      animation: fadeInOnly 5s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    .button-box button {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- Only the word, no container needed now -->
+  <!-- Word -->
   <div class="word" id="stretch-word">
     <span class="letter" style="margin: 0 0px;">G</span>
     <span class="letter" style="margin: 0 -2px;">a</span>
@@ -63,9 +89,16 @@
     <span class="letter" style="margin: 0 -4px;">e</span>
   </div>
 
+  <!-- Button Box -->
+  <div class="button-box" id="button-box">
+    <button>NOMINATE AN INTERVIEWEE</button>
+  </div>
+
   <script>
     function updateStretch() {
       const word = document.getElementById('stretch-word');
+      const buttonBox = document.getElementById('button-box');
+      const button = buttonBox.querySelector('button');
 
       const marginX = 40;
       const marginY = 40;
@@ -73,14 +106,24 @@
       const availableWidth = window.innerWidth - marginX * 2;
       const availableHeight = window.innerHeight - marginY * 2;
 
-      const baseWidth = 200;
-      const baseHeight = 215;
+      const baseWidth = 212;
+      const baseHeight = 95;
 
       const scaleX = availableWidth / baseWidth;
       const scaleY = availableHeight / baseHeight;
 
       // Center the word and apply scale only
       word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
+
+      // Stretch the button box width based on scaleX
+      buttonBox.style.transform = `scaleX(${scaleX})`;
+
+      // Calculate the font size for the button based on the height of the button box
+      const boxHeight = buttonBox.offsetHeight;
+      const fontSize = boxHeight * 0.3;  // Adjust the multiplier (0.3) to fine-tune the font size
+
+      // Set the font size dynamically
+      button.style.fontSize = `${fontSize}px`;
     }
 
     window.addEventListener('resize', updateStretch);
