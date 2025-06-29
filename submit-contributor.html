@@ -11,70 +11,65 @@
       margin: 0;
       height: 100%;
       background: white;
-      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial Light', Arial, sans-serif;
       position: relative;
       overflow: hidden;
     }
 
-    /* Title Styling */
-    .question {
+    /* Add Mona Lisa ASCII to the background */
+    body::before {
+      content: "          ____  \n        o8%8888,    \n      o88%8888888.  \n     8'-    -:8888b   \n    8'         8888  \n   d8.-=. ,==-.:888b  \n   >8 `~` :`~' d8888   \n   88         ,88888   \n   88b. `-~  ':88888  \n   888b ~==~ .:88888 \n   88888o--:':::8888      \n   `88888| :::' 8888b  \n   8888^^'       8888b  \n  d888           ,%888b.   \n d88%            %%%8--'-.  \n/88:.__ ,       _%-' ---  -  \n    '''::===..-'   =  --.";
       position: absolute;
-      font-size: 30px;
-      color: #000;
-      transform: rotate(-15deg);
-      left: 30%;
       top: 10%;
-      z-index: 2;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10%);
+      font-family: monospace;
+      color: rgba(0, 0, 0, 0.1); /* Light gray to blend with background */
+      white-space: pre-wrap;
+      font-size: 12px;
+      z-index: -1;
+      line-height: 1.1;
+      letter-spacing: 1px;
+      overflow: hidden;
+      width: 100%;
     }
 
-    /* Email Box Styling */
-    .email-box {
-      position: absolute;
-      font-size: 24px;
-      padding: 10px;
-      width: 250px;
+    /* Box Styling - Center the box */
+    .button-box {
+      display: flex;
+      justify-content: space-between; /* Align input box and button horizontally */
+      align-items: center;
+      width: 500px;  /* Set the overall width */
+      height: 50px;  /* Set the height */
       border: 1px solid black;
-      text-align: center;
-      color: black;
-      top: 30%;
-      left: 20%;
-      z-index: 1;
+      background-color: black;  /* Set background to black for the entire container */
     }
 
-    /* Recommend Button Styling */
-    .recommend-button {
-      position: absolute;
+    /* Email Box Styling (3/4 of the container) */
+    .email-box {
+      font-family: 'Arial Light', Arial, sans-serif;
       font-size: 24px;
       padding: 10px;
-      width: 150px;
-      background-color: black;
+      width: 75%;  /* 3/4 of the container width */
+      border: none;
+      text-align: center;
+      color: white; /* White text for the input */
+      background-color: transparent; /* Transparent background */
+    }
+
+    /* Recommend Button Styling (1/4 of the container) */
+    .recommend-button {
+      font-family: 'Arial Light', Arial, sans-serif;
       color: white;
       border: none;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(45deg);
+      padding: 10px;
+      width: 25%;  /* 1/4 of the container width */
       cursor: pointer;
-      z-index: 1;
-    }
-
-    /* Distort the form further */
-    .form-container {
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-20deg);
-    }
-    
-    /* Animation for distortion */
-    @keyframes distortion {
-      0% { transform: translateY(0) rotate(-5deg); }
-      50% { transform: translateY(-10px) rotate(5deg); }
-      100% { transform: translateY(0) rotate(-5deg); }
-    }
-
-    /* Add a little bounce animation */
-    .bounce {
-      animation: distortion 1s infinite;
+      font-size: 24px;
+      background-color: black; /* Black background */
     }
 
   </style>
@@ -82,16 +77,29 @@
 
 <body>
 
-  <!-- The Question -->
-  <div class="question">
-    Where can we reach your recommended contributor?
+  <!-- Email Input and Button Box -->
+  <div class="button-box">
+    <input type="text" id="emailInput" class="email-box" value="renemagritte@gmail.com" onclick="clearInput()" readonly />
+    <button class="recommend-button" id="recommendButton" onclick="recommendEmail()">Recommend</button>
   </div>
 
-  <!-- Email Box -->
-  <input type="email" class="email-box bounce" placeholder="Enter email here">
+  <script>
+    // Clear input when clicked
+    function clearInput() {
+      const emailInput = document.getElementById('emailInput');
+      if (emailInput.value === "renemagritte@gmail.com") {
+        emailInput.value = '';  // Clear the default value
+      }
+      emailInput.readOnly = false;  // Make it editable
+    }
 
-  <!-- Recommend Button -->
-  <button class="recommend-button">Recommend</button>
+    // Handle email recommendation button click
+    function recommendEmail() {
+      const email = document.getElementById('emailInput').value;
+      // Here you can handle sending the email, for now, we'll simulate it with a mailto link
+      window.location.href = `mailto:youremail@example.com?subject=Recommended Contributor&body=Email: ${email}`;
+    }
+  </script>
 
 </body>
 </html>
