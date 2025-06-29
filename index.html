@@ -33,7 +33,6 @@
       justify-content: center;
       align-items: center;
       font-family: 'Arial Light', Arial, sans-serif;
-      text-align: center;
     }
 
     /* Text styling with letter-spacing control */
@@ -45,43 +44,38 @@
       letter-spacing: 3px;  /* Adjust letter-spacing as desired */
     }
 
-    /* Button Box Styling - Align email box and button next to each other */
+    /* Container for the email box and button */
     .button-box {
       display: flex;
-      justify-content: center;
+      justify-content: space-between; /* Spread the input box and button apart */
       align-items: center;
-      gap: 10px;  /* Space between the input box and the button */
+      width: 300px;  /* Set the overall width */
+      height: 50px;  /* Set the height */
+      border: 1px solid black;
+      background-color: black;  /* Set background to black for the entire container */
     }
 
-    /* Box Styling */
+    /* Email Box Styling (3/4 of the container) */
     .email-box {
       font-family: 'Arial Light', Arial, sans-serif;
       font-size: 24px;
       padding: 10px;
-      border: 1px solid black;
-      width: 300px;
+      width: 75%;  /* 3/4 of the container */
+      border: none;
       text-align: center;
-      height: 50px;  /* Same height as the button */
+      color: black; /* Black text for the input */
     }
 
-    /* Button inside box */
+    /* Recommend Button Styling (1/4 of the container) */
     .recommend-button {
-      background-color: black;
       font-family: 'Arial Light', Arial, sans-serif;
       color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 10px;
+      width: 25%;  /* 1/4 of the container */
       cursor: pointer;
-      font-size: 24px; /* Set font size to a fixed value */
-      white-space: nowrap; /* Prevent text from wrapping */
-      height: 50px;  /* Same height as the input box */
-    }
-
-    /* Box and button will align horizontally */
-    .button-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      font-size: 24px;
+      background-color: black; /* Black background */
     }
 
   </style>
@@ -114,9 +108,4 @@
     function recommendEmail() {
       const email = document.getElementById('emailInput').value;
       // Here you can handle sending the email, for now, we'll simulate it with a mailto link
-      window.location.href = `mailto:youremail@example.com?subject=Recommended Contributor&body=Email: ${email}`;
-    }
-  </script>
-
-</body>
-</html>
+      window.location.href = `mailto:youremail@example.com?subject=Recommended Contri
