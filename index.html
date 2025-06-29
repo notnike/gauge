@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Gauge</title>
+  <title>Submit Contributor Email</title>
   <link rel="icon" href="logo.png" type="image/png" />
   
   <!-- Adobe Font: Big Caslon Medium -->
@@ -29,71 +29,44 @@
       margin: 0;
       height: 100%;
       background: white;
-      overflow: hidden;
-    }
-
-    /* Logo (preserving the original position) */
-    .word {
-      position: absolute;
-      top: 18%;  /* Preserved original top position */
-      left: 47.5%;  /* Preserved original left position */
-      transform-origin: center;
       display: flex;
       justify-content: center;
       align-items: center;
-      transform: translateX(-50%) translateY(-50%); /* Fixed position of the logo */
-    }
-
-    .letter {
-      color: black;
-      font-family: 'big-caslon-fb', serif;
-      font-style: italic;
-      font-weight: 500;
-      font-size: 100px;
-      white-space: pre;
-      display: inline-block;
-      transform-origin: center;
-      text-transform: none;
-      font-variant: normal;
-
-      /* ✨ Slow fade-in */
-      opacity: 0;
-      animation: fadeInOnly 5s ease forwards;
-      animation-delay: 0.3s;
-    }
-
-    @keyframes fadeInOnly {
-      to {
-        opacity: 1;
-      }
-    }
-
-    /* Button Box Styling */
-    .button-box {
-      position: absolute;
-      top: 85%;  /* Adjust the vertical position of the button */
-      left: 50%;  /* Position the box horizontally in the center */
-      transform: translateX(-50%); /* Center horizontally */
-      width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
-      background-color: transparent;
-      border: 1px solid black; /* 1px black outline */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: black;
       font-family: 'Arial Light', Arial, sans-serif;
-      font-style: normal;
-      font-weight: normal;
-      opacity: 1;
-      animation: fadeInOnly 5s ease forwards;
-      animation-delay: 0.3s;
+    }
+
+    /* Text styling with letter-spacing control */
+    .text {
+      font-family: 'Arial Bold Italic', Arial, sans-serif; /* Apply Arial Bold Italic */
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 20px;
+      letter-spacing: 3px;  /* Adjust letter-spacing as desired */
+    }
+
+    /* Button Box Styling - Align email box and button next to each other */
+    .button-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;  /* Remove space between input and button */
+    }
+
+    /* Box Styling */
+    .email-box {
+      font-family: 'Arial Light', Arial, sans-serif;
+      font-size: 24px;
+      padding: 10px;
+      border: 1px solid black;
+      width: 300px;
+      text-align: center;
     }
 
     /* Button inside box */
-    .button-box button {
-      background-color: transparent;
+    .recommend-button {
+      background-color: black;
       font-family: 'Arial Light', Arial, sans-serif;
-      color: black;
+      color: white;
       border: none;
       padding: 10px 20px;
       cursor: pointer;
@@ -101,178 +74,43 @@
       white-space: nowrap; /* Prevent text from wrapping */
     }
 
-    /* Button Box - Apply hover effect to the entire box */
-    .button-box:hover {
-      background-color: black;  /* Change the entire box to black on hover */
+    /* Button and input box inside the same container */
+    .email-box, .recommend-button {
+      height: 50px;  /* Same height for both */
     }
 
-    /* Button inside box - Change text color on hover */
-    .button-box:hover button {
-      color: white;  /* Change text color to white when box is hovered */
-    }
-
-    /* Add this container to manage clickable text placement */
-    .bottom-text-container {
-      position: absolute;
-      bottom: 1%;  /* Keep it near the bottom */
-      width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
-      display: flex;  /* Flexbox layout */
-      justify-content: space-between;  /* Distribute items (left, center, right) evenly */
-      align-items: center;  /* Vertically center */
-      padding: 0 var(--margin-control);  /* Apply margin control for spacing */
-    }
-
-    /* Styling for clickable words */
-    .bottom-text {
-      font-family: 'Arial Light', Arial, sans-serif;
-      font-size: 24px;
-      cursor: pointer;
-      color: black; /* Ensuring the text is black */
-      text-decoration: none;  /* Remove underlines */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 40px; /* Fixed height for all three text links */
-    }
-
-    /* Left-aligned text */
-    .bottom-left {
-      text-align: left;
-    }
-
-    /* Center-aligned text */
-    .bottom-center {
-      text-align: center;
-      flex-grow: 1;  /* Make the center text flexible */
-    }
-
-    /* Right-aligned text */
-    .bottom-right {
-      text-align: right;
-    }
-
-    /* Ensure links are black and not underlined */
-    .bottom-text a {
-      color: black !important;  /* Ensure the color is black */
-      text-decoration: none !important; /* Remove the underline */
-    }
-
-    /* Textbox Styling (removing border) */
-    .textbox {
-      transform: translateX(-50%); /* Center horizontally */
-      width: calc(100% - 2 * var(--margin-control)); /* Same width as the button box */
-      height: 100px;  /* Control height */
-      background-color: transparent;
-      border: none; /* Removed border */
-      white-space: pre-wrap;  /* Preserve line breaks */
-      resize: none;  /* Disable resizing */
-      overflow-y: auto;  /* Enable vertical scrolling */
-      font-family: 'Arial Light', Arial, sans-serif;  /* Use Arial Light */
-      color: black;
-      padding: 10px;
-      text-align: center;  /* Center-align text */
-      line-height: 1.5; /* Control line height */
-      letter-spacing: -0.2px;  /* Control character separation */
-    }
-
-    /* Content display styling */
-    .content {
-      position: absolute;
-      top: 42%;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      width: calc(100% - 2 * var(--margin-control)); 
-      font-family: 'Arial Light', Arial, sans-serif;
-      font-size: 24px;
-      line-height: 1;
-      letter-spacing: 0px;
-      color: black;
-    }
-
-    .bold-italic {
-      font-family: 'Arial Bold Italic', Arial, sans-serif;  /* Apply Arial Bold Italic */
-      font-weight: bold;
-      font-style: italic;
-    }
-
-    .italic {
-      font-style: italic;
-    }
-
-    /* For the word 'Gauge' in Arial Light Italic */
-    .gauge {
-      font-family: 'Arial Light Italic', Arial, sans-serif;  /* Apply Arial Light Italic */
-      font-style: italic;  /* Ensure it's italicized */
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- Logo (same behavior as before) -->
-  <div class="word" id="stretch-word">
-    <span class="letter" style="margin: 0 0px;">G</span>
-    <span class="letter" style="margin: 0 -2px;">a</span>
-    <span class="letter" style="margin: 0 -5.5px;">u</span>
-    <span class="letter" style="margin: 0 0.5px;">g</span>
-    <span class="letter" style="margin: 0 -4px;">e</span>
+  <!-- Text Prompt -->
+  <div class="text">
+    What's your recommended contributor's email address?
   </div>
 
-  <!-- Button Box -->
-<div class="button-box" id="button-box">
-  <!-- Link the button to submit-email.html -->
-  <a href="submit-contributor.html">
-    <button>Recommend Contributor</button>
-  </a>
-</div>
-
-
-  <!-- Content Display -->
-  <div class="content">
-    <span class="bold-italic">The market isn't crashing—It's speaking.</span> <span class="gauge">Gauge</span> is a new publishing platform dedicated to examining the art market through the eyes of those who sustain it. Through anonymous contributions, interviews, and essays, <span class="gauge">Gauge</span> creates a forum where collectors can interrogate the pressure systems of the art world that aim at influencing their choices. <span class="gauge">Gauge</span> exists to help people find their way back to art by exposing, discussing, and look back at the consequences that have quietly convinced them to stay away.
-  </div>
-
-  <!-- Clickable Words Container -->
-  <div class="bottom-text-container">
-    <div class="bottom-text bottom-left">
-      <a href="#">About</a>
-    </div>
-    <div class="bottom-text bottom-center">
-      <a href="#">Contact</a>
-    </div>
-    <div class="bottom-text bottom-right">
-      <a href="#">Advertise</a>
-    </div>
+  <!-- Email Input and Button Box -->
+  <div class="button-box">
+    <input type="text" id="emailInput" class="email-box" value="renemagritte@gmail.com" onclick="clearInput()" readonly />
+    <button class="recommend-button" id="recommendButton" onclick="recommendEmail()">Recommend</button>
   </div>
 
   <script>
-    function updateStretch() {
-      const word = document.getElementById('stretch-word');
-      const buttonBox = document.getElementById('button-box');
-
-      const marginX = 40;
-      const marginY = 40;
-
-      const availableWidth = window.innerWidth - marginX * 2;
-      const availableHeight = window.innerHeight - marginY * 2;
-
-      const baseWidth = 202;
-      const baseHeight = 233;
-
-      const scaleX = availableWidth / baseWidth;
-      const scaleY = availableHeight / baseHeight;
-
-      // Center the word and apply scale only (preserve original logo scaling)
-      word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
-
-      // Adjust the margin control value dynamically
-      const marginControl = Math.max(5, availableWidth * 0.02);  // Minimum margin of 10px, or 2% of the screen width
-      document.documentElement.style.setProperty('--margin-control', `${marginControl}px`);
+    // Clear input when clicked
+    function clearInput() {
+      const emailInput = document.getElementById('emailInput');
+      if (emailInput.value === "renemagritte@gmail.com") {
+        emailInput.value = '';  // Clear the default value
+      }
+      emailInput.readOnly = false;  // Make it editable
     }
 
-    window.addEventListener('resize', updateStretch);
-    window.addEventListener('load', updateStretch);
+    // Handle email recommendation button click
+    function recommendEmail() {
+      const email = document.getElementById('emailInput').value;
+      // Here you can handle sending the email, for now, we'll simulate it with a mailto link
+      window.location.href = `mailto:youremail@example.com?subject=Recommended Contributor&body=Email: ${email}`;
+    }
   </script>
 
 </body>
