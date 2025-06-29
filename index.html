@@ -90,16 +90,23 @@
     }
 
     /* Button inside box */
-.button-box button {
-  background-color: transparent;
-  color: black;
-  font-family: 'Arial Light', Arial, sans-serif;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 24px; /* Keep the original font size */
-  white-space: nowrap; /* Prevent text from wrapping */
-}
+    .button-box button {
+      background-color: transparent;
+      color: black;
+      font-family: 'Arial Light', Arial, sans-serif;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 24px; /* Keep the original font size */
+      white-space: nowrap; /* Prevent text from wrapping */
+    }
+
+    /* Button inside box - Apply hover effect */
+    .button-box button:hover {
+      background-color: black;  /* Change background to black on hover */
+      color: white;  /* Change text color to white on hover */
+    }
+
     /* Add this container to manage clickable text placement */
     .bottom-text-container {
       position: absolute;
@@ -179,11 +186,11 @@
       color: black;
     }
 
-.bold-italic {
-  font-family: 'Arial Bold Italic', Arial, sans-serif;  /* Apply Arial Bold Italic */
-  font-weight: bold;
-  font-style: italic;
-}
+    .bold-italic {
+      font-family: 'Arial Bold Italic', Arial, sans-serif;  /* Apply Arial Bold Italic */
+      font-weight: bold;
+      font-style: italic;
+    }
 
     .italic {
       font-style: italic;
