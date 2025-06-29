@@ -9,120 +9,139 @@
       margin: 0;
       padding: 0;
       height: 100vh;
+      width: 100vw;
+      overflow: hidden;
       font-family: Arial, sans-serif;
     }
 
     .container {
+      height: 100vh;
+      width: 100vw;
       display: flex;
       flex-direction: column;
-      height: 100vh;
     }
 
-    /* 20%: LOGO and 1 (distorted text allowed) */
-    .logo {
-      height: 20vh;
+    /* Section Containers */
+    .section {
+      width: 100%;
       display: flex;
-      justify-content: space-between;
+      position: relative;
+    }
+
+    .logo-section {
+      height: 20vh;
+      justify-content: flex-start;
       align-items: flex-end;
+      padding: 0 2vw;
       font-family: serif;
       font-style: italic;
-      font-size: 12vh;
-      padding: 0 1rem;
     }
 
-    .logo span:last-child {
+    .logo-section .logo {
+      font-size: 15vh;
+      line-height: 1;
+      transform: scaleY(1.2); /* Slight stretch */
+    }
+
+    .logo-section .issue-number {
+      position: absolute;
+      bottom: 0.5vh;
+      right: 2vw;
       font-size: 1.5vh;
-      align-self: flex-end;
     }
 
-    /* 20%: DESCRIPTION (scalable text block) */
-    .description {
+    .description-section {
       height: 20vh;
-      display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 0 10vw;
+      padding: 0 12vw;
+    }
+
+    .description-section p {
       font-size: 1.8vh;
       line-height: 1.6;
+      margin: 0;
     }
 
-    /* 40%: BIG DATE (stretchy/distorted) */
-    .big-date {
+    .date-section {
       height: 40vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      font-size: 12vh;
-      font-stretch: expanded;
-      line-height: 0.9;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
       font-family: sans-serif;
+      transform: scaleY(1.2); /* Distortion effect */
     }
 
-    /* 10%: BUTTON */
-    .button {
+    .date-section div {
+      font-size: 10vh;
+      line-height: 1;
+    }
+
+    .button-section {
       height: 10vh;
-      display: flex;
       justify-content: center;
       align-items: center;
     }
 
     .button-box {
-      padding: 1vh 2vw;
+      padding: 1.5vh 2vw;
       border: 1px solid black;
       font-style: italic;
       font-size: 2vh;
     }
 
-    /* 10%: FOOTER NAV */
-    .footer {
+    .footer-section {
       height: 10vh;
-      display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
+      padding: 0 2vw;
       font-style: italic;
       font-size: 1.8vh;
     }
 
-    a {
+    .footer-section a {
       text-decoration: none;
       color: black;
-    }
-
-    @media (max-width: 600px) {
-      .big-date {
-        font-size: 8vh;
-      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="logo">
-      <span>Gauge</span>
-      <span>1</span>
+
+    <!-- LOGO + "1" -->
+    <div class="section logo-section">
+      <div class="logo">Gauge</div>
+      <div class="issue-number">1</div>
     </div>
 
-    <div class="description">
-      Gauge is a new publishing platform dedicated to examining the mechanisms that shape the art market—through the eyes of those who sustain it. Through anonymous contributions, critical essays, and structured provocations, Gauge creates a forum where collectors can interrogate the pressure systems of the art world that influence their choices. Gauge exists to help people find their way back to art—by exposing the forces that have quietly convinced them to stay away.
+    <!-- DESCRIPTION -->
+    <div class="section description-section">
+      <p>
+        Gauge is a new publishing platform dedicated to examining the mechanisms that shape the art market—through the eyes of those who sustain it. Through anonymous contributions, critical essays, and structured provocations, Gauge creates a forum where collectors can interrogate the pressure systems of the art world that influence their choices. Gauge exists to help people find their way back to art—by exposing the forces that have quietly convinced them to stay away.
+      </p>
     </div>
 
-    <div class="big-date">
+    <!-- BIG STRETCHY DATE -->
+    <div class="section date-section">
       <div>ISSUE 1</div>
       <div>NOV. 1ST</div>
       <div>2025</div>
     </div>
 
-    <div class="button">
+    <!-- BUTTON -->
+    <div class="section button-section">
       <div class="button-box">NOMINATE AN INTERVIEWEE</div>
     </div>
 
-    <div class="footer">
+    <!-- FOOTER -->
+    <div class="section footer-section">
       <a href="#">ADVERTISE</a>
       <a href="#">CONTACT</a>
       <a href="#">LEGAL</a>
     </div>
+
   </div>
 </body>
 </html>
