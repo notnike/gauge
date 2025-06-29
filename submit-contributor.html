@@ -5,54 +5,76 @@
   <title>Submit Contributor Email</title>
   <link rel="icon" href="logo.png" type="image/png" />
   
-  <!-- Adobe Font: Big Caslon Medium -->
-  <link rel="stylesheet" href="https://use.typekit.net/rsu7qml.css">
-
   <style>
     /* Basic Reset */
     html, body {
       margin: 0;
       height: 100%;
       background: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Arial Light', Arial, sans-serif;
+      font-family: Arial, sans-serif;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Box Styling - Center the box */
-    .button-box {
-      display: flex;
-      justify-content: space-between; /* Align input box and button horizontally */
-      align-items: center;
-      width: 500px;  /* Set the overall width */
-      height: 50px;  /* Set the height */
-      border: 1px solid black;
-      background-color: black;  /* Set background to black for the entire container */
+    /* Title Styling */
+    .question {
+      position: absolute;
+      font-size: 30px;
+      color: #000;
+      transform: rotate(-15deg);
+      left: 30%;
+      top: 10%;
+      z-index: 2;
     }
 
-    /* Email Box Styling (3/4 of the container) */
+    /* Email Box Styling */
     .email-box {
-      font-family: 'Arial Light', Arial, sans-serif;
+      position: absolute;
       font-size: 24px;
       padding: 10px;
-      width: 75%;  /* 3/4 of the container width */
-      border: none;
-      color: white; /* White text for the input */
-      background-color: transparent; /* Transparent background */
+      width: 250px;
+      border: 1px solid black;
       text-align: center;
+      color: black;
+      top: 30%;
+      left: 20%;
+      z-index: 1;
     }
 
-    /* Recommend Button Styling (1/4 of the container) */
+    /* Recommend Button Styling */
     .recommend-button {
-      font-family: 'Arial Light', Arial, sans-serif;
+      position: absolute;
+      font-size: 24px;
+      padding: 10px;
+      width: 150px;
+      background-color: black;
       color: white;
       border: none;
-      padding: 10px;
-      width: 25%;  /* 1/4 of the container width */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
       cursor: pointer;
-      font-size: 24px;
-      background-color: black; /* Black background */
+      z-index: 1;
+    }
+
+    /* Distort the form further */
+    .form-container {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-20deg);
+    }
+    
+    /* Animation for distortion */
+    @keyframes distortion {
+      0% { transform: translateY(0) rotate(-5deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+      100% { transform: translateY(0) rotate(-5deg); }
+    }
+
+    /* Add a little bounce animation */
+    .bounce {
+      animation: distortion 1s infinite;
     }
 
   </style>
@@ -60,29 +82,16 @@
 
 <body>
 
-  <!-- Email Input and Button Box -->
-  <div class="button-box">
-    <input type="text" id="emailInput" class="email-box" value="renemagritte@gmail.com" onclick="clearInput()" readonly />
-    <button class="recommend-button" id="recommendButton" onclick="recommendEmail()">Recommend</button>
+  <!-- The Question -->
+  <div class="question">
+    Where can we reach your recommended contributor?
   </div>
 
-  <script>
-    // Clear input when clicked
-    function clearInput() {
-      const emailInput = document.getElementById('emailInput');
-      if (emailInput.value === "renemagritte@gmail.com") {
-        emailInput.value = '';  // Clear the default value
-      }
-      emailInput.readOnly = false;  // Make it editable
-    }
+  <!-- Email Box -->
+  <input type="email" class="email-box bounce" placeholder="Enter email here">
 
-    // Handle email recommendation button click
-    function recommendEmail() {
-      const email = document.getElementById('emailInput').value;
-      // Here you can handle sending the email, for now, we'll simulate it with a mailto link
-      window.location.href = `mailto:youremail@example.com?subject=Recommended Contributor&body=Email: ${email}`;
-    }
-  </script>
+  <!-- Recommend Button -->
+  <button class="recommend-button">Recommend</button>
 
 </body>
 </html>
