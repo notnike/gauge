@@ -92,19 +92,23 @@
     /* Button inside box */
     .button-box button {
       background-color: transparent;
-      color: black;
       font-family: 'Arial Light', Arial, sans-serif;
+      color: black;
       border: none;
       padding: 10px 20px;
       cursor: pointer;
-      font-size: 24px; /* Keep the original font size */
+      font-size: 24px; /* Set font size to a fixed value */
       white-space: nowrap; /* Prevent text from wrapping */
     }
 
-    /* Button inside box - Apply hover effect */
-    .button-box button:hover {
-      background-color: black;  /* Change background to black on hover */
-      color: white;  /* Change text color to white on hover */
+    /* Button Box - Apply hover effect to the entire box */
+    .button-box:hover {
+      background-color: black;  /* Change the entire box to black on hover */
+    }
+
+    /* Button inside box - Change text color on hover */
+    .button-box:hover button {
+      color: white;  /* Change text color to white when box is hovered */
     }
 
     /* Add this container to manage clickable text placement */
