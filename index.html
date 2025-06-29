@@ -83,38 +83,40 @@
     }
 
     /* Styling for clickable words at the bottom */
-    .bottom-text {
-      position: absolute;
-      bottom: 0%; /* Position them near the bottom */
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      cursor: pointer;
-      color: black;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 40px; /* Fixed height for all three text links */
-    }
+    .bottom-text-container {
+  position: absolute;
+  bottom: 10%;  /* Keep it near the bottom */
+  width: 100%;  /* Take up the full width of the screen */
+  display: flex;  /* Flexbox layout */
+  justify-content: space-between;  /* Distribute items (left, center, right) */
+  align-items: center;  /* Vertically center */
+  padding: 0 20px;  /* Optional padding to prevent items touching the edges */
+}
 
-    /* Bottom Left (Left aligned) */
-    .bottom-left {
-      left: 2.6%; /* Align to the left */
-      text-align: left;
-    }
+/* Remove font-size duplication; It will inherit the existing size from .bottom-text */
+.bottom-text {
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px; /* Fixed height for all three text links */
+}
 
-    /* Bottom Right (Right aligned) */
-    .bottom-right {
-      right: 4%; /* Align to the right */
-      text-align: right;
-    }
+/* Adjust alignment */
+.bottom-left {
+  text-align: left;
+}
 
-    /* Bottom Center (Center aligned) */
-    .bottom-center {
-      left: 50%; /* Center horizontally */
-      transform: translateX(-50%);
-      text-align: center;
-    }
+.bottom-center {
+  text-align: center;
+  flex-grow: 1;  /* Make the center text flexible */
+}
+
+.bottom-right {
+  text-align: right;
+}
   </style>
 </head>
 
@@ -135,15 +137,17 @@
   </div>
 
   <!-- Clickable Words -->
+<div class="bottom-text-container">
   <div class="bottom-text bottom-left">
-    <a href="#" class="bottom-text">ABOUT</a>
+    <a href="#">ABOUT</a>
   </div>
   <div class="bottom-text bottom-center">
-    <a href="#" class="bottom-text">CONTACT</a>
+    <a href="#">CONTACT</a>
   </div>
   <div class="bottom-text bottom-right">
-    <a href="#" class="bottom-text">ADVERTISE</a>
+    <a href="#">ADVERTISE</a>
   </div>
+</div>
 
   <script>
     function updateStretch() {
