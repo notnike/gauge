@@ -71,7 +71,7 @@
     /* Button Box Styling */
     .button-box {
       position: absolute;
-      top: 85%;  /* Adjust the vertical position of the button */
+      top: 89%;  /* Adjust the vertical position of the button */
       left: 50%;  /* Position the box horizontally in the center */
       transform: translateX(-50%); /* Center horizontally */
       width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
@@ -81,7 +81,7 @@
       justify-content: center;
       align-items: center;
       color: black;
-      font-family: 'Arial Light', Arial, sans-serif;
+      font-family: Arial, sans-serif;
       font-style: normal;
       font-weight: normal;
       opacity: 1;
@@ -92,19 +92,18 @@
     /* Button inside box */
     .button-box button {
       background-color: transparent;
-      font-family: 'Arial Light', Arial, sans-serif;
       color: black;
       border: none;
       padding: 10px 20px;
       cursor: pointer;
-      font-size: 24px; /* Set font size to a fixed value */
+      font-size: 14px; /* Set font size to a fixed value */
       white-space: nowrap; /* Prevent text from wrapping */
     }
 
     /* Add this container to manage clickable text placement */
     .bottom-text-container {
       position: absolute;
-      bottom: 1%;  /* Keep it near the bottom */
+      bottom: 0%;  /* Keep it near the bottom */
       width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
       display: flex;  /* Flexbox layout */
       justify-content: space-between;  /* Distribute items (left, center, right) evenly */
@@ -114,8 +113,8 @@
 
     /* Styling for clickable words */
     .bottom-text {
-      font-family: 'Arial Light', Arial, sans-serif;
-      font-size: 24px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
       cursor: pointer;
       color: black; /* Ensuring the text is black */
       text-decoration: none;  /* Remove underlines */
@@ -158,11 +157,12 @@
       resize: none;  /* Disable resizing */
       overflow-y: auto;  /* Enable vertical scrolling */
       font-family: 'Arial Light', Arial, sans-serif;  /* Use Arial Light */
+      font-size: 18px;  /* Set font size */
       color: black;
       padding: 10px;
       text-align: center;  /* Center-align text */
       line-height: 1.5; /* Control line height */
-      letter-spacing: -0.2px;  /* Control character separation */
+      letter-spacing: -0.2px;
     }
 
     /* Content display styling */
@@ -176,17 +176,14 @@
       font-family: 'Arial Light', Arial, sans-serif;
       font-size: 24px;
       line-height: 1;
-      letter-spacing: 0px;
+      letter-spacing: -0.5px;
       color: black;
     }
 
-    .bold-italic {
+    /* For bold text */
+    .bold-text {
+      font-family: 'Arial Light', Arial, sans-serif;
       font-weight: bold;
-      font-style: italic;
-    }
-
-    .italic {
-      font-style: italic;
     }
 
     /* For the word 'Gauge' in Arial Light Italic */
@@ -210,24 +207,24 @@
 
   <!-- Button Box -->
   <div class="button-box" id="button-box">
-    <button>Recommend Contributor</button>
+    <button>NOMINATE AN INTERVIEWEE</button>
   </div>
 
   <!-- Content Display -->
   <div class="content">
-    <span class="bold-italic">The market isn't crashing—It's speaking.</span> <span class="gauge">Gauge</span> is a new publishing platform dedicated to examining the art market through the eyes of those who sustain it. Through anonymous contributions, interviews, and essays, <span class="gauge">Gauge</span> creates a forum where collectors can interrogate the pressure systems of the art world that aim at influencing their choices. <span class="gauge">Gauge</span> exists to help people find their way back to art by exposing, discussing, and look back at the consequences that have quietly convinced them to stay away.
+    <span class="bold-text">The market isn't crashing—It's speaking.</span> <span class="gauge">Gauge</span> is a new publishing platform dedicated to examining the mechanisms that shape the art market—through the eyes of those who sustain it. Through anonymous contributions, critical essays, and structured provocations, <span class="gauge">Gauge</span> creates a forum where collectors can interrogate the pressure systems of the art world that influence their choices. <span class="gauge">Gauge</span> exists to help people find their way back to art—by exposing the forces that have quietly convinced them to stay away.
   </div>
 
   <!-- Clickable Words Container -->
   <div class="bottom-text-container">
     <div class="bottom-text bottom-left">
-      <a href="#">About</a>
+      <a href="#">ABOUT</a>
     </div>
     <div class="bottom-text bottom-center">
-      <a href="#">Contact</a>
+      <a href="#">CONTACT</a>
     </div>
     <div class="bottom-text bottom-right">
-      <a href="#">Advertise</a>
+      <a href="#">ADVERTISE</a>
     </div>
   </div>
 
