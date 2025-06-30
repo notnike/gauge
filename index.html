@@ -253,7 +253,7 @@
     /* Adjust the vertical positioning of the top text */
     .top-text-container {
       position: absolute;
-      top: 18%;  /* Adjust vertical position of top words */
+      top: 24%;  /* Adjust vertical position of top words */
       width: calc(100% - 2 * var(--margin-control));  /* Same margin control as bottom */
       display: flex;
       justify-content: space-between;
@@ -293,6 +293,12 @@
       font-size: 48px;  /* Make button text bigger */
       padding: 15px 30px;  /* Make the button taller */
     }
+    /* Adjust position of the button on mobile */
+  .button-box {
+    top: 85%; /* Adjust vertical position of the button */
+    left: 50%; /* Keep it horizontally centered */
+    transform: translateX(-50%) translateY(0); /* Horizontal centering */
+  }
 
     /* Ensure text inside the invisible container is the same size as other text */
     .stretch-text {
