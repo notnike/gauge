@@ -1,1 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contributor Submission</title>
+  <style>
+    /* Define Arial Light */
+    @font-face {
+      font-family: 'Arial Light';
+      src: url('https://github.com/username/repository-name/raw/main/fonts/ArialLight.TTF') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
 
+    /* Define Arial Light Italic */
+    @font-face {
+      font-family: 'Arial Light';
+      src: url('https://github.com/username/repository-name/raw/main/fonts/ArialLightItalic.TTF') format('truetype');
+      font-weight: normal;
+      font-style: italic;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: white;
+      overflow: hidden;
+    }
+
+    /* THANKS Logo */
+    .word {
+      position: absolute;
+      top: 18%;
+      left: 47.5%;
+      transform-origin: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    .letter {
+      color: black;
+      font-family: 'big-caslon-fb', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 100px;
+      white-space: pre;
+      display: inline-block;
+      transform-origin: center;
+      text-transform: none;
+      font-variant: normal;
+
+      /* Slow fade-in */
+      opacity: 0;
+      animation: fadeInOnly 5s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes fadeInOnly {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Clickable Text Placement */
+    .bottom-text-container {
+      position: absolute;
+      bottom: 1%;  /* Keep it near the bottom */
+      width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
+      display: flex;  /* Flexbox layout */
+      justify-content: space-between;  /* Distribute items (left, center, right) evenly */
+      align-items: center;  /* Vertically center */
+      padding: 0 var(--margin-control);  /* Apply margin control for spacing */
+    }
+
+    /* Styling for Clickable Words */
+    .bottom-text {
+      font-family: 'Arial Light', Arial, sans-serif;
+      font-size: 24px;
+      cursor: pointer;
+      color: black; /* Ensuring the text is black */
+      text-decoration: none;  /* Remove underlines */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px; /* Fixed height for all three text links */
+    }
+
+    /* Left-aligned text (Bottom) */
+    .bottom-left {
+      text-align: left;
+    }
+
+    /* Center-aligned text (Bottom) */
+    .bottom-center {
+      text-align: center;
+      flex-grow: 1;  /* Make the center text flexible */
+    }
+
+    /* Right-aligned text (Bottom) */
+    .bottom-right {
+      text-align: right;
+    }
+
+    /* Ensure links are black and not underlined */
+    .bottom-text a {
+      color: black !important;  /* Ensure the color is black */
+      text-decoration: none !important; /* Remove the underline */
+    }
+
+    /* Textbox Styling (removing border) */
+    .textbox {
+      transform: translateX(-50%); /* Center horizontally */
+      width: calc(100% - 2 * var(--margin-control)); /* Same width as the button box */
+      height: 100px;  /* Control height */
+      background-color: transparent;
+      border: none; /* Removed border */
+      white-space: pre-wrap;  /* Preserve line breaks */
+      resize: none;  /* Disable resizing */
+      overflow-y: auto;  /* Enable vertical scrolling */
+      font-family: 'Arial Light', Arial, sans-serif;  /* Use Arial Light */
+      color: black;
+      padding: 10px;
+      text-align: center;  /* Center-align text */
+      line-height: 1.5; /* Control line height */
+      letter-spacing: -0.2px;  /* Control character separation */
+    }
+
+    /* Content display styling */
+    .content {
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      width: calc(100% - 2 * var(--margin-control)); 
+      font-family: 'Arial Light', Arial, sans-serif;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: 0px;
+      color: black;
+    }
+
+    .bold-italic {
+      font-family: 'Arial Bold Italic', Arial, sans-serif;  /* Apply Arial Bold Italic */
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .italic {
+      font-style: italic;
+    }
+
+    /* For the word 'THANKS' in Arial Light Italic */
+    .gauge {
+      font-family: 'Arial Light Italic', Arial, sans-serif;  /* Apply Arial Light Italic */
+      font-style: italic;  /* Ensure it's italicized */
+    }
+
+    /* Left and Right Aligned Text (TOP) */
+    .top-text-container {
+      position: absolute;
+      top: 37%;  /* Adjust the top position */
+      width: calc(100% - 2 * var(--margin-control));  /* Same margin control */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 var(--margin-control);  /* Apply margin control for spacing */
+    }
+
+    /* Styling for Words (Top) */
+    .top-text {
+      font-family: Arial, sans-serif;
+      font-size: 48px;  /* Set font size to 48px */
+      letter-spacing: -1.5px;  /* Adjust the general letter spacing (kerning) */
+      color: black;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;  /* Set the height to match the font size */
+    }
+
+    /* Left-aligned text (Top) */
+.top-left {
+  position: absolute;
+  left: var(--margin-control);  /* Apply left margin */
+  text-align: left;
+}
+
+/* Right-aligned text (Top) */
+.top-right {
+  position: absolute;
+  right: var(--margin-control);  /* Apply right margin */
+  text-align: right;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Logo (same behavior as before) -->
+  <div class="word" id="stretch-word">
+    <span class="letter" style="margin: 0 0px;">T</span>
+    <span class="letter" style="margin: 0 -2px;">H</span>
+    <span class="letter" style="margin: 0 -5.5px;">A</span>
+    <span class="letter" style="margin: 0 0.5px;">N</span>
+    <span class="letter" style="margin: 0 -4px;">K</span>
+    <span class="letter" style="margin: 0 -4px;">S</span>
+  </div>
+
+  <div class="top-text-container">
+    <div class="top-text top-left">
+      NOV1  <!-- Replace "TOP LEFT" with your text -->
+    </div>
+    <div class="top-text top-right">
+      1  <!-- Replace "TOP RIGHT" with your text -->
+    </div>
+  </div>
+
+  <!-- Clickable Words Container -->
+  <div class="bottom-text-container">
+    <div class="bottom-text bottom-left">
+      <a href="http://instagram.com/gaugeyourself">Instagram</a>
+    </div>
+    <div class="bottom-text bottom-center">
+      <a href="mailto:editorial@artgauge.me">Contact</a>
+    </div>
+    <div class="bottom-text bottom-right">
+      <a href="mailto:editorial@artgauge.me">Advertise</a>
+    </div>
+  </div>
+
+  <script>
+    function updateStretch() {
+      const word = document.getElementById('stretch-word');
+
+      const marginX = 40;
+      const marginY = 40;
+
+      const availableWidth = window.innerWidth - marginX * 2;
+      const availableHeight = window.innerHeight - marginY * 2;
+
+      const baseWidth = 202;
+      const baseHeight = 233;
+
+      const scaleX = availableWidth / baseWidth;
+      const scaleY = availableHeight / baseHeight;
+
+      word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
+
+      // Adjust the margin control value dynamically
+      const marginControl = Math.max(5, availableWidth * 0.02);  // Minimum margin of 10px, or 2% of the screen width
+      document.documentElement.style.setProperty('--margin-control', `${marginControl}px`);
+    }
+
+    window.addEventListener('resize', updateStretch);
+    window.addEventListener('load', updateStretch);
+  </script>
+
+</body>
+</html>
