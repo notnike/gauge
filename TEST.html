@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contributor Submission</title>
   <style>
-    /* Your styles go here */
+    /* Your CSS goes here */
   </style>
 </head>
 <body>
@@ -13,12 +13,61 @@
   <div class="container">
     <label for="email">Type their email address below:</label>
     <form action="https://getform.io/f/bdrglkkb" method="POST">
-  <input type="email" name="email" required />
-  <button type="submit" disabled>Recommend</button>
+      <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" required />
+      
+      <button id="recommendButton" type="submit" disabled>Recommend</button>
 
-  <!-- Your checkbox and other form elements go here -->
-</form>
+      <div class="checkbox-container">
+        <span id="checkbox" class="checkbox unchecked">☐</span>
+        <label for="consent" style="font-size: 24px;">Make sure they're OK with this.</label>
+      </div>
+    </form>
   </div>
+
+  <script>
+    const checkbox = document.getElementById('checkbox');
+    const recommendButton = document.getElementById('recommendButton');
+    const form = document.getElementById('form');
+
+    checkbox.addEventListener('click', function() {
+      // Toggle between unchecked and checked
+      if (checkbox.classList.contains('unchecked')) {
+        checkbox.classList.remove('unchecked');
+        checkbox.classList.add('checked');
+        checkbox.textContent = '☑'; // Update to checked ballot
+      } else {
+        checkbox.classList.remove('checked');
+        checkbox.classList.add('unchecked');
+        checkbox.textContent = '☐'; // Update to unchecked ballot
+      }
+
+      // Enable the RECOMMEND button when checked
+      recommendButton.disabled = !checkbox.classList.contains('checked');
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();  // Prevent default form submission
+
+      // Submit the form data to Getform
+      const formData = new FormData(form);
+
+      fetch('https://getform.io/f/bdrglkkb', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => {
+        if (response.ok) {
+          // Redirect to the thank-you page if the form is submitted successfully
+          window.location.href = 'https://artgauge.me/thank-you.html';  // Replace with your actual thank-you page URL
+        } else {
+          alert('There was a problem with your submission.');
+        }
+      })
+      .catch(error => {
+        alert('There was an error submitting the form.');
+      });
+    });
+  </script>
 
 </body>
 </html>
