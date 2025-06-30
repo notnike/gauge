@@ -248,11 +248,12 @@
       /* Disable the fade-in animation on mobile */
   .letter {
     animation: none !important;  /* Disable fade-in animation */
+    opacity: 1 !important;  /* Ensure the logo is visible on mobile */
   }
     /* Adjust the vertical positioning of the top text */
     .top-text-container {
       position: absolute;
-      top: 6%;  /* Adjust vertical position of top words */
+      top: 18%;  /* Adjust vertical position of top words */
       width: calc(100% - 2 * var(--margin-control));  /* Same margin control as bottom */
       display: flex;
       justify-content: space-between;
