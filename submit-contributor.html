@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contributor Submission</title>
   <style>
-    /* Define Arial Light */
+    /* Your existing styles here */
     html, body {
       margin: 0;
       height: 100%;
@@ -49,52 +49,29 @@
       }
     }
 
-    /* Clickable Text Placement */
     .bottom-text-container {
       position: absolute;
-      bottom: 1%;  /* Keep it near the bottom */
-      width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
-      display: flex;  /* Flexbox layout */
-      justify-content: space-between;  /* Distribute items (left, center, right) evenly */
-      align-items: center;  /* Vertically center */
-      padding: 0 var(--margin-control);  /* Apply margin control for spacing */
+      bottom: 1%;
+      width: calc(100% - 2 * var(--margin-control));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 var(--margin-control);
     }
 
-    /* Styling for Clickable Words */
     .bottom-text {
       font-family: 'Arial Light', Arial, sans-serif;
       font-size: 24px;
       cursor: pointer;
-      color: black; /* Ensuring the text is black */
-      text-decoration: none;  /* Remove underlines */
+      color: black;
+      text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 40px; /* Fixed height for all three text links */
+      height: 40px;
     }
 
-    /* Left-aligned text (Bottom) */
-    .bottom-left {
-      text-align: left;
-    }
-
-    /* Center-aligned text (Bottom) */
-    .bottom-center {
-      text-align: center;
-      flex-grow: 1;  /* Make the center text flexible */
-    }
-
-    /* Right-aligned text (Bottom) */
-    .bottom-right {
-      text-align: right;
-    }
-
-    /* Ensure links are black and not underlined */
-    .bottom-text a {
-      color: black !important;  /* Ensure the color is black */
-      text-decoration: none !important; /* Remove the underline */
-    }
-
+    /* Add your other styles as necessary */
   </style>
 </head>
 <body>
@@ -103,7 +80,7 @@
     <label for="email">Type their email address below:</label>
     <!-- Formspree Action URL for form submission -->
     <form id="contributorForm" action="https://formspree.io/f/xyzjoevw" method="POST" onsubmit="submitForm(event)">
-      <input type="email" id="email" name="email" placeholder="damienhurts@email.com" required />
+      <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" required />
       
       <button id="recommendButton" type="submit" disabled>Recommend</button>
 
@@ -115,46 +92,40 @@
   </div>
 
   <script>
-    // Enable the RECOMMEND button only if the checkbox is clicked
     const checkbox = document.getElementById('checkbox');
     const recommendButton = document.getElementById('recommendButton');
 
     checkbox.addEventListener('click', function() {
-      // Toggle between unchecked and checked
       if (checkbox.classList.contains('unchecked')) {
         checkbox.classList.remove('unchecked');
         checkbox.classList.add('checked');
-        checkbox.textContent = '☑'; // Update to checked ballot
+        checkbox.textContent = '☑'; // Checked box
       } else {
         checkbox.classList.remove('checked');
         checkbox.classList.add('unchecked');
-        checkbox.textContent = '☐'; // Update to unchecked ballot
+        checkbox.textContent = '☐'; // Unchecked box
       }
 
-      // Enable the RECOMMEND button when checked
       recommendButton.disabled = !checkbox.classList.contains('checked');
     });
 
-    // Submit the form via AJAX and redirect to Thank You page
     function submitForm(event) {
-      event.preventDefault();  // Prevent form submission to Formspree
+      event.preventDefault();
 
-      const email = document.getElementById('email').value; // Get the email input value
+      const email = document.getElementById('email').value; // Get email
 
-      // Prepare the data for Formspree
       const formData = new FormData();
       formData.append('email', email);
 
-      // Send the data via AJAX to Formspree
       fetch('https://formspree.io/f/xyzjoevw', {
         method: 'POST',
         body: formData
       })
       .then(response => {
         if (response.ok) {
-          window.location.href = '/thank-you.html'; // Redirect to custom Thank You page
+          window.location.href = '/thank-you.html';  // Redirect to your thank-you page
         } else {
-          alert('There was a problem with the submission. Please try again.');
+          alert('There was an issue with your submission. Please try again.');
         }
       })
       .catch(error => {
