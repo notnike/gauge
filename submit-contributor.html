@@ -70,27 +70,26 @@
     }
 
     /* Styling for the checkbox container and text */
-/* Styling for the checkbox label and vertical positioning */
-.checkbox-container label {
-  font-size: 48px;
-  position: relative;   /* Add this line */
-  top: 5px;             /* Add this line to adjust vertical position */
-}
+    .checkbox-container {
+      display: flex;
+      align-items: center;  /* Vertically align checkbox and text */
+      justify-content: center;
+      margin-bottom: 20px;
+    }
 
     /* Ballot character styles */
     .checkbox {
       font-size: 48px; /* Increased font size to make the checkbox bigger */
       cursor: pointer;
       margin-right: 10px; /* Space between checkbox and text */
-      transform: translateY(0px); /* Move the checkbox up slightly */
+      margin-top: -2px; /* Move the checkbox up slightly */
     }
 
-    .checkbox.checked {
-      content: "☑"; /* Checked box */
-    }
-
-    .checkbox.unchecked {
-      content: "☐"; /* Unchecked box */
+    /* Styling for the checkbox label and vertical positioning */
+    .checkbox-container label {
+      font-size: 24px;
+      position: relative;   /* Add this line */
+      top: 5px;             /* Add this line to adjust vertical position */
     }
 
     /* Styling for the button */
