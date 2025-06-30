@@ -50,22 +50,23 @@
     }
 
     /* Clickable Text Placement */
-   /* Adjusted Bottom Text Container */
-.bottom-text-container {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between; /* Keep the space between the items */
-  align-items: center;
-  padding: 0 20px;
-  background-color: white;
-}
+    /* Adjusted Bottom Text Container */
+    .bottom-text-container {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between; /* Keep the space between the items */
+      align-items: center;
+      padding: 0 20px; /* Fixed padding */
+      background-color: transparent; /* Remove background color to avoid overlap */
+      z-index: 10; /* Ensure it’s above other elements without covering them */
+    }
 
     /* Styling for Clickable Words */
     .bottom-text {
       font-family: 'Arial Light', Arial, sans-serif;
-      font-size: 24px;
+      font-size: 24px; /* Fixed font size */
       cursor: pointer;
       color: black; /* Ensuring the text is black */
       text-decoration: none;  /* Remove underlines */
@@ -73,6 +74,7 @@
       align-items: center;
       justify-content: center;
       height: 40px; /* Fixed height for all three text links */
+      flex-shrink: 0;  /* Prevent shrinking */
     }
 
     /* Left-aligned text (Bottom) */
@@ -87,12 +89,11 @@
     }
 
     /* Right-aligned text (Bottom) */
-.bottom-right {
-  text-align: right;
-  transform: translateX(-30px); /* Moves the text left */
-  flex-shrink: 0;  /* Prevent shrinking */
-}
-
+    .bottom-right {
+      text-align: right;
+      transform: translateX(-10px); /* Moves the text left */
+      flex-shrink: 0;  /* Prevent shrinking */
+    }
 
     /* Ensure links are black and not underlined */
     .bottom-text a {
