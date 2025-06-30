@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contributor Submission</title>
   <style>
-    /* Your CSS goes here */
+    /* Same CSS as before */
   </style>
 </head>
 <body>
 
   <div class="container">
     <label for="email">Type their email address below:</label>
-    <form id="form" method="POST" action="https://formsubmit.co/editorial@artgauge.me">
+    <form id="form" method="POST" action="https://getform.io/f/bdrglkkb">
       <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" required />
       
       <button id="recommendButton" type="submit" disabled>Recommend</button>
@@ -48,17 +48,17 @@
     form.addEventListener('submit', function(e) {
       e.preventDefault();  // Prevent default form submission
 
-      // Submit the form data to FormSubmit
+      // Submit the form data to Getform
       const formData = new FormData(form);
 
-      fetch('https://formsubmit.co/editorial@artgauge.me', {
+      fetch('https://getform.io/f/bdrglkkb', {
         method: 'POST',
         body: formData,
       })
       .then(response => {
         if (response.ok) {
           // Redirect to the thank-you page if the form is submitted successfully
-          window.location.href = 'https://artgauge.me/thank-you.html';
+          window.location.href = 'https://artgauge.me/thank-you.html';  // Replace with your actual thank-you page URL
         } else {
           alert('There was a problem with your submission.');
         }
