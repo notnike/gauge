@@ -230,18 +230,18 @@
     }
 
     /* Left-aligned text (Top) */
-    .top-left {
-      text-align: left;
-      flex-grow: 1;
-      transform: translateX(5px);  /* Adjust horizontal position */
-    }
+.top-left {
+  position: absolute;
+  left: var(--margin-control);  /* Apply left margin */
+  text-align: left;
+}
 
-    /* Right-aligned text (Top) */
-    .top-right {
-      text-align: right;
-      flex-grow: 1;
-      transform: translateX(-5px);  /* Adjust horizontal position */
-    }
+/* Right-aligned text (Top) */
+.top-right {
+  position: absolute;
+  right: var(--margin-control);  /* Apply right margin */
+  text-align: right;
+}
     
   </style>
 </head>
