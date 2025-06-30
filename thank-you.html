@@ -53,15 +53,17 @@
     }
 
     /* Clickable Text Placement */
-    .bottom-text-container {
-      position: absolute;
-      bottom: 1%;  /* Keep it near the bottom */
-      width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
-      display: flex;  /* Flexbox layout */
-      justify-content: space-between;  /* Distribute items (left, center, right) evenly */
-      align-items: center;  /* Vertically center */
-      padding: 0 var(--margin-control);  /* Apply margin control for spacing */
-    }
+   /* Adjusted Bottom Text Container */
+.bottom-text-container {
+  position: fixed;  /* Fix the container to the bottom */
+  bottom: 0;  /* Ensure it's always at the bottom */
+  width: 100%;  /* Full width */
+  display: flex;  /* Flexbox layout */
+  justify-content: space-between;  /* Distribute items evenly */
+  align-items: center;  /* Vertically center the items */
+  padding: 0 20px;  /* Add fixed padding */
+  background-color: white;  /* Optional: add a background to make the text stand out */
+}
 
     /* Styling for Clickable Words */
     .bottom-text {
