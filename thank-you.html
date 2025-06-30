@@ -87,9 +87,12 @@
     }
 
     /* Right-aligned text (Bottom) */
-    .bottom-right {
-      text-align: right;
-    }
+.bottom-right {
+  text-align: right;
+  margin-left: -10px; /* Adjust this value to move it left */
+  flex-shrink: 0;  /* Prevent shrinking */
+}
+
 
     /* Ensure links are black and not underlined */
     .bottom-text a {
