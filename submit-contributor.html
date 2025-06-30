@@ -6,96 +6,149 @@
   <title>Contributor Submission</title>
   <style>
     /* Define Arial Light */
-    html, body {
-      margin: 0;
-      height: 100%;
-      background: white;
-      overflow: hidden;
+    @font-face {
+      font-family: 'Arial Light';
+      src: url('https://github.com/username/repository-name/raw/main/fonts/ArialLight.TTF') format('truetype');
+      font-weight: normal;
+      font-style: normal;
     }
 
-    /* THANKS Logo */
-    .word {
-      position: absolute;
-      top: 17%;
-      left: 47.5%;
-      transform-origin: center;
+    /* Define Arial Light Italic */
+    @font-face {
+      font-family: 'Arial Light';
+      src: url('https://github.com/username/repository-name/raw/main/fonts/ArialLightItalic.TTF') format('truetype');
+      font-weight: normal;
+      font-style: italic;
+    }
+
+    body {
+      font-family: 'Arial Light', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: #333;
       display: flex;
       justify-content: center;
       align-items: center;
-      transform: translateX(-50%) translateY(-50%);
+      height: 100vh;
+      text-align: center;
     }
 
-    .letter {
+    .container {
+      width: 80%;
+      max-width: 600px;
+      padding: 20px;
+      background-color: transparent;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    label {
+      font-size: 24px;
+      font-weight: lighter;
+      display: block;
+      margin-bottom: 30px;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 24px;
+      font-family: 'Arial Light', sans-serif;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 0;
+      box-sizing: border-box;
+      color: #808080;
+      background-color: transparent;
+      text-align: center;
+    }
+
+    input[type="email"]:focus {
       color: black;
-      font-family: 'Arial Bold Italic', sans-serif;
-      font-style: italic;
-      font-weight: 500;
-      font-size: 100px;
-      white-space: pre;
-      display: inline-block;
-      transform-origin: center;
-      text-transform: none;
-      font-variant: normal;
-
-      /* Slow fade-in */
-      opacity: 0;
-      animation: fadeInOnly 5s ease forwards;
-      animation-delay: 0.3s;
     }
 
-    @keyframes fadeInOnly {
-      to {
-        opacity: 1;
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .checkbox {
+      font-size: 48px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .checkbox-container label {
+      font-size: 24px;
+      font-family: 'Arial Light', sans-serif;
+      transform: translateY(16px);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 24px;
+      font-family: 'Arial Light', sans-serif;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      opacity: 0.5;
+    }
+
+    button:hover {
+      background-color: #444;
+    }
+
+    button:enabled {
+      opacity: 1;
+      background-color: black;
+      color: white;
+    }
+
+    button:disabled {
+      opacity: 1;
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 1024px) {
+      body {
+        font-size: 18px;
+      }
+
+      .container {
+        width: 90%;
+        padding: 15px;
+      }
+
+      input[type="email"] {
+        font-size: 24px;
+      }
+
+      button {
+        font-size: 24px;
+        padding: 10px;
+      }
+
+      .checkbox-container {
+        margin-top: 10px;
       }
     }
-
-    .bottom-text-container {
-      position: absolute;
-      bottom: 1%;
-      width: calc(100% - 2 * var(--margin-control));
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 var(--margin-control);
-    }
-
-    .bottom-text {
-      font-family: 'Arial Light', Arial, sans-serif;
-      font-size: 24px;
-      cursor: pointer;
-      color: black;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 40px;
-    }
-
-    .bottom-left {
-      text-align: left;
-    }
-
-    .bottom-center {
-      text-align: center;
-      flex-grow: 1;
-    }
-
-    .bottom-right {
-      text-align: right;
-    }
-
-    /* Ensure links are black and not underlined */
-    .bottom-text a {
-      color: black !important;
-      text-decoration: none !important;
-    }
-
   </style>
 </head>
 <body>
 
   <div class="container">
     <label for="email">Type their email address below:</label>
+    <!-- Formspree Action URL for form submission -->
     <form action="https://formspree.io/f/xyzjoevw" method="POST">
       <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" required />
       
@@ -113,16 +166,18 @@
     const recommendButton = document.getElementById('recommendButton');
 
     checkbox.addEventListener('click', function() {
+      // Toggle between unchecked and checked
       if (checkbox.classList.contains('unchecked')) {
         checkbox.classList.remove('unchecked');
         checkbox.classList.add('checked');
-        checkbox.textContent = '☑'; // Checked box
+        checkbox.textContent = '☑'; // Update to checked ballot
       } else {
         checkbox.classList.remove('checked');
         checkbox.classList.add('unchecked');
-        checkbox.textContent = '☐'; // Unchecked box
+        checkbox.textContent = '☐'; // Update to unchecked ballot
       }
 
+      // Enable the RECOMMEND button when checked
       recommendButton.disabled = !checkbox.classList.contains('checked');
     });
   </script>
