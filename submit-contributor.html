@@ -5,150 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contributor Submission</title>
   <style>
-    /* Define Arial Light */
-    @font-face {
-      font-family: 'Arial Light';
-      src: url('https://github.com/username/repository-name/raw/main/fonts/ArialLight.TTF') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    /* Define Arial Light Italic */
-    @font-face {
-      font-family: 'Arial Light';
-      src: url('https://github.com/username/repository-name/raw/main/fonts/ArialLightItalic.TTF') format('truetype');
-      font-weight: normal;
-      font-style: italic;
-    }
-
-    body {
-      font-family: 'Arial Light', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: white;
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
-
-    .container {
-      width: 80%;
-      max-width: 600px;
-      padding: 20px;
-      background-color: transparent;
-      border-radius: 0;
-      box-shadow: none;
-    }
-
-    label {
-      font-size: 24px;
-      font-weight: lighter;
-      display: block;
-      margin-bottom: 30px;
-    }
-
-    input[type="email"] {
-      width: 100%;
-      padding: 10px;
-      font-size: 24px;
-      font-family: 'Arial Light', sans-serif;
-      margin-bottom: 20px;
-      border: 1px solid #ddd;
-      border-radius: 0;
-      box-sizing: border-box;
-      color: #808080;
-      background-color: transparent;
-      text-align: center;
-    }
-
-    input[type="email"]:focus {
-      color: black;
-    }
-
-    .checkbox-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    .checkbox {
-      font-size: 48px;
-      cursor: pointer;
-      margin-right: 10px;
-    }
-
-    .checkbox-container label {
-      font-size: 24px;
-      font-family: 'Arial Light', sans-serif;
-      transform: translateY(16px);
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      font-size: 24px;
-      font-family: 'Arial Light', sans-serif;
-      background-color: black;
-      color: white;
-      border: none;
-      border-radius: 0;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      opacity: 0.5;
-    }
-
-    button:hover {
-      background-color: #444;
-    }
-
-    button:enabled {
-      opacity: 1;
-      background-color: black;
-      color: white;
-    }
-
-    button:disabled {
-      opacity: 1;
-      background-color: white;
-      color: black;
-      border: 1px solid black;
-      cursor: not-allowed;
-    }
-
-    @media (max-width: 1024px) {
-      body {
-        font-size: 18px;
-      }
-
-      .container {
-        width: 90%;
-        padding: 15px;
-      }
-
-      input[type="email"] {
-        font-size: 24px;
-      }
-
-      button {
-        font-size: 24px;
-        padding: 10px;
-      }
-
-      .checkbox-container {
-        margin-top: 10px;
-      }
-    }
+    /* Your existing styles here */
   </style>
 </head>
 <body>
 
   <div class="container">
     <label for="email">Type their email address below:</label>
-    <!-- Updated FormSubmit Action URL with the correct email address -->
+    <!-- FormSubmit action with your email -->
     <form action="https://formsubmit.co/editorial@artgauge.me" method="POST">
       <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" required />
       
@@ -159,8 +23,8 @@
         <label for="consent" style="font-size: 24px;">Make sure they're OK with this.</label>
       </div>
 
-      <!-- Correct way to set redirection using _next -->
-      <input type="hidden" name="_next" value="http://yourdomain.com/thank-you.html">
+      <!-- Correct redirection: Replace with your actual domain and thank-you page -->
+      <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
     </form>
   </div>
 
