@@ -20,16 +20,17 @@
       font-weight: normal;
       font-style: italic;
     }
+
     body {
-      font-family: 'Arial Light', sans-serif; /* Ensure Arial Light is being used */
+      font-family: 'Arial Light', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: white; /* Set background to white */
+      background-color: white;
       color: #333;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh; /* Center everything vertically */
+      height: 100vh;
       text-align: center;
     }
 
@@ -37,17 +38,16 @@
       width: 80%;
       max-width: 600px;
       padding: 20px;
-      background-color: transparent; /* No background */
-      border-radius: 0; /* No rounded corners */
-      box-shadow: none; /* Remove any shadow */
+      background-color: transparent;
+      border-radius: 0;
+      box-shadow: none;
     }
 
     label {
       font-size: 24px;
-      font-weight: lighter; /* Ensure Arial Light is used */
+      font-weight: lighter;
       display: block;
-      margin-bottom: 30px; /* Increased space from the input box */
-      font-family: 'Arial Light', sans-serif;
+      margin-bottom: 30px;
     }
 
     input[type="email"] {
@@ -57,37 +57,15 @@
       font-family: 'Arial Light', sans-serif;
       margin-bottom: 20px;
       border: 1px solid #ddd;
-      border-radius: 0; /* Square corners */
+      border-radius: 0;
       box-sizing: border-box;
-      color: #808080; /* 50% grey text */
-      background-color: transparent; /* Transparent background */
-      text-align: center; /* Center text inside the input box */
+      color: #808080;
+      background-color: transparent;
+      text-align: center;
     }
 
     input[type="email"]:focus {
-      color: black; /* Change to black when focused */
-    }
-
-    /* Styling for the checkbox container */
-    .checkbox-container {
-      display: flex;
-      align-items: center;  /* Vertically align checkbox and text */
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    /* Ballot character styles */
-    .checkbox {
-      font-size: 48px; /* Increased font size to make the checkbox bigger */
-      cursor: pointer;
-      margin-right: 10px; /* Space between checkbox and text */
-      transform: translateY(0px); /* Adjust this value to move the checkbox up or down */
-    }
-
-    /* Styling for the checkbox label */
-    .checkbox-container label {
-      font-size: 24px;
-      font-family: 'Arial Light', sans-serif;
+      color: black;
     }
 
     /* Styling for the button */
@@ -99,7 +77,7 @@
       background-color: black;
       color: white;
       border: none;
-      border-radius: 0; /* Square corners for the button */
+      border-radius: 0;
       cursor: pointer;
       transition: background-color 0.3s;
       opacity: 0.5; /* Initially disabled */
@@ -110,17 +88,40 @@
     }
 
     button:enabled {
-      opacity: 1; /* Make the button fully visible when enabled */
-      background-color: black; /* Black background when enabled */
-      color: white; /* White text when enabled */
+      opacity: 1;
+      background-color: black;
+      color: white;
     }
 
     button:disabled {
       opacity: 1;
-      background-color: white; /* White background when disabled */
-      color: black; /* Black text when disabled */
-      border: 1px solid black; /* Black border when disabled */
+      background-color: white;
+      color: black;
+      border: 1px solid black;
       cursor: not-allowed;
+    }
+
+    /* Styling for the checkbox container */
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px; /* Space below the button */
+    }
+
+    /* Ballot character styles */
+    .checkbox {
+      font-size: 48px; /* Increased font size to make the checkbox bigger */
+      cursor: pointer;
+      margin-right: 10px; /* Space between checkbox and text */
+    }
+
+    .checkbox.checked {
+      content: "☑"; /* Checked box */
+    }
+
+    .checkbox.unchecked {
+      content: "☐"; /* Unchecked box */
     }
 
   </style>
@@ -131,14 +132,14 @@
     <label for="email">Type their email address below:</label>
     <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" />
 
+    <!-- RECOMMEND Button -->
+    <button id="recommendButton" disabled>Recommend</button>
+
     <!-- Checkbox and Text for Consent -->
     <div class="checkbox-container">
       <span id="checkbox" class="checkbox unchecked">☐</span>
       <label for="consent" style="font-size: 24px;">Make sure they're OK with this.</label>
     </div>
-
-    <!-- RECOMMEND Button -->
-    <button id="recommendButton" disabled>Recommend</button>
   </div>
 
   <script>
@@ -149,4 +150,19 @@
     checkbox.addEventListener('click', function() {
       // Toggle between unchecked and checked
       if (checkbox.classList.contains('unchecked')) {
-        checkbox.classList.remove('unchec
+        checkbox.classList.remove('unchecked');
+        checkbox.classList.add('checked');
+        checkbox.textContent = '☑'; // Update to checked ballot
+      } else {
+        checkbox.classList.remove('checked');
+        checkbox.classList.add('unchecked');
+        checkbox.textContent = '☐'; // Update to unchecked ballot
+      }
+
+      // Enable the RECOMMEND button when checked
+      recommendButton.disabled = !checkbox.classList.contains('checked');
+    });
+  </script>
+
+</body>
+</html>
