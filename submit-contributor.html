@@ -1,74 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contributor Submission</title>
   <style>
-    /* Example CSS */
     body {
       font-family: Arial, sans-serif;
+      font-size: 48px;
       margin: 0;
       padding: 0;
+      background-color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: #f4f4f4;
-    }
-
-    .container {
-      padding: 20px;
-      background-color: white;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      width: 100%;
-      max-width: 400px;
       text-align: center;
     }
 
+    .container {
+      width: 80%;
+      max-width: 600px;
+      padding: 20px;
+    }
+
     label {
-      font-size: 18px;
-      margin-bottom: 10px;
       display: block;
+      margin-bottom: 20px;
     }
 
     input[type="email"] {
-      padding: 10px;
       width: 100%;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 16px;
+      padding: 10px;
+      font-size: 48px;
+      color: #808080;
+      background-color: transparent;
+      border: 1px solid #ddd;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    input[type="email"]:focus {
+      color: black;
     }
 
     button {
-      padding: 10px 20px;
-      background-color: #4CAF50;
+      width: 100%;
+      padding: 12px;
+      font-size: 48px;
+      background-color: #ddd;
       color: white;
       border: none;
-      cursor: pointer;
-      font-size: 16px;
-      border-radius: 4px;
-      width: 100%;
+      cursor: not-allowed;
     }
 
-    button:disabled {
-      background-color: #ddd;
+    button.enabled {
+      background-color: black;
+      cursor: pointer;
     }
 
     .checkbox-container {
-      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
     }
 
     .checkbox {
-      font-size: 24px;
+      font-size: 48px;
       cursor: pointer;
       margin-right: 10px;
     }
 
     .checkbox-container label {
-      font-size: 16px;
+      font-size: 48px;
     }
   </style>
 </head>
@@ -76,14 +81,14 @@
 
   <div class="container">
     <label for="email">Type their email address below:</label>
-    <form id="form" method="POST" action="https://getform.io/f/bdrglkkb">
+    <form action="https://getform.io/f/bdrglkkb" method="POST" id="form">
       <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" required />
-      
+
       <button id="recommendButton" type="submit" disabled>Recommend</button>
 
       <div class="checkbox-container">
-        <span id="checkbox" class="checkbox unchecked">☐</span>
-        <label for="consent">Make sure they're OK with this.</label>
+        <span id="checkbox" class="checkbox">☐</span>
+        <label for="consent">Make sure they're OK with it.</label>
       </div>
     </form>
   </div>
@@ -95,34 +100,32 @@
 
     checkbox.addEventListener('click', function() {
       // Toggle between unchecked and checked
-      if (checkbox.classList.contains('unchecked')) {
-        checkbox.classList.remove('unchecked');
-        checkbox.classList.add('checked');
+      if (checkbox.textContent === '☐') {
         checkbox.textContent = '☑'; // Update to checked ballot
       } else {
-        checkbox.classList.remove('checked');
-        checkbox.classList.add('unchecked');
         checkbox.textContent = '☐'; // Update to unchecked ballot
       }
 
       // Enable the RECOMMEND button when checked
-      recommendButton.disabled = !checkbox.classList.contains('checked');
+      recommendButton.disabled = checkbox.textContent !== '☑';
+      if (checkbox.textContent === '☑') {
+        recommendButton.classList.add('enabled');
+      } else {
+        recommendButton.classList.remove('enabled');
+      }
     });
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();  // Prevent default form submission
 
-      // Submit the form data to Getform
       const formData = new FormData(form);
-
       fetch('https://getform.io/f/bdrglkkb', {
         method: 'POST',
         body: formData,
       })
       .then(response => {
         if (response.ok) {
-          // Redirect to the thank-you page if the form is submitted successfully
-          window.location.href = 'https://artgauge.me/thank-you.html';  // Use your actual thank-you page URL
+          window.location.href = 'https://artgauge.me/thank-you.html';  // Redirect to thank-you page
         } else {
           alert('There was a problem with your submission.');
         }
