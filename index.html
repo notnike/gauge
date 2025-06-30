@@ -205,6 +205,41 @@
       font-family: 'Arial Light Italic', Arial, sans-serif;  /* Apply Arial Light Italic */
       font-style: italic;  /* Ensure it's italicized */
     }
+    /* Left and Right Aligned Text (TOP) */
+    .top-text-container {
+      position: absolute;
+      top: 5%;  /* Adjust the top position */
+      width: calc(100% - 2 * var(--margin-control));  /* Same margin control */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 var(--margin-control);  /* Apply margin control for spacing */
+    }
+
+    /* Styling for Words (Top) */
+    .top-text {
+      font-family: Arial, sans-serif;
+      font-size: 48px;  /* Set font size to 48px */
+      color: black;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;  /* Set the height to match the font size */
+    }
+
+    /* Left-aligned text (Top) */
+    .top-left {
+      text-align: left;
+      flex-grow: 1;
+    }
+
+    /* Right-aligned text (Top) */
+    .top-right {
+      text-align: right;
+      flex-grow: 1;
+    }
+    
   </style>
 </head>
 
