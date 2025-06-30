@@ -122,6 +122,85 @@
       border: 1px solid black;
       cursor: not-allowed;
     }
+    /* General Body Font Size */
+body {
+  font-family: 'Arial Light', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  font-size: 24px; /* Default font size for larger screens */
+}
+
+/* Container */
+.container {
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Email Input */
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 24px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 0;
+  color: #808080;
+  background-color: transparent;
+  text-align: center;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 24px;
+  font-family: 'Arial Light', sans-serif;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  opacity: 0.5; /* Initially disabled */
+}
+
+/* Mobile Media Query */
+@media (max-width: 1024px) {
+  /* Adjust font size for smaller screens */
+  body {
+    font-size: 18px; /* Smaller font size for mobile */
+  }
+
+  .container {
+    width: 90%;
+    padding: 15px; /* Reduced padding on mobile */
+  }
+
+  input[type="email"] {
+    font-size: 18px; /* Smaller font size for mobile */
+  }
+
+  button {
+    font-size: 18px; /* Smaller font size for mobile */
+    padding: 10px;   /* Adjusted padding */
+  }
+
+  /* Adjust placement of elements for mobile */
+  .checkbox-container {
+    margin-top: 10px;  /* Adjust the space below the button */
+  }
+}
 
   </style>
 </head>
