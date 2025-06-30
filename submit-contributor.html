@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contributor Submission</title>
   <style>
-    /* Same CSS as before */
+    /* Your CSS goes here */
   </style>
 </head>
 <body>
@@ -23,9 +23,6 @@
       </div>
     </form>
   </div>
-
-  <!-- Hidden iframe to prevent FormSubmit redirect -->
-  <iframe name="hidden_iframe" style="display:none;"></iframe>
 
   <script>
     const checkbox = document.getElementById('checkbox');
@@ -49,19 +46,18 @@
     });
 
     form.addEventListener('submit', function(e) {
-      e.preventDefault();
+      e.preventDefault();  // Prevent default form submission
 
-      // Submit the form data to FormSubmit using the hidden iframe
+      // Submit the form data to FormSubmit
       const formData = new FormData(form);
-      const iframe = document.querySelector('iframe[name="hidden_iframe"]');
 
-      fetch('https://formsubmit.co/your-email@example.com', {
+      fetch('https://formsubmit.co/editorial@artgauge.me', {
         method: 'POST',
         body: formData,
       })
       .then(response => {
         if (response.ok) {
-          // Redirect to the thank-you page if form submission is successful
+          // Redirect to the thank-you page if the form is submitted successfully
           window.location.href = 'https://artgauge.me/thank-you.html';
         } else {
           alert('There was a problem with your submission.');
