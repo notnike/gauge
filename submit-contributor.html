@@ -2,151 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Submit Contributor Email</title>
-  <link rel="icon" href="logo.png" type="image/png" />
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contributor Submission</title>
   <style>
-    /* Basic Reset */
-    html, body {
+    body {
+      font-family: 'Arial', sans-serif;
       margin: 0;
-      height: 100%;
-      background: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      position: relative;
-      overflow: hidden;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
     }
 
-    /* Add Mona Lisa ASCII to the background */
-    body::before {
-      content: "          ____  \n        o8%8888,    \n      o88%8888888.  \n     8'-    -:8888b   \n    8'         8888  \n   d8.-=. ,==-.:888b  \n   >8 `~` :`~' d8888   \n   88         ,88888   \n   88b. `-~  ':88888  \n   888b ~==~ .:88888 \n   88888o--:':::8888      \n   `88888| :::' 8888b  \n   8888^^'       8888b  \n  d888           ,%888b.   \n d88%            %%%8--'-.  \n/88:.__ ,       _%-' ---  -  \n    '''::===..-'   =  --.";
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-10%);
-      font-family: monospace;
-      color: rgba(0, 0, 0, 0.1); /* Light gray to blend with background */
-      white-space: pre-wrap;
-      font-size: 12px;
-      z-index: -1;
-      line-height: 1.1;
-      letter-spacing: 1px;
-      overflow: hidden;
-      width: 100%;
+    .container {
+      width: 80%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    /* Text styling for the question */
-    .question {
-      position: absolute;
-      font-size: 30px;
-      color: #000;
-      transform: rotate(-15deg);
-      left: 5%;
-      top: 10%;
-      z-index: 2;
-      white-space: pre-line;  /* Allow line breaks for splitting text */
-      letter-spacing: 3px;  /* Adjust letter-spacing as desired */
-      line-height: 1.5;  /* Control line height for splitting */
-    }
-
-    /* Distort the text vertically and allow vertical movement */
-    .distort {
-      transform: rotate(-15deg) scaleY(var(--vertical-distortion, 1)); /* Vertical distortion control */
-      top: var(--vertical-position, 10%); /* Vertical position control */
-    }
-
-    /* Box Styling - Center the box */
-    .button-box {
-      display: flex;
-      justify-content: space-between; /* Align input box and button horizontally */
-      align-items: center;
-      width: 500px;  /* Set the overall width */
-      height: 50px;  /* Set the height */
-      border: 1px solid black;
-      background-color: black;  /* Set background to black for the entire container */
-    }
-
-    /* Email Box Styling (3/4 of the container) */
-    .email-box {
-      font-family: 'Arial Light', Arial, sans-serif;
-      font-size: 24px;
-      padding: 10px;
-      width: 75%;  /* 3/4 of the container width */
-      border: none;
+    h1 {
+      font-size: 36px;
       text-align: center;
-      color: white; /* White text for the input */
-      background-color: transparent; /* Transparent background */
+      margin-bottom: 20px;
     }
 
-    /* Recommend Button Styling (1/4 of the container) */
-    .recommend-button {
-      font-family: 'Arial Light', Arial, sans-serif;
+    label {
+      font-size: 24px;
+      font-weight: lighter;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    textarea, input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 24px;
+      font-family: Arial, sans-serif;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 12px;
+      font-size: 24px;
+      font-family: 'Arial', sans-serif;
+      background-color: black;
       color: white;
       border: none;
-      padding: 10px;
-      width: 25%;  /* 1/4 of the container width */
+      border-radius: 4px;
       cursor: pointer;
-      font-size: 24px;
-      background-color: black; /* Black background */
+      transition: background-color 0.3s;
+      opacity: 0.5; /* Make button initially inactive */
     }
 
+    .submit-button:enabled {
+      opacity: 1; /* Make the button fully visible once enabled */
+    }
+
+    .submit-button:disabled {
+      cursor: not-allowed;
+    }
   </style>
 </head>
-
 <body>
 
-  <!-- The Question, now split into two lines and distorted -->
-  <div class="question distort">
-    Where can we reach
-    your recommended
-    contributor?
-  </div>
+  <div class="container">
+    <h1>Contributor Submission</h1>
+    <label for="recommendation">Type your recommendation below:</label>
+    <textarea id="recommendation" name="recommendation" rows="6" placeholder="Write your recommendation here..."></textarea>
 
-  <!-- Email Input and Button Box -->
-  <div class="button-box">
-    <input type="text" id="emailInput" class="email-box" value="renemagritte@gmail.com" onclick="clearInput()" readonly />
-    <button class="recommend-button" id="recommendButton" onclick="recommendEmail()">Recommend</button>
-  </div>
+    <label for="email">Email (mock email):</label>
+    <input type="email" id="email" name="email" value="damienhurt@gmail.com" readonly />
 
-  <!-- Controls to distort and move the text -->
-  <div style="position: absolute; top: 80%; left: 5%; z-index: 2;">
-    <label for="vertical-distortion">Vertical Distortion:</label>
-    <input type="range" id="vertical-distortion" min="0.5" max="2" step="0.1" value="1" onchange="updateDistortion()" />
-    <br />
-    <label for="vertical-position">Vertical Position:</label>
-    <input type="range" id="vertical-position" min="0" max="50" step="1" value="10" onchange="updatePosition()" />
+    <div>
+      <input type="checkbox" id="consent" /> 
+      <label for="consent" style="font-size: 24px;">Make sure they're OK with this.</label>
+    </div>
+
+    <button id="recommendButton" class="submit-button" disabled>RECOMMEND</button>
   </div>
 
   <script>
-    // Clear input when clicked
-    function clearInput() {
-      const emailInput = document.getElementById('emailInput');
-      if (emailInput.value === "renemagritte@gmail.com") {
-        emailInput.value = '';  // Clear the default value
-      }
-      emailInput.readOnly = false;  // Make it editable
-    }
+    // Enable the button if the checkbox is checked
+    const checkbox = document.getElementById('consent');
+    const recommendButton = document.getElementById('recommendButton');
 
-    // Handle email recommendation button click
-    function recommendEmail() {
-      const email = document.getElementById('emailInput').value;
-      // Here you can handle sending the email, for now, we'll simulate it with a mailto link
-      window.location.href = `mailto:youremail@example.com?subject=Recommended Contributor&body=Email: ${email}`;
-    }
-
-    // Update vertical distortion based on range input
-    function updateDistortion() {
-      const distortionValue = document.getElementById('vertical-distortion').value;
-      document.documentElement.style.setProperty('--vertical-distortion', distortionValue);
-    }
-
-    // Update vertical position based on range input
-    function updatePosition() {
-      const positionValue = document.getElementById('vertical-position').value;
-      document.documentElement.style.setProperty('--vertical-position', `${positionValue}%`);
-    }
+    checkbox.addEventListener('change', function() {
+      recommendButton.disabled = !checkbox.checked;
+    });
   </script>
 
 </body>
