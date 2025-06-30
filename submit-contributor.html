@@ -9,14 +9,18 @@
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
+      background-color: white;
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Center everything vertically */
+      text-align: center;
     }
 
     .container {
       width: 80%;
       max-width: 600px;
-      margin: 0 auto;
       padding: 20px;
       background-color: white;
       border-radius: 8px;
@@ -24,9 +28,10 @@
     }
 
     h1 {
-      font-size: 36px;
-      text-align: center;
+      font-size: 48px;
+      font-weight: normal;
       margin-bottom: 20px;
+      transform: scaleY(5); /* Vertically stretch the headline */
     }
 
     label {
@@ -36,7 +41,7 @@
       margin-bottom: 10px;
     }
 
-    textarea, input[type="email"] {
+    input[type="email"] {
       width: 100%;
       padding: 10px;
       font-size: 24px;
@@ -47,11 +52,23 @@
       box-sizing: border-box;
     }
 
-    input[type="checkbox"] {
-      margin-right: 10px;
+    /* Styling for the checkbox and the text */
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
     }
 
-    .submit-button {
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      border: 1px solid black; /* 1px black border */
+      margin-right: 10px; /* Space between checkbox and text */
+    }
+
+    /* Styling for the button */
+    button {
       width: 100%;
       padding: 12px;
       font-size: 24px;
@@ -62,38 +79,43 @@
       border-radius: 4px;
       cursor: pointer;
       transition: background-color 0.3s;
-      opacity: 0.5; /* Make button initially inactive */
+      opacity: 0.5; /* Initially disabled */
     }
 
-    .submit-button:enabled {
-      opacity: 1; /* Make the button fully visible once enabled */
+    button:hover {
+      background-color: #444;
     }
 
-    .submit-button:disabled {
+    button:enabled {
+      opacity: 1; /* Make the button fully visible when enabled */
+    }
+
+    button:disabled {
       cursor: not-allowed;
     }
+
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>Contributor Submission</h1>
-    <label for="recommendation">Type your recommendation below:</label>
-    <textarea id="recommendation" name="recommendation" rows="6" placeholder="Write your recommendation here..."></textarea>
+    <h1>RECOMMEND CONTRIBUTOR</h1>
 
-    <label for="email">Email (mock email):</label>
-    <input type="email" id="email" name="email" value="damienhurt@gmail.com" readonly />
+    <label for="email">Type their email address below</label>
+    <input type="email" id="email" name="email" value="damienhurt@gmail.com" oninput="this.value ? this.style.display = 'none' : null" />
 
-    <div>
+    <!-- Checkbox and Text for Consent -->
+    <div class="checkbox-container">
       <input type="checkbox" id="consent" /> 
-      <label for="consent" style="font-size: 24px;">Make sure they're OK with this.</label>
+      <label for="consent" style="font-size: 24px;">Make sure they're OK with this</label>
     </div>
 
-    <button id="recommendButton" class="submit-button" disabled>RECOMMEND</button>
+    <!-- RECOMMEND Button -->
+    <button id="recommendButton" disabled>RECOMMEND</button>
   </div>
 
   <script>
-    // Enable the button if the checkbox is checked
+    // Enable the RECOMMEND button only if the checkbox is checked
     const checkbox = document.getElementById('consent');
     const recommendButton = document.getElementById('recommendButton');
 
