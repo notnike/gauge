@@ -148,8 +148,7 @@
 
   <div class="container">
     <label for="email">Type their email address below:</label>
-    <!-- Formspree Action URL for form submission -->
-    <form id="form" action="https://formspree.io/f/xyzjoevw" method="POST">
+    <form id="form" method="POST">
       <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" required />
       
       <button id="recommendButton" type="submit" disabled>Recommend</button>
@@ -185,9 +184,9 @@
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Submit the form data to Formspree
+      // Submit the form data to Formspree manually using fetch()
       const formData = new FormData(form);
-      fetch(form.action, {
+      fetch('https://formspree.io/f/xyzjoevw', {
         method: 'POST',
         body: formData,
       })
