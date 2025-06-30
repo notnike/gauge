@@ -160,6 +160,9 @@
     </form>
   </div>
 
+  <!-- Hidden iframe to prevent Formspree redirect -->
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+
   <script>
     const checkbox = document.getElementById('checkbox');
     const recommendButton = document.getElementById('recommendButton');
@@ -184,8 +187,10 @@
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Submit the form data to Formspree manually using fetch()
+      // Submit the form data to Formspree using the hidden iframe
       const formData = new FormData(form);
+      const iframe = document.querySelector('iframe[name="hidden_iframe"]');
+
       fetch('https://formspree.io/f/xyzjoevw', {
         method: 'POST',
         body: formData,
