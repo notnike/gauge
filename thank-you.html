@@ -144,46 +144,75 @@
       font-style: italic;  /* Ensure it's italicized */
     }
 
-    /* Left and Right Aligned Text (TOP) */
-    .top-text-container {
-      position: absolute;
-      top: 37%;  /* Adjust the top position */
-      width: calc(100% - 2 * var(--margin-control));  /* Same margin control */
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 var(--margin-control);  /* Apply margin control for spacing */
+    /* Mobile Styles - Add these at the end of your existing styles */
+    @media (max-width: 1024px) {
+      /* Disable the fade-in animation on mobile */
+      .letter {
+        animation: none !important;  /* Disable fade-in animation */
+        opacity: 1 !important;  /* Ensure the logo is visible on mobile */
+      }
+
+      /* Adjust vertical positioning of the bottom text */
+      .bottom-text-container {
+        position: absolute;
+        bottom: 10%;  /* Adjust the space between bottom text and edge on mobile */
+        width: calc(100% - 2 * var(--margin-control));  /* Same margin control as bottom */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 var(--margin-control);  /* Apply margin control for spacing */
+      }
+
+      /* Styling for top text */
+      .top-text {
+        font-family: Arial, sans-serif;
+        font-size: 24px;  /* Adjust font size for mobile */
+        color: black;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;  /* Set the height to match the font size */
+        letter-spacing: 3px;  /* Adjust the general letter spacing */
+        transform: translateY(0);  /* Vertical position is adjusted */
+      }
+
+      /* Increase font size for bottom text */
+      .bottom-text {
+        font-family: Arial, sans-serif;
+        font-size: 36px;  /* Increase font size for bottom text */
+        cursor: pointer;
+        color: black;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px; /* Adjust height accordingly */
+      }
+
+      /* Increase button font size and make the button taller */
+      .button-box button {
+        font-size: 48px;  /* Make button text bigger */
+        padding: 15px 30px;  /* Make the button taller */
+      }
+
+      /* Adjust position of the button on mobile */
+      .button-box {
+        top: 90%; /* Adjust vertical position of the button */
+        left: 50%; /* Keep it horizontally centered */
+        transform: translateX(-50%) translateY(0); /* Horizontal centering */
+      }
+
+      /* Ensure text inside the invisible container is the same size as other text */
+      .stretch-text {
+        font-size: 48px;  /* Set font size for this text to be consistent */
+        letter-spacing: 2px;  /* Adjust letter spacing */
+      }
     }
-
-    /* Styling for Words (Top) */
-    .top-text {
-      font-family: Arial, sans-serif;
-      font-size: 48px;  /* Set font size to 48px */
-      letter-spacing: -1.5px;  /* Adjust the general letter spacing (kerning) */
-      color: black;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 48px;  /* Set the height to match the font size */
-    }
-
-    /* Left-aligned text (Top) */
-.top-left {
-  position: absolute;
-  left: var(--margin-control);  /* Apply left margin */
-  text-align: left;
-}
-
-/* Right-aligned text (Top) */
-.top-right {
-  position: absolute;
-  right: var(--margin-control);  /* Apply right margin */
-  text-align: right;
-}
 
   </style>
 </head>
+
 <body>
 
   <!-- Logo (same behavior as before) -->
@@ -196,25 +225,16 @@
     <span class="letter" style="margin: 0 -4px;">S</span>
   </div>
 
-  <div class="top-text-container">
-    <div class="top-text top-left">
-      NOV1  <!-- Replace "TOP LEFT" with your text -->
-    </div>
-    <div class="top-text top-right">
-      1  <!-- Replace "TOP RIGHT" with your text -->
-    </div>
-  </div>
-
   <!-- Clickable Words Container -->
   <div class="bottom-text-container">
     <div class="bottom-text bottom-left">
-      <a href="index.html">Home</a>
+      <a href="http://instagram.com/gaugeyourself">Instagram</a>
     </div>
     <div class="bottom-text bottom-center">
-      <a href="submit-contributor.html">Submit Another</a>
+      <a href="mailto:editorial@artgauge.me">Contact</a>
     </div>
     <div class="bottom-text bottom-right">
-      <a href="http://instagram.com/gaugeyourself">Instagram</a>
+      <a href="mailto:editorial@artgauge.me">Advertise</a>
     </div>
   </div>
 
