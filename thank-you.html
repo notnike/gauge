@@ -1,77 +1,268 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en" style="--margin-control: 16.1px;"><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/content/location/location.js" id="eppiocemhmnlbhjplcgkofciiegomcon"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contributor Submission</title>
   <style>
-    /* Same CSS as before */
-  </style>
-</head>
-<body>
+    /* Define Arial Light */
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: white;
+      overflow: hidden;
+    }
 
-  <div class="container">
-    <label for="email">Type their email address below:</label>
-    <form id="form" method="POST" action="https://formsubmit.co/your-email@example.com">
-      <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" required />
-      
-      <button id="recommendButton" type="submit" disabled>Recommend</button>
+    /* THANKS Logo */
+    .word {
+      position: absolute;
+      top: 50%;
+      left: 46.5%;
+      transform-origin: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(-50%) translateY(-50%);
+    }
 
-      <div class="checkbox-container">
-        <span id="checkbox" class="checkbox unchecked">☐</span>
-        <label for="consent" style="font-size: 24px;">Make sure they're OK with this.</label>
-      </div>
-    </form>
-  </div>
+    .letter {
+      color: black;
+      font-family: 'Arial Bold Italic', sans-serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 100px;
+      white-space: pre;
+      display: inline-block;
+      transform-origin: center;
+      text-transform: none;
+      font-variant: normal;
 
-  <!-- Hidden iframe to prevent FormSubmit redirect -->
-  <iframe name="hidden_iframe" style="display:none;"></iframe>
+      /* Slow fade-in */
+      opacity: 0;
+      animation: fadeInOnly 5s ease forwards;
+      animation-delay: 0.3s;
+    }
 
-  <script>
-    const checkbox = document.getElementById('checkbox');
-    const recommendButton = document.getElementById('recommendButton');
-    const form = document.getElementById('form');
+    @keyframes fadeInOnly {
+      to {
+        opacity: 1;
+      }
+    }
 
-    checkbox.addEventListener('click', function() {
-      // Toggle between unchecked and checked
-      if (checkbox.classList.contains('unchecked')) {
-        checkbox.classList.remove('unchecked');
-        checkbox.classList.add('checked');
-        checkbox.textContent = '☑'; // Update to checked ballot
-      } else {
-        checkbox.classList.remove('checked');
-        checkbox.classList.add('unchecked');
-        checkbox.textContent = '☐'; // Update to unchecked ballot
+    /* Clickable Text Placement */
+    .bottom-text-container {
+      position: absolute;
+      bottom: 1%;  /* Keep it near the bottom */
+      width: calc(100% - 2 * var(--margin-control));  /* Adjust width based on margin control */
+      display: flex;  /* Flexbox layout */
+      justify-content: space-between;  /* Distribute items (left, center, right) evenly */
+      align-items: center;  /* Vertically center */
+      padding: 0 var(--margin-control);  /* Apply margin control for spacing */
+    }
+
+    /* Styling for Clickable Words */
+    .bottom-text {
+      font-family: 'Arial Light', Arial, sans-serif;
+      font-size: 24px;
+      cursor: pointer;
+      color: black; /* Ensuring the text is black */
+      text-decoration: none;  /* Remove underlines */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px; /* Fixed height for all three text links */
+    }
+
+    /* Left-aligned text (Bottom) */
+    .bottom-left {
+      text-align: left;
+    }
+
+    /* Center-aligned text (Bottom) */
+    .bottom-center {
+      text-align: center;
+      flex-grow: 1;  /* Make the center text flexible */
+    }
+
+    /* Right-aligned text (Bottom) */
+    .bottom-right {
+      text-align: right;
+    }
+
+    /* Ensure links are black and not underlined */
+    .bottom-text a {
+      color: black !important;  /* Ensure the color is black */
+      text-decoration: none !important; /* Remove the underline */
+    }
+
+    /* Textbox Styling (removing border) */
+    .textbox {
+      transform: translateX(-50%); /* Center horizontally */
+      width: calc(100% - 2 * var(--margin-control)); /* Same width as the button box */
+      height: 100px;  /* Control height */
+      background-color: transparent;
+      border: none; /* Removed border */
+      white-space: pre-wrap;  /* Preserve line breaks */
+      resize: none;  /* Disable resizing */
+      overflow-y: auto;  /* Enable vertical scrolling */
+      font-family: 'Arial Light', Arial, sans-serif;  /* Use Arial Light */
+      color: black;
+      padding: 10px;
+      text-align: center;  /* Center-align text */
+      line-height: 1.5; /* Control line height */
+      letter-spacing: -0.2px;  /* Control character separation */
+    }
+
+    /* Content display styling */
+    .content {
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      width: calc(100% - 2 * var(--margin-control)); 
+      font-family: 'Arial Light', Arial, sans-serif;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: 0px;
+      color: black;
+    }
+
+    .bold-italic {
+      font-family: 'Arial Bold Italic', Arial, sans-serif;  /* Apply Arial Bold Italic */
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .italic {
+      font-style: italic;
+    }
+
+    /* For the word 'THANKS' in Arial Light Italic */
+    .gauge {
+      font-family: 'Arial Light Italic', Arial, sans-serif;  /* Apply Arial Light Italic */
+      font-style: italic;  /* Ensure it's italicized */
+    }
+
+    /* Mobile Styles - Add these at the end of your existing styles */
+    @media (max-width: 1024px) {
+      /* Disable the fade-in animation on mobile */
+      .letter {
+        animation: none !important;  /* Disable fade-in animation */
+        opacity: 1 !important;  /* Ensure the logo is visible on mobile */
       }
 
-      // Enable the RECOMMEND button when checked
-      recommendButton.disabled = !checkbox.classList.contains('checked');
-    });
+      /* Adjust vertical positioning of the bottom text */
+      .bottom-text-container {
+        position: absolute;
+        bottom: 10%;  /* Adjust the space between bottom text and edge on mobile */
+        width: calc(100% - 2 * var(--margin-control));  /* Same margin control as bottom */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 var(--margin-control);  /* Apply margin control for spacing */
+      }
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
+      /* Styling for top text */
+      .top-text {
+        font-family: Arial, sans-serif;
+        font-size: 24px;  /* Adjust font size for mobile */
+        color: black;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;  /* Set the height to match the font size */
+        letter-spacing: 3px;  /* Adjust the general letter spacing */
+        transform: translateY(0);  /* Vertical position is adjusted */
+      }
 
-      // Submit the form data to FormSubmit using the hidden iframe
-      const formData = new FormData(form);
-      const iframe = document.querySelector('iframe[name="hidden_iframe"]');
+      /* Increase font size for bottom text */
+      .bottom-text {
+        font-family: Arial, sans-serif;
+        font-size: 36px;  /* Increase font size for bottom text */
+        cursor: pointer;
+        color: black;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px; /* Adjust height accordingly */
+      }
 
-      fetch('https://formsubmit.co/your-email@example.com', {
-        method: 'POST',
-        body: formData,
-      })
-      .then(response => {
-        if (response.ok) {
-          // Redirect to the thank-you page if form submission is successful
-          window.location.href = 'https://artgauge.me/thank-you.html';
-        } else {
-          alert('There was a problem with your submission.');
-        }
-      })
-      .catch(error => {
-        alert('There was an error submitting the form.');
-      });
-    });
+      /* Increase button font size and make the button taller */
+      .button-box button {
+        font-size: 48px;  /* Make button text bigger */
+        padding: 15px 30px;  /* Make the button taller */
+      }
+
+      /* Adjust position of the button on mobile */
+      .button-box {
+        top: 90%; /* Adjust vertical position of the button */
+        left: 50%; /* Keep it horizontally centered */
+        transform: translateX(-50%) translateY(0); /* Horizontal centering */
+      }
+
+      /* Ensure text inside the invisible container is the same size as other text */
+      .stretch-text {
+        font-size: 48px;  /* Set font size for this text to be consistent */
+        letter-spacing: 2px;  /* Adjust letter spacing */
+      }
+    }
+
+  </style>
+<script bis_use="true" type="text/javascript" charset="utf-8" data-bis-config="[&quot;facebook.com/&quot;,&quot;twitter.com/&quot;,&quot;youtube-nocookie.com/embed/&quot;,&quot;//vk.com/&quot;,&quot;//www.vk.com/&quot;,&quot;linkedin.com/&quot;,&quot;//www.linkedin.com/&quot;,&quot;//instagram.com/&quot;,&quot;//www.instagram.com/&quot;,&quot;//www.google.com/recaptcha/api2/&quot;,&quot;//hangouts.google.com/webchat/&quot;,&quot;//www.google.com/calendar/&quot;,&quot;//www.google.com/maps/embed&quot;,&quot;spotify.com/&quot;,&quot;soundcloud.com/&quot;,&quot;//player.vimeo.com/&quot;,&quot;//disqus.com/&quot;,&quot;//tgwidget.com/&quot;,&quot;//js.driftt.com/&quot;,&quot;friends2follow.com&quot;,&quot;/widget&quot;,&quot;login&quot;,&quot;//video.bigmir.net/&quot;,&quot;blogger.com&quot;,&quot;//smartlock.google.com/&quot;,&quot;//keep.google.com/&quot;,&quot;/web.tolstoycomments.com/&quot;,&quot;moz-extension://&quot;,&quot;chrome-extension://&quot;,&quot;/auth/&quot;,&quot;//analytics.google.com/&quot;,&quot;adclarity.com&quot;,&quot;paddle.com/checkout&quot;,&quot;hcaptcha.com&quot;,&quot;recaptcha.net&quot;,&quot;2captcha.com&quot;,&quot;accounts.google.com&quot;,&quot;www.google.com/shopping/customerreviews&quot;,&quot;buy.tinypass.com&quot;,&quot;gstatic.com&quot;,&quot;secureir.ebaystatic.com&quot;,&quot;docs.google.com&quot;,&quot;contacts.google.com&quot;,&quot;github.com&quot;,&quot;mail.google.com&quot;,&quot;chat.google.com&quot;,&quot;audio.xpleer.com&quot;,&quot;keepa.com&quot;,&quot;static.xx.fbcdn.net&quot;,&quot;sas.selleramp.com&quot;,&quot;1plus1.video&quot;,&quot;console.googletagservices.com&quot;,&quot;//lnkd.demdex.net/&quot;,&quot;//radar.cedexis.com/&quot;,&quot;//li.protechts.net/&quot;,&quot;challenges.cloudflare.com/&quot;,&quot;ogs.google.com&quot;]" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/traffic.js"></script></head>
+
+<body bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWllZ29tY29uIiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJkaXNhYmxlZCIsIkZBQ0VCT09LIjoiZGlzYWJsZWQiLCJUV0lUVEVSIjoiZGlzYWJsZWQiLCJSRURESVQiOiJkaXNhYmxlZCIsIlBJTlRFUkVTVCI6ImRpc2FibGVkIiwiSU5TVEFHUkFNIjoiZGlzYWJsZWQiLCJMSU5LRURJTiI6ImRpc2FibGVkIiwiQ09ORklHIjoiZGlzYWJsZWQifSwidmVyc2lvbiI6IjIuMC4yNCIsInNjb3JlIjoyMDAyNH1d" __processed_6a693b6d-fa63-43bd-b22e-43a58788bc0b__="true">
+
+  <!-- Logo (same behavior as before) -->
+  <div class="word" id="stretch-word" bis_skin_checked="1" style="transform: translate(-50%, -50%) scale(2.38166, 8.58333);">
+    <span class="letter" style="margin: 0 5px;">T</span>
+    <span class="letter" style="margin: 0 0px;">H</span>
+    <span class="letter" style="margin: 0 0px;">A</span>
+    <span class="letter" style="margin: 0 -2px;">N</span>
+    <span class="letter" style="margin: 0 -12px;">K</span>
+    <span class="letter" style="margin: 0 -2px;">S</span>
+  </div>
+
+  <!-- Clickable Words Container -->
+  <div class="bottom-text-container" bis_skin_checked="1">
+    <div class="bottom-text bottom-left" bis_skin_checked="1">
+      <a href="index.html">Home</a>
+    </div>
+    <div class="bottom-text bottom-center" bis_skin_checked="1">
+      <a href="submit-contributor.html">Recommend Another</a>
+    </div>
+    <div class="bottom-text bottom-right" bis_skin_checked="1">
+      <a href="http://instagram.com/gaugeyourself">Instagram</a>
+    </div>
+  </div>
+
+  <script>
+    function updateStretch() {
+      const word = document.getElementById('stretch-word');
+
+      const marginX = 40;
+      const marginY = 40;
+
+      const availableWidth = window.innerWidth - marginX * 2;
+      const availableHeight = window.innerHeight - marginY * 2;
+
+      const baseWidth = 338;
+      const baseHeight = 72;
+
+      const scaleX = availableWidth / baseWidth;
+      const scaleY = availableHeight / baseHeight;
+
+      word.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
+
+      // Adjust the margin control value dynamically
+      const marginControl = Math.max(5, availableWidth * 0.02);  // Minimum margin of 10px, or 2% of the screen width
+      document.documentElement.style.setProperty('--margin-control', `${marginControl}px`);
+    }
+
+    window.addEventListener('resize', updateStretch);
+    window.addEventListener('load', updateStretch);
   </script>
 
-</body>
-</html>
+
+
+</body></html>
