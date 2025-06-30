@@ -148,8 +148,8 @@
 
   <div class="container">
     <label for="email">Type their email address below:</label>
-    <!-- Formsubmit Action URL for form submission -->
-    <form action="https://formsubmit.co/artgauge.me" method="POST">
+    <!-- Updated FormSubmit Action URL with the correct email address -->
+    <form action="https://formsubmit.co/editorial@artgauge.me" method="POST">
       <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" required />
       
       <button id="recommendButton" type="submit" disabled>Recommend</button>
@@ -159,8 +159,8 @@
         <label for="consent" style="font-size: 24px;">Make sure they're OK with this.</label>
       </div>
 
-      <!-- Hidden field for redirecting to the thank-you page -->
-      <input type="hidden" name="_redirect" value="http://yourdomain.com/thank-you.html">
+      <!-- Correct way to set redirection using _next -->
+      <input type="hidden" name="_next" value="http://yourdomain.com/thank-you.html">
     </form>
   </div>
 
