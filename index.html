@@ -40,17 +40,6 @@
       transform-origin: center;
       text-transform: none;
       font-variant: normal;
-
-      /* Slow fade-in */
-      opacity: 0;
-      animation: fadeInOnly 5s ease forwards;
-      animation-delay: 0.3s;
-    }
-
-    @keyframes fadeInOnly {
-      to {
-        opacity: 1;
-      }
     }
 
     /* Button Box Styling */
@@ -70,8 +59,6 @@
       font-style: normal;
       font-weight: normal;
       opacity: 1;
-      animation: fadeInOnly 5s ease forwards;
-      animation-delay: 0.3s;
     }
 
     /* Button Inside Box */
@@ -230,11 +217,6 @@
 
 /* Mobile Styles - Add these at the end of your existing styles */
   @media (max-width: 1024px) {
-      /* Disable the fade-in animation on mobile */
-  .letter {
-    animation: none !important;  /* Disable fade-in animation */
-    opacity: 1 !important;  /* Ensure the logo is visible on mobile */
-  }
     /* Adjust the vertical positioning of the top text */
     .top-text-container {
       position: absolute;
