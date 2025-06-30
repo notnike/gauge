@@ -242,6 +242,64 @@
   right: var(--margin-control);  /* Apply right margin */
   text-align: right;
 }
+
+/* Mobile Styles - Add these at the end of your existing styles */
+  @media (max-width: 768px) {
+    /* Adjust the vertical positioning of the top text */
+    .top-text-container {
+      position: absolute;
+      top: 8%;  /* Adjust vertical position of top words */
+      width: calc(100% - 2 * var(--margin-control));  /* Same margin control as bottom */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 var(--margin-control);  /* Apply margin control for spacing */
+    }
+
+    /* Styling for top text */
+    .top-text {
+      font-family: Arial, sans-serif;
+      font-size: 36px;  /* Adjust font size for mobile */
+      color: black;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;  /* Set the height to match the font size */
+      letter-spacing: 3px;  /* Adjust the general letter spacing */
+      transform: translateY(0);  /* Vertical position is adjusted */
+    }
+
+    /* Increase font size for bottom text */
+    .bottom-text {
+      font-family: Arial, sans-serif;
+      font-size: 18px;  /* Increase font size for bottom text */
+      cursor: pointer;
+      color: black;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px; /* Adjust height accordingly */
+    }
+
+    /* Increase button font size and make the button taller */
+    .button-box button {
+      font-size: 18px;  /* Make button text bigger */
+      padding: 15px 30px;  /* Make the button taller */
+    }
+
+    /* Ensure text inside the invisible container is the same size as other text */
+    .stretch-text {
+      font-size: 18px;  /* Set font size for this text to be consistent */
+      letter-spacing: 2px;  /* Adjust letter spacing */
+    }
+
+    /* Make invisible container larger */
+    .invisible-container {
+      top: 60%;  /* Adjust vertical position */
+      width: 80%;  /* Increase width of the invisible container */
+    }
     
   </style>
 </head>
