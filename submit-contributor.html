@@ -6,10 +6,10 @@
   <title>Contributor Submission</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: 'Arial', sans-serif; /* Set to Arial Light (fallback to Arial) */
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      background-color: white; /* Set background to white */
       color: #333;
       display: flex;
       justify-content: center;
@@ -22,7 +22,7 @@
       width: 80%;
       max-width: 600px;
       padding: 20px;
-      background-color: transparent; /* Remove background */
+      background-color: transparent; /* No background */
       border-radius: 0; /* No rounded corners */
       box-shadow: none; /* Remove any shadow */
     }
@@ -32,13 +32,14 @@
       font-weight: lighter;
       display: block;
       margin-bottom: 10px;
+      font-family: 'Arial', sans-serif;
     }
 
     input[type="email"] {
       width: 100%;
       padding: 10px;
       font-size: 24px;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       margin-bottom: 20px;
       border: 1px solid #ddd;
       border-radius: 0; /* Square corners */
@@ -52,7 +53,7 @@
       color: black; /* Change to black when focused */
     }
 
-    /* Styling for the checkbox and the text */
+    /* Styling for the checkbox container and text */
     .checkbox-container {
       display: flex;
       align-items: center;
@@ -60,11 +61,19 @@
       margin-bottom: 20px;
     }
 
-    input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-      border: 1px solid black; /* 1px black border */
+    /* Ballot character styles */
+    .checkbox {
+      font-size: 24px;
+      cursor: pointer;
       margin-right: 10px; /* Space between checkbox and text */
+    }
+
+    .checkbox.checked {
+      content: "☑"; /* Checked box */
+    }
+
+    .checkbox.unchecked {
+      content: "☐"; /* Unchecked box */
     }
 
     /* Styling for the button */
@@ -110,7 +119,7 @@
 
     <!-- Checkbox and Text for Consent -->
     <div class="checkbox-container">
-      <input type="checkbox" id="consent" /> 
+      <span id="checkbox" class="checkbox unchecked">☐</span>
       <label for="consent" style="font-size: 24px;">Make sure they're OK with this</label>
     </div>
 
@@ -119,12 +128,22 @@
   </div>
 
   <script>
-    // Enable the RECOMMEND button only if the checkbox is checked
-    const checkbox = document.getElementById('consent');
+    // Enable the RECOMMEND button only if the checkbox is clicked
+    const checkbox = document.getElementById('checkbox');
     const recommendButton = document.getElementById('recommendButton');
 
-    checkbox.addEventListener('change', function() {
-      recommendButton.disabled = !checkbox.checked;
+    checkbox.addEventListener('click', function() {
+      // Toggle between unchecked and checked
+      if (checkbox.classList.contains('unchecked')) {
+        checkbox.classList.remove('unchecked');
+        checkbox.classList.add('checked');
+      } else {
+        checkbox.classList.remove('checked');
+        checkbox.classList.add('unchecked');
+      }
+
+      // Enable the RECOMMEND button when checked
+      recommendButton.disabled = !checkbox.classList.contains('checked');
     });
   </script>
 
