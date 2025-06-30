@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <link href="https://fonts.cdnfonts.com/css/arial" rel="stylesheet">
-  <link rel="icon" href="https://raw.githubusercontent.com/notnike/gauge/main/Logo.png" type="image/png" />
   <meta charset="UTF-8" />
   <title>Gauge</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/notnike/gauge/main/Logo.png" type="image/png" />
+  
   <!-- Adobe Font: Big Caslon Medium -->
   <link rel="stylesheet" href="https://use.typekit.net/rsu7qml.css">
+
   <style>
     html, body {
       margin: 0;
@@ -38,6 +40,18 @@
       transform-origin: center;
       text-transform: none;
       font-variant: normal;
+
+      /* Slow fade-in */
+      opacity: 0;
+      animation: fadeInOnly 5s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes fadeInOnly {
+      to {
+        opacity: 1;
+      }
+    }
 
     /* Button Box Styling */
     .button-box {
@@ -318,7 +332,7 @@
   <!-- Clickable Words Container -->
   <div class="bottom-text-container">
     <div class="bottom-text bottom-left">
-      <a href="http://instagram.com/gaugeyourself">Instagram</a>
+      <a href="https://instagram.com/gaugeyourself">Instagram</a>
     </div>
     <div class="bottom-text bottom-center">
       <a href="mailto:editorial@artgauge.me">Contact</a>
