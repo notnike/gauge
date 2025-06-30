@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contributor Submission</title>
   <style>
-       /* Define Arial Light */
+    /* Define Arial Light */
     @font-face {
       font-family: 'Arial Light';
       src: url('https://github.com/username/repository-name/raw/main/fonts/ArialLight.TTF') format('truetype');
@@ -64,7 +64,6 @@
       text-align: center; /* Center text inside the input box */
     }
 
-    /* Remove default value styling */
     input[type="email"]:focus {
       color: black; /* Change to black when focused */
     }
@@ -82,14 +81,13 @@
       font-size: 48px; /* Increased font size to make the checkbox bigger */
       cursor: pointer;
       margin-right: 10px; /* Space between checkbox and text */
-      transform: translateY(5px); /* Control this value to move the checkbox up or down */
+      transform: translateY(0px); /* Adjust this value to move the checkbox up or down */
     }
 
-    /* Styling for the checkbox label and vertical positioning */
+    /* Styling for the checkbox label */
     .checkbox-container label {
       font-size: 24px;
-      position: relative;   /* Allows vertical adjustments */
-      top: 0px;             /* Control this value to move the text vertically */
+      font-family: 'Arial Light', sans-serif;
     }
 
     /* Styling for the button */
@@ -151,19 +149,4 @@
     checkbox.addEventListener('click', function() {
       // Toggle between unchecked and checked
       if (checkbox.classList.contains('unchecked')) {
-        checkbox.classList.remove('unchecked');
-        checkbox.classList.add('checked');
-        checkbox.textContent = '☑'; // Update to checked ballot
-      } else {
-        checkbox.classList.remove('checked');
-        checkbox.classList.add('unchecked');
-        checkbox.textContent = '☐'; // Update to unchecked ballot
-      }
-
-      // Enable the RECOMMEND button when checked
-      recommendButton.disabled = !checkbox.classList.contains('checked');
-    });
-  </script>
-
-</body>
-</html>
+        checkbox.classList.remove('unchec
