@@ -12,8 +12,8 @@
 
   <div class="container">
     <label for="email">Type their email address below:</label>
-    <!-- FormSubmit action with your email -->
-    <form action="https://formsubmit.co/editorial@artgauge.me" method="POST">
+    <!-- FormKeep Action URL with your form endpoint -->
+    <form action="https://formkeep.com/f/538ad5d14dc6" method="POST">
       <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" required />
       
       <button id="recommendButton" type="submit" disabled>Recommend</button>
@@ -23,8 +23,8 @@
         <label for="consent" style="font-size: 24px;">Make sure they're OK with this.</label>
       </div>
 
-      <!-- Correct redirection: Replace with your actual domain and thank-you page -->
-      <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+      <!-- Redirect after form submission -->
+      <input type="hidden" name="_redirect" value="https://yourdomain.com/thank-you.html">
     </form>
   </div>
 
