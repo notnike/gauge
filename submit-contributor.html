@@ -68,6 +68,28 @@
       color: black;
     }
 
+    /* Styling for the checkbox container */
+    .checkbox-container {
+      display: flex;
+      align-items: center;  /* Vertically align checkbox and text */
+      justify-content: center;
+      margin-top: 20px; /* Space below the button */
+    }
+
+    /* Ballot character styles */
+    .checkbox {
+      font-size: 48px; /* Increased font size to make the checkbox bigger */
+      cursor: pointer;
+      margin-right: 10px; /* Space between checkbox and text */
+    }
+
+    /* Styling for the checkbox label (the text) */
+    .checkbox-container label {
+      font-size: 24px;
+      font-family: 'Arial Light', sans-serif;
+      transform: translateY(3px); /* Adjust this value to move the sentence down */
+    }
+
     /* Styling for the button */
     button {
       width: 100%;
@@ -99,29 +121,6 @@
       color: black;
       border: 1px solid black;
       cursor: not-allowed;
-    }
-
-    /* Styling for the checkbox container */
-    .checkbox-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 20px; /* Space below the button */
-    }
-
-    /* Ballot character styles */
-    .checkbox {
-      font-size: 48px; /* Increased font size to make the checkbox bigger */
-      cursor: pointer;
-      margin-right: 10px; /* Space between checkbox and text */
-    }
-
-    .checkbox.checked {
-      content: "☑"; /* Checked box */
-    }
-
-    .checkbox.unchecked {
-      content: "☐"; /* Unchecked box */
     }
 
   </style>
