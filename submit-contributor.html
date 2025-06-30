@@ -96,7 +96,7 @@
 
   <div class="container">
     <label for="email">Type their email address below:</label>
-    <form action="https://formspree.io/f/xyzjoevw" method="POST" onsubmit="submitForm(event)">
+    <form action="https://formspree.io/f/xyzjoevw" method="POST">
       <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" required />
       
       <button id="recommendButton" type="submit" disabled>Recommend</button>
@@ -125,30 +125,6 @@
 
       recommendButton.disabled = !checkbox.classList.contains('checked');
     });
-
-    function submitForm(event) {
-      event.preventDefault();
-
-      const email = document.getElementById('email').value; // Get email
-
-      const formData = new FormData();
-      formData.append('email', email);
-
-      fetch('https://formspree.io/f/xyzjoevw', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => {
-        if (response.ok) {
-          window.location.href = '/thank-you.html';  // Redirect to your custom Thank You page
-        } else {
-          alert('There was an issue with your submission. Please try again.');
-        }
-      })
-      .catch(error => {
-        alert('There was a problem with the submission. Please try again.');
-      });
-    }
   </script>
 
 </body>
