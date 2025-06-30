@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contributor Submission</title>
   <style>
-    /* Your existing styles here */
+    /* Define Arial Light */
     html, body {
       margin: 0;
       height: 100%;
@@ -71,15 +71,32 @@
       height: 40px;
     }
 
-    /* Add your other styles as necessary */
+    .bottom-left {
+      text-align: left;
+    }
+
+    .bottom-center {
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .bottom-right {
+      text-align: right;
+    }
+
+    /* Ensure links are black and not underlined */
+    .bottom-text a {
+      color: black !important;
+      text-decoration: none !important;
+    }
+
   </style>
 </head>
 <body>
 
   <div class="container">
     <label for="email">Type their email address below:</label>
-    <!-- Formspree Action URL for form submission -->
-    <form id="contributorForm" action="https://formspree.io/f/xyzjoevw" method="POST" onsubmit="submitForm(event)">
+    <form action="https://formspree.io/f/xyzjoevw" method="POST" onsubmit="submitForm(event)">
       <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" required />
       
       <button id="recommendButton" type="submit" disabled>Recommend</button>
@@ -123,7 +140,7 @@
       })
       .then(response => {
         if (response.ok) {
-          window.location.href = '/thank-you.html';  // Redirect to your thank-you page
+          window.location.href = '/thank-you.html';  // Redirect to your custom Thank You page
         } else {
           alert('There was an issue with your submission. Please try again.');
         }
