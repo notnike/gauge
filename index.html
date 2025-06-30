@@ -241,15 +241,18 @@
   position: absolute;
   right: var(--margin-control);  /* Apply right margin */
   text-align: right;
-  animation: none !important;  /* Disable fade-in animation */
 }
 
 /* Mobile Styles - Add these at the end of your existing styles */
   @media (max-width: 1024px) {
+      /* Disable the fade-in animation on mobile */
+  .letter {
+    animation: none !important;  /* Disable fade-in animation */
+  }
     /* Adjust the vertical positioning of the top text */
     .top-text-container {
       position: absolute;
-      top: 12%;  /* Adjust vertical position of top words */
+      top: 6%;  /* Adjust vertical position of top words */
       width: calc(100% - 2 * var(--margin-control));  /* Same margin control as bottom */
       display: flex;
       justify-content: space-between;
