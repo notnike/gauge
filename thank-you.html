@@ -186,7 +186,26 @@
         font-size: 48px;  /* Set font size for this text to be consistent */
         letter-spacing: 2px;  /* Adjust letter spacing */
       }
-    }
+      
+    /* Media query for devices with screen width 1024px or less (Mobile/Tablet) */
+@media (max-width: 1024px) {
+  body {
+    font-size: 18px; /* Adjust font size for mobile */
+  }
+
+  input[type="email"],
+  button {
+    font-size: 18px; /* Reduce font size of input and button */
+  }
+
+  .checkbox-container label {
+    font-size: 18px; /* Adjust label font size for mobile */
+  }
+
+  .checkbox {
+    font-size: 18px; /* Adjust ballot size for mobile */
+  }
+}
 
   </style>
   
