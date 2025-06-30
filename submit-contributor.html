@@ -68,29 +68,25 @@
       color: black;
     }
 
-    /* Styling for the checkbox container */
     .checkbox-container {
       display: flex;
-      align-items: center;  /* Vertically align checkbox and text */
+      align-items: center;
       justify-content: center;
-      margin-top: 20px; /* Space below the button */
+      margin-top: 20px;
     }
 
-    /* Ballot character styles */
     .checkbox {
-      font-size: 48px; /* Increased font size to make the checkbox bigger */
+      font-size: 48px;
       cursor: pointer;
-      margin-right: 10px; /* Space between checkbox and text */
+      margin-right: 10px;
     }
 
-    /* Styling for the checkbox label (the text) */
     .checkbox-container label {
       font-size: 24px;
       font-family: 'Arial Light', sans-serif;
-      transform: translateY(16px); /* Adjust this value to move the sentence down */
+      transform: translateY(16px);
     }
 
-    /* Styling for the button */
     button {
       width: 100%;
       padding: 12px;
@@ -102,7 +98,7 @@
       border-radius: 0;
       cursor: pointer;
       transition: background-color 0.3s;
-      opacity: 0.5; /* Initially disabled */
+      opacity: 0.5;
     }
 
     button:hover {
@@ -122,106 +118,50 @@
       border: 1px solid black;
       cursor: not-allowed;
     }
-    /* General Body Font Size */
-body {
-  font-family: 'Arial Light', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: white;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-  font-size: 24px; /* Default font size for larger screens */
-}
 
-/* Container */
-.container {
-  width: 80%;
-  max-width: 600px;
-  padding: 20px;
-  background-color: transparent;
-  border-radius: 0;
-  box-shadow: none;
-}
+    @media (max-width: 1024px) {
+      body {
+        font-size: 18px;
+      }
 
-/* Email Input */
-input[type="email"] {
-  width: 100%;
-  padding: 10px;
-  font-size: 24px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 0;
-  color: #808080;
-  background-color: transparent;
-  text-align: center;
-}
+      .container {
+        width: 90%;
+        padding: 15px;
+      }
 
-/* Button */
-button {
-  width: 100%;
-  padding: 12px;
-  font-size: 24px;
-  font-family: 'Arial Light', sans-serif;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 0;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  opacity: 0.5; /* Initially disabled */
-}
+      input[type="email"] {
+        font-size: 24px;
+      }
 
-/* Mobile Media Query */
-@media (max-width: 1024px) {
-  /* Adjust font size for smaller screens */
-  body {
-    font-size: 18px; /* Smaller font size for mobile */
-  }
+      button {
+        font-size: 24px;
+        padding: 10px;
+      }
 
-  .container {
-    width: 90%;
-    padding: 15px; /* Reduced padding on mobile */
-  }
-
-  input[type="email"] {
-    font-size: 24px; /* Smaller font size for mobile */
-  }
-
-  button {
-    font-size: 24px; /* Smaller font size for mobile */
-    padding: 10px;   /* Adjusted padding */
-  }
-
-  /* Adjust placement of elements for mobile */
-  .checkbox-container {
-    margin-top: 10px;  /* Adjust the space below the button */
-  }
-}
-
+      .checkbox-container {
+        margin-top: 10px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
     <label for="email">Type their email address below:</label>
-    <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" />
+    <!-- Formspree Action URL for form submission -->
+    <form action="https://formspree.io/f/xyzjoevw" method="POST">
+      <input type="email" id="email" name="email" value="damienhurts@email.com" onfocus="this.value = ''" required />
+      
+      <button id="recommendButton" type="submit" disabled>Recommend</button>
 
-    <!-- RECOMMEND Button -->
-    <button id="recommendButton" disabled>Recommend</button>
-
-    <!-- Checkbox and Text for Consent -->
-    <div class="checkbox-container">
-      <span id="checkbox" class="checkbox unchecked">☐</span>
-      <label for="consent" style="font-size: 24px;">Make sure they're OK with this.</label>
-    </div>
+      <div class="checkbox-container">
+        <span id="checkbox" class="checkbox unchecked">☐</span>
+        <label for="consent" style="font-size: 24px;">Make sure they're OK with this.</label>
+      </div>
+    </form>
   </div>
 
   <script>
-    // Enable the RECOMMEND button only if the checkbox is clicked
     const checkbox = document.getElementById('checkbox');
     const recommendButton = document.getElementById('recommendButton');
 
